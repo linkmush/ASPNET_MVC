@@ -1,0 +1,241 @@
+.courses {
+
+    .container {
+
+        .action-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 50px;
+
+            a {
+                text-decoration: none;
+                color: $gray-600;
+
+                &:hover {
+                    transition: all 0.15s ease-in-out;
+                    cursor: pointer;
+                    color: $info;
+                }
+            }
+        }
+
+        .header-courses {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+
+            h1 {
+                @media (max-width: 992px ) {
+                    display: none;
+                }
+
+            }
+
+            .categorylist {
+                border: 1px solid #DAD9D3;
+                padding: 8px;
+                border-radius: 15px;
+
+                @media (max-width: 768px) {
+                    display: none;
+                }
+
+                form {
+
+                    input {
+                        color: #191919;
+                        text-decoration: none;
+                        outline: none;
+                        border: transparent;
+                        margin-right: 50px;
+                    }
+                }
+            }
+
+            .search-form {
+                border: 1px solid #DAD9D3;
+                padding: 8px;
+                border-radius: 15px;
+
+                form {
+
+                    input {
+                        color: #191919;
+                        text-decoration: none;
+                        outline: none;
+                        border: transparent;
+                        margin-right: 50px;
+                    }
+                }
+            }
+        }
+        
+        .courses-square {
+            display: grid;
+            grid-template-columns: auto;
+            gap: 25px;
+
+            @include md {
+                display: grid;
+                grid-template-columns: auto auto;
+                gap: 25px;
+            }
+
+            @include lg {
+                display: grid;
+                grid-template-columns: auto auto auto;
+                gap: 30px;
+            }
+
+            .grid-item {
+                border: 1px solid #DAD9D3;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                transition: box-shadow 0.3s ease-in-out;
+
+                &:hover {
+                    box-shadow: 0 6px 12px rgba(0, 0, 0, 10);
+                }
+                
+                img {
+                    width: 100%;
+                    height: auto;
+                }
+
+                .text-info {
+                    text-align: left;
+                    padding: 20px;
+
+                    h5 {
+                        margin-top: 10px;
+                    }
+    
+                    .creator {
+                        color: $gray-600;
+                    }
+
+                    .price {
+                        font-weight: 700;
+                        color: $theme;
+
+                        border-bottom: 1px solid #DAD9D3;
+                        padding-bottom: 15px;
+                    }
+
+                    .clock {
+                        display: flex;
+                        flex-direction: row;
+                        gap: 5px;
+
+                        .fa-regular {
+                            color: $gray-600;
+                            margin-top: 3px;
+                        }
+
+                        p {
+                            color: $gray-600;
+                        }
+
+                        .thumbs-up {
+                            display: flex;
+                            flex-direction: row;
+                            gap: 5px;
+                            margin-left: 25px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .pagination {
+            display: flex;
+            gap: 8px;
+            margin: 30px 0;
+            justify-content: center;
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: #191919;
+                font-size: 0.9rem;
+                text-decoration: none;
+                border: none;
+                border-radius: 5px;
+                width: 38px;
+                height: 38px;
+
+                i {
+                    font-size: 0.8rem;
+                }
+              
+                &.active,
+                &:hover {
+                    color: #FFFFFF;
+                    background-color: $info;
+                }
+            }
+        }
+
+        .work-section {
+            display: flex;
+            justify-content: center;
+            background-color: $gray-100;
+            align-items: center;
+            gap: 80px;
+
+            .work-text {
+
+                h5 {
+                    @include h6;
+                    color: $gray-700;
+                    margin-top: 50px;
+
+                    @include md {
+                        @include h5;
+                        color: $gray-700;
+                    }
+
+                    @include xl {
+                        @include h5;
+                        color: $gray-700;
+                    }
+                }
+
+                h1 {
+                    @include h3;
+
+                    @include md {
+                        @include h1;
+                    }
+
+                    @include xl {
+                        @include h1;
+                    }
+                }
+
+                .header-skills {
+                    color: $theme-secondary;
+                }
+
+                .btn-theme-s {
+                    margin-bottom: 50px;
+                }
+            }
+
+            .work-img {
+                display: none;
+
+                @include xl {
+                    display: block;
+                    margin-top: 50px;
+                    margin-bottom: 50px;
+                }
+            }
+        }
+    }
+}

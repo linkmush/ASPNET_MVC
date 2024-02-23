@@ -1,0 +1,91 @@
+.description-course {
+
+    .container {
+
+        .description-header {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+
+            @media(max-width: 1200px) {
+                display: flex;
+                flex-direction: column;
+            }  
+
+            .singlecourse-header {
+
+                p {
+                    margin-top: 20px;
+                }
+
+                .learn-what {
+
+                    .checked-info {
+                        display: flex;
+                        align-items: baseline;
+                        gap: 10px;
+
+                        .fa-regular {
+                            color: $theme;
+                        }
+
+                        .fa-circle-check {
+                            color: $theme;
+                        }
+
+                        p {
+
+                        }
+                    }
+                }
+            }
+
+            .singlecourse-box {
+                display: flex;
+                flex-direction: column;
+                padding-right: 100px;
+                padding-top: 30px;
+                padding-left: 30px;
+                padding-bottom: 30px;
+                height: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+                @media(max-width: 1200px) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 20px;
+                } 
+
+                .course-include {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 10px;
+                }
+
+                .price-box {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    margin-top: 15px;
+
+                    .discount-price {
+                        @include text-lead;
+                        font-weight: 700;
+                    }
+
+                    .actual-price {
+                        color: $gray-600;
+                        text-decoration: line-through;
+                    }
+                }
+
+                .btn-theme-s {
+                    width: 60%;
+                }
+
+            }
+        }
+    }
+}

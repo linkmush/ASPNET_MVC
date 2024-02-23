@@ -6,14 +6,21 @@
     <script src="https://kit.fontawesome.com/2e59af35dc.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    <title>@ViewData["Title"] - Silicon</title>
+    @if (!string.IsNullOrWhiteSpace(ViewData["Title"]?.ToString()))
+    {
+        <title>@ViewData["Title"] - Silicon</title>
+    }
+    else
+    {
+        <title>Silicon</title>
+    }
 </head>
 <body>
 
     <div class="wrapper">
         <header>
             <div class="container">
-                <a id="logo" asp-controller="Home" asp-action="Index"><img src="images/Silicon Logotype - Light Mode.svg" alt=""></a>
+                <a id="logo" asp-controller="Home" asp-action="Index"><img src="~/images/Silicon Logotype - Light Mode.svg" alt=""></a>
                 <div id="menu">
                     <nav>
                         <a class="menu-link" href="#overview">Overview</a>

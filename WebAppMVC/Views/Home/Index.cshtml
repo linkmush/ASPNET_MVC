@@ -2,6 +2,4 @@
 
 @await Html.PartialAsync("~/Views/Shared/Sections/_ShowcasePartial.cshtml", Model.Showcase)
 
-<section id="features">
-    @await Html.PartialAsync("~/Views/Shared/Sections/_FeaturesPartial.cshtml")
-</section>
+@await Html.PartialAsync("~/Views/Shared/Sections/_FeaturesPartial.cshtml", Model.Features)

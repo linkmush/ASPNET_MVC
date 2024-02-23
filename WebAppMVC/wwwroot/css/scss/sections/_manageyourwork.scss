@@ -1,0 +1,76 @@
+.manage-your-work {
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 0;
+
+        @include lg {
+            justify-content: space-around;
+        }
+
+        img {
+            display: none;
+            max-width: 50%;
+            height: auto;
+
+            @include lg {
+                display: block;
+            }
+
+            @include xl {
+                max-width: 100%;
+            }
+        }
+
+        .learn-more {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            margin-right: 20px;
+
+            @include xl {
+                align-items: start;
+                margin: 0;
+            }
+
+            .item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 10px;
+
+                @include xl {
+                    margin: 0;
+                }
+                
+                i {
+                    color: $theme;
+                    align-self: center;
+                }
+
+                p {
+                    padding: 5px;
+                    margin-bottom: 0;
+                    align-self: center;
+                    justify-self: center;
+
+                    @include lg {
+                        padding: 10px;
+                    }
+                }
+            }
+
+            .btn-theme-s {
+                display: inline-block;
+                margin-top: 20px;
+                
+                i {
+                    margin-left: 5px;
+                }
+            }
+        }
+    }
+}

@@ -51,6 +51,19 @@
     } 
 }
 
+.btn-red {
+    @include button;
+    background: $danger;
+    color: $white;
+    border: none;
+
+    &:hover {
+        text-decoration: none;
+        background: $gray-700;
+        @include shadow-s;
+    }
+}
+
 .btn-switch {
     display: flex;
     align-items: center;

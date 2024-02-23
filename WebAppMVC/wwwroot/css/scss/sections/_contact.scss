@@ -1,0 +1,202 @@
+.contact {
+    position: relative;
+    z-index: 1;
+    background-color: $gray-100;
+    padding-bottom: 50px;
+
+    @include xl {
+        padding-bottom: 35%;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        padding-top: 20px;
+
+        @include xl {
+            flex-direction: row;
+        }
+
+        .left-side {
+            flex: 1;
+
+            .breadcrumb {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 20px;
+                font-size: 14px;
+    
+                i {
+                    color: $gray-600;
+                }
+                a {
+                    text-decoration: none;
+                    color: $gray-600;
+    
+                    &:hover {
+                        transition: all 0.15s ease-in-out;
+                        cursor: pointer;
+                        color: $info;
+                    }
+                }
+                .active {
+                    color: $theme;
+                }
+            }
+
+            h1 {
+                margin-bottom: 20px;
+                text-align: center;
+
+                @include lg {
+                    text-align: start;
+                }
+            }
+
+            .info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+
+                @include md {
+                    flex-direction: row;
+                    text-align: start;
+                }
+
+                @include xl {
+                    flex-direction: column;
+                    align-items: start;
+                    justify-content: start;
+                }
+
+                .box {
+                    display: flex;
+                    justify-content: center;
+                    padding-top: 40px;
+    
+                    @include lg {
+                        gap: 30px;
+                    }
+    
+                    .icon {
+                        display: none;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: $white;
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 100%;
+
+                        @include lg {
+                            display: flex;
+                        }
+                        
+                        i {
+                            color: $theme;
+                            font-size: 1.3em;
+                        }
+                    }
+    
+                    .text {
+                        max-width: 350px;
+    
+                        a {
+                            font-weight: 600;
+                            i {
+                                margin-left: 8px;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .contact-form {
+            flex: 1;
+            @include shadow-l;
+            background-color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            padding: 60px 0;
+            margin-top: 40px;
+
+            form {
+                display: flex;
+                justify-content: center;
+                width: 80%;
+
+                @include xl {
+                    justify-content: start;
+                }
+
+                label {
+                    color: $gray-900;
+                    font-weight: 600;
+                    
+                    span {
+                        color: $gray-600;
+                    }
+                }
+
+                input {
+                    padding: 10px 15px;
+                    border-radius: 8px;
+
+                    &::placeholder {
+                        color: $gray-500;
+                    }
+
+                    &:focus {
+                        @include theme-secondary-shadow;
+                        border-color: $theme-opacity;
+                    }
+                }
+
+                textarea {
+                    resize: none;
+                    &::placeholder {
+                        color: $gray-500;
+                    }
+
+                    &:focus {
+                        @include theme-secondary-shadow;
+                        border-color: $theme-opacity;
+                    }
+                }
+
+                select {
+                    padding: 10px 15px;
+                    border-radius: 8px;
+                    color: $gray-500;
+
+                    &:focus {
+                        @include theme-secondary-shadow;
+                        border-color: $theme-opacity;
+                    }
+                }
+            }
+        }
+
+        img {
+            display: none;
+            z-index: -1;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            max-width: 100%;
+            height: auto;
+
+            @include xl {
+                display: block;
+            }
+        }
+    }
+}

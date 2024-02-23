@@ -1,0 +1,162 @@
+.account-details {
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        @include lg {
+            flex-direction: row;
+        }
+
+        .sidebar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 30px 0 0 0;
+
+            @include lg {
+                flex-direction: column;
+                padding: 50px 20px 0 10px;
+                justify-content: start;
+            }
+
+            .profile {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                img {
+                    width: 120px;
+                    height: 120px;
+                    margin-bottom: 20px;
+                }
+
+                .btn-refresh {
+                    @include shadow-s;
+                    position: absolute;
+                    top: 80px;
+                    right: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $white;
+                    border: 1px solid $gray-300;
+                    border-radius: 100%;
+                    width: 40px;
+                    height: 40px;
+    
+                    i {
+                        color: $gray-800;
+                        font-size: 16px;
+                        font-weight: 600;   
+                    }
+    
+                    &:hover {
+                        text-decoration: none;
+                        background: $gray-600;
+    
+                        i {
+                            color: $white;
+                        }
+                    } 
+                }
+            }
+
+            .btn-theme-s {
+                max-width: 306px;
+                justify-content: start;
+                font-size: 16px;
+                padding: 10px;
+
+                @include md {
+                    width: 306px;
+                    padding: 10px 28px 10px;
+                }
+            }
+
+            .link-list {
+                display: flex;
+                flex-direction: column;
+
+                .menu-link {
+                    padding-top: 10px;
+                    padding-bottom: 10px;
+                    margin-left: 20px;
+    
+                    i {
+                        color: $gray-600;
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+
+        .details-preview {
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+
+            @include lg {
+                padding: 50px 100px;
+                border-left: 1px solid $gray-300;
+            }
+
+            h2 {
+                @include h3;
+
+                @include lg {
+                    @include h2;
+                }
+            }
+
+            form {
+                h5 {
+                    color: $theme;
+                }
+
+                label {
+                    color: $gray-900;
+                    font-weight: 600;
+                    
+                    span {
+                        color: $gray-600;
+                    }
+                }
+
+                input {
+                    padding: 10px 15px;
+                    border-radius: 8px;
+
+                    &::placeholder {
+                        color: $gray-500;
+                    }
+
+                    &:focus {
+                        @include theme-secondary-shadow;
+                        border-color: $theme-opacity;
+                    }
+                }
+
+                textarea {
+                    resize: none;
+                    &::placeholder {
+                        color: $gray-500;
+                    }
+
+                    &:focus {
+                        @include theme-secondary-shadow;
+                        border-color: $theme-opacity;
+                    }
+                }
+            }
+
+            #addressChanges {
+                border-top: 1px solid $gray-300;
+                margin-bottom: 50px;
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+.program-details {
+    
+    .container {
+
+        .number {
+            display: flex;
+            align-items: center;
+            gap: 55px;
+
+            .circle {
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+
+                @media (max-width: 768px) {
+                    display: none;
+                }
+
+                p {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 100%;
+                    border: 7px solid rgba(131, 130, 130, 0.2);
+                    border-radius: 50%;
+                    box-sizing: border-box;
+                }
+            }
+
+            .square-text-details {
+                width: 650px;
+                padding: 20px;
+
+                .circle-text {
+                    margin-top: 35px;
+    
+                    h4 {
+    
+                    }
+        
+                    p {
+    
+                    }
+                }
+            }
+        }
+    }
+}

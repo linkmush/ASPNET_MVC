@@ -1,0 +1,90 @@
+.albert-flores {
+
+    .container {
+
+        .albert-img-text {
+            display: flex;
+            background-color: rgb(21, 21, 44);
+            border-radius: 10px;
+            margin-top: 85px;
+
+            .albert-pic {
+                border-radius: 10px;
+                display: none;
+
+                @include xl {
+                    display: block;
+                }
+            }
+    
+            .albert-text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding-left: 100px;
+                padding-right: 30px;
+
+                @media (max-width: 762px) {
+                    padding-left: 50px;
+                    padding-right: 20px;
+                }
+
+                @media (max-width: 1200px) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin-top: 50px;
+                    margin-bottom: 50px;
+                }
+
+                p {
+                    color: $gray-500;
+
+                    @media (max-width: 602px) {
+                        @include text-xs;
+                        color: $gray-500;
+                    }
+                }
+
+                h2 {
+                    color: #ffff;
+
+                    @media (max-width: 602px) {
+                        @include text-lead;
+                        color: #ffff;
+                    }
+
+                }
+
+                .albert-buttons {
+                    display: flex;
+                    gap: 25px;
+
+                    .btn-theme-s {
+                        box-shadow: 0 4px 8px rgba(163, 4, 4, 0.1);
+                        background-color: red;
+
+
+                        &:hover {
+                            text-decoration: none;
+                            background: #4C82F7;
+                            color: $white;
+                        } 
+                    }
+
+                    .btn-gray {
+                        background-color: #4C82F7;
+                        color: #ffff;
+
+                        &:hover {
+                            box-shadow: none;
+                            text-decoration: none;
+                            background:  red;
+                            color: $white;
+                        } 
+                    }
+                } 
+            }
+        }
+    }
+}

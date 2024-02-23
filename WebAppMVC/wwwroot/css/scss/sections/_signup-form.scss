@@ -1,0 +1,82 @@
+#signup-form {
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%; 
+
+        .form-square-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+            box-sizing: border-box;
+            margin-top: 100px;
+
+            .header-form {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+    
+                .header-signup {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+
+                    a {
+                        text-decoration: underline;
+                    }
+
+                }
+            }
+
+            .form-box {
+                display: flex;
+                flex-direction: column;
+                width: 80%;
+                margin-bottom: 100px;
+
+                .form-row {
+                    display: block;
+                }
+        
+                .form-row label {
+                    display: block;
+                    margin-bottom: 5px;
+                    color: $black;
+                    font-weight: 700;
+                }
+
+                .form-row input {
+                    width: 100%;
+                    padding: 8px;
+                    box-sizing: border-box;
+                    border: 1px solid $gray-400;
+                    border-radius: 8px;
+                    color: $gray-400;
+                }
+
+                .checkbox-input {
+                    margin-top: 10px;
+                }
+
+                .btn-theme-s {
+                    width: 100%;
+                    margin-top: 25px;
+                }
+
+                .forgotpassword {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 20px;
+        
+                    a {
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+}
