@@ -1,0 +1,26 @@
+﻿<header>
+    <div class="container">
+        <a id="logo" asp-controller="Home" asp-action="Index"><img src="~/images/Silicon Logotype - Light Mode.svg" alt=""></a>
+        <div id="menu">
+            <nav>
+                <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
+                <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+                <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
+            </nav>
+        </div>
+
+        <div class="btn-switch">
+            <label>Light</label>
+            <label class="switch" for="switch-mode">
+                <input type="checkbox" id="switch-mode" />
+                <div class="slider round"></div>
+            </label>
+            <label>Dark</label>
+        </div>
+
+        <div class="account-buttons">
+            <a class="btn-gray" asp-controller="Account" asp-action="SignIn"><i class="fa-solid fa-right-to-bracket"></i><span>Sign In</span></a>
+            <a class="btn-theme" asp-controller="Account" asp-action="SignUp"><i class="fa-regular fa-user"></i><span>Sign Up</span></a>
+        </div>
+    </div>
+</header>

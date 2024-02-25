@@ -40,4 +40,44 @@ public class HomeIndexViewModel
                 new FeatureItemViewModel { ImageUrl = "Images/icons/shield.svg", AltText = "Tools picture 6", ToolTitle = "Data Security", ToolText = "Aliquam malesuada neque eget elit nulla vestibulum nunc cras." }
             ],
     };
+
+    public LightDarkModeViewModel LightDarkMode { get; set; } = new LightDarkModeViewModel
+    {
+        Id = "LightDarkMode",
+        SliderButton = new ImageViewModel { ImageUrl = "Images/slider-button.svg", AltText = "Slider button" },
+        Title = "Switch Between",
+        DarkModeImage = new ImageViewModel { ImageUrl = "Images/macbook-pro-dark.svg", AltText = "Dark mode pc" },
+        TextTitle = "Light & Dark Mode",
+        LightModeImage = new ImageViewModel { ImageUrl = "Images/macbook-pro-light.svg", AltText = "Light mode pc" }
+    };
+
+    public ManageWorkViewModel ManageWork { get; set; } = new ManageWorkViewModel
+    {
+        Id = "ManageWork",
+        ManageWork = new ImageViewModel { ImageUrl = "Images/manage-your-work.svg", AltText = "Image of Dashbord" },
+        Title = "Manage Your Work",
+        WorkItems =
+            [
+                new IconViewModel { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Powerful project management" },
+                new IconViewModel { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Transparent work management" },
+                new IconViewModel { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Manage work & focus on the most important tasks" },
+                new IconViewModel { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Track your progress with interactive charts" },
+                new IconViewModel { Icon = "fa-sharp fa-regular fa-circle-check", Text = "Easiest way to track time spent on tasks" },
+            ],
+        Link = new() { ControllerName = "Contact", ActionName = "Index", LinkText = "Learn more", IconClass = "fa-solid fa-arrow-right" },
+    };
+
+    public DownloadAppsViewModel DownloadApps { get; set; } = new DownloadAppsViewModel
+    {
+        Id = "DownloadApps",
+        PhoneApp = new ImageViewModel { ImageUrl = "Images/phone-app.svg", AltText = "Image of Phone" },
+        Title = "Download Our App for Any Devices:",
+        Apps = 
+            [
+                new AppViewModel { LightText = "App Store", Stars = { "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star" }, SmallTitle = "Editor's Choice", Text = "rating 4.7, 187K+ reviews" },
+                new AppViewModel { LightText = "Google Play", Stars = { "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star" }, SmallTitle = "App of the Day", Text = "rating 4.8, 187K+ reviews" }
+            ],
+        AppStore = new ImageViewModel { ImageUrl = "Images/appstore.svg", AltText = "Button to appstore" },
+        GooglePlay = new ImageViewModel { ImageUrl = "Images/googleplay.svg", AltText = "Button to Google Play" },
+    };
 }

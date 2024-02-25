@@ -1,0 +1,40 @@
+﻿@model DownloadAppsViewModel
+
+<section id="@Model.Id" class="download-apps">
+    <div class="container">
+        <img class="phone-app" src="@Model.PhoneApp.ImageUrl" alt="@Model.PhoneApp.AltText">
+        <div class="apps">
+            <h1>@Model.Title</h1>
+
+            @if (Model.Apps != null)
+            {
+                @foreach (var apps in Model.Apps)
+                {
+                    <div class="app-name">
+                        <div>
+                            <p class="light-text">@apps.LightText</p>
+                            <div class="stars">
+                                @foreach (var star in apps.Stars)
+                                {
+                                    <i class="@star"></i>
+                                }
+                            </div>
+                            <h4>@apps.SmallTitle</h4>
+                            <p>@apps.Text</p>
+                        </div>
+                        <a href="#">
+                            @if (apps.LightText == "App Store")
+                            {
+                                <img src="@Model.AppStore.ImageUrl" alt="@Model.AppStore.AltText">
+                            }
+                            else if (apps.LightText == "Google Play")
+                            {
+                                <img src="@Model.GooglePlay.ImageUrl" alt="@Model.GooglePlay.AltText">
+                            }
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>

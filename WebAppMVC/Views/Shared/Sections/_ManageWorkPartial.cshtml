@@ -1,0 +1,22 @@
+﻿@model ManageWorkViewModel
+
+<section id="@Model.Id" class="manage-your-work">
+    <div class="container">
+        <img src="@Model.ManageWork.ImageUrl" alt="@Model.ManageWork.AltText">
+        <div class="learn-more">
+            <h2>Manage Your Work</h2>
+
+            @if (Model.WorkItems !=null)
+            {
+                @foreach (var workitems in Model.WorkItems)
+                {
+                    <div class="item">
+                        <i class="@workitems.Icon"></i>
+                        <p>@workitems.Text</p>
+                    </div>
+                }
+            }
+            <a class="btn-theme-s" asp-controller="@Model.Link.ControllerName" asp-action="@Model.Link.ActionName"><span>@Model.Link.LinkText </span><i class="@Model.Link.IconClass"></i></a>
+        </div>
+    </div>
+</section>
