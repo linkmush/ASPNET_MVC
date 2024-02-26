@@ -1,6 +1,6 @@
-﻿using WebAppMVC.Models.Components;
+﻿using WebAppMVC.ViewModels.Components;
 
-namespace WebAppMVC.Models.Sections;
+namespace WebAppMVC.ViewModels.Sections;
 
 public class LightDarkModeViewModel
 {

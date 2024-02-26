@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebAppMVC.Models.Views;
+using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
 

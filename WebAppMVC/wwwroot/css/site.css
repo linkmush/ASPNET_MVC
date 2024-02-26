@@ -373,6 +373,83 @@ a:hover {
   color: #FFFFFF;
 }
 
+form {
+  width: 100%;
+}
+form .input-group {
+  display: grid;
+}
+form .checkbox span {
+  display: block;
+}
+form .checkbox span.field-validation-error {
+  position: static;
+  top: 0;
+  right: 0;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+form .checkbox-group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+form .checkbox-group input[type=checkbox] {
+  height: 1.2rem;
+  width: 1.2rem;
+  border: 0.063rem solid red;
+}
+form .checkbox-group label {
+  margin: 0;
+  font-weight: 400;
+}
+form .checkbox-group span.field-validation-error {
+  position: static;
+  top: 0;
+  right: 0;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+form label {
+  margin-bottom: 0.188rem;
+  font-weight: 700;
+}
+form input {
+  padding: 1rem;
+  border-radius: 0.5rem !important;
+  border: 0.063rem solid #D4D7E5;
+}
+form input::placeholder {
+  opacity: 0.4;
+}
+form input.input-validation-error {
+  border: 0.063rem solid #EF4444 !important;
+  color: #EF4444;
+}
+form input.input-validation-error::placeholder {
+  color: #EF4444;
+}
+form span.field-validation-error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px !important;
+  color: #EF4444;
+}
+
 header {
   padding: 15px 0;
 }
@@ -414,24 +491,37 @@ header .container .btn-switch {
     display: block;
   }
 }
-header .container .account-buttons {
+header .container #account-buttons {
   grid-area: buttons;
   display: none;
   gap: 15px;
 }
 @media (min-width: 992px) {
-  header .container .account-buttons {
+  header .container #account-buttons {
     display: flex;
   }
 }
-header .container .btn-mobile {
+header .container .btn-mobilemenu {
   grid-area: mobile;
   display: block;
+  border: none;
+  background-color: transparent;
+}
+header .container .btn-mobilemenu:hover {
+  box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
 }
 @media (min-width: 992px) {
-  header .container .btn-mobile {
+  header .container .btn-mobilemenu {
     display: none;
   }
+}
+header .container .hide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
 }
 
 .showcase {
@@ -970,6 +1060,11 @@ header .container .btn-mobile {
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 40px;
   }
+}
+.newsletter .container #registerNewsletter .choose-newsletter .checkboxes .form-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 .newsletter .container #registerNewsletter .choose-newsletter .checkboxes .form-check .form-check-input {
   border: 2px solid #B4B7C9;
@@ -2580,4 +2675,60 @@ footer .container .social-media {
   flex-direction: row;
   gap: 5px;
   margin-left: 25px;
+}
+
+#signup {
+  height: 100%;
+}
+#signup .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+@media (min-width: 992px) {
+  #signup .container {
+    width: 60%;
+  }
+}
+@media (min-width: 1200px) {
+  #signup .container {
+    width: 40%;
+  }
+}
+#signup .container form {
+  padding: 1rem;
+}
+#signup .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "firstname" "lastname" "email" "password" "confirm" "terms" "button";
+}
+@media (min-width: 768px) {
+  #signup .container form .content {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "firstname lastname" "email email" "password password" "confirm confirm" "terms terms" "button button";
+  }
+}
+#signup .container form .content #form-firstname {
+  grid-area: firstname;
+}
+#signup .container form .content #form-lastname {
+  grid-area: lastname;
+}
+#signup .container form .content #form-email {
+  grid-area: email;
+}
+#signup .container form .content #form-password {
+  grid-area: password;
+}
+#signup .container form .content #form-confirm {
+  grid-area: confirm;
+}
+#signup .container form .content #form-terms {
+  grid-area: terms;
+}
+#signup .container form .content #form-submit {
+  grid-area: button;
 }

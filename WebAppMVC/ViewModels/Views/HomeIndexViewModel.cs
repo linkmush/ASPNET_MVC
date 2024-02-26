@@ -1,7 +1,7 @@
-﻿using WebAppMVC.Models.Components;
-using WebAppMVC.Models.Sections;
+﻿using WebAppMVC.ViewModels.Components;
+using WebAppMVC.ViewModels.Sections;
 
-namespace WebAppMVC.Models.Views;
+namespace WebAppMVC.ViewModels.Views;
 
 public class HomeIndexViewModel
 {
@@ -72,7 +72,7 @@ public class HomeIndexViewModel
         Id = "DownloadApps",
         PhoneApp = new ImageViewModel { ImageUrl = "Images/phone-app.svg", AltText = "Image of Phone" },
         Title = "Download Our App for Any Devices:",
-        Apps = 
+        Apps =
             [
                 new AppViewModel { LightText = "App Store", Stars = { "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star" }, SmallTitle = "Editor's Choice", Text = "rating 4.7, 187K+ reviews" },
                 new AppViewModel { LightText = "Google Play", Stars = { "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star" }, SmallTitle = "App of the Day", Text = "rating 4.8, 187K+ reviews" }
@@ -86,7 +86,7 @@ public class HomeIndexViewModel
         Id = "IntergrateTools",
         Title = "Integrate Top Work Tools",
         Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.",
-        ToolList = 
+        ToolList =
             [
                 new ImageViewModel { ImageUrl = "Images/tools/google.svg", AltText = "Picture of google icon", Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis." },
                 new ImageViewModel { ImageUrl = "Images/tools/zoom.svg", AltText = "Picture of zoom icon", Description = "In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor." },
@@ -104,7 +104,7 @@ public class HomeIndexViewModel
         Id = "Newsletter",
         Title = "Don't Want to Miss Anything?",
         Arrow = new ImageViewModel { ImageUrl = "Images/arrows.svg", AltText = "wavy arrow" },
-        Newsletter = 
+        Newsletter =
             [
                 new RegisterNewsletterViewModel { Id = "dailyNewsletter", LabelText = "Daily Newsletter" },
                 new RegisterNewsletterViewModel { Id = "advertisingUpdates", LabelText = "Advertising Updates" },
@@ -113,6 +113,6 @@ public class HomeIndexViewModel
                 new RegisterNewsletterViewModel { Id = "startupsWeekly", LabelText = "Startups Weekly" },
                 new RegisterNewsletterViewModel { Id = "podcasts", LabelText = "Podcasts" }
             ],
-        Link = new () { LinkText = "Subscribe *" }
+        Link = new() { LinkText = "Subscribe *" }
     };
 }

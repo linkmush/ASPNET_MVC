@@ -1,13 +1,13 @@
-﻿using WebAppMVC.Models.Components;
+﻿using WebAppMVC.ViewModels.Components;
 
-namespace WebAppMVC.Models.Sections;
+namespace WebAppMVC.ViewModels.Sections;
 
 public class DownloadAppsViewModel
 {
     public string Id { get; set; } = null!;
     public ImageViewModel PhoneApp { get; set; } = new ImageViewModel();
     public string Title { get; set; } = null!;
-    public List<AppViewModel>? Apps { get; set; } 
+    public List<AppViewModel>? Apps { get; set; }
     public ImageViewModel AppStore { get; set; } = new ImageViewModel();
     public ImageViewModel GooglePlay { get; set; } = new ImageViewModel();
 }

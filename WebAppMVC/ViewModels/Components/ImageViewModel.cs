@@ -1,4 +1,4 @@
-﻿namespace WebAppMVC.Models.Components;
+﻿namespace WebAppMVC.ViewModels.Components;
 
 public class ImageViewModel
 {
