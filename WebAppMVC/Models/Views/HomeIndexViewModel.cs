@@ -80,4 +80,39 @@ public class HomeIndexViewModel
         AppStore = new ImageViewModel { ImageUrl = "Images/appstore.svg", AltText = "Button to appstore" },
         GooglePlay = new ImageViewModel { ImageUrl = "Images/googleplay.svg", AltText = "Button to Google Play" },
     };
+
+    public IntegrateToolsViewModel IntegrateTools { get; set; } = new IntegrateToolsViewModel
+    {
+        Id = "IntergrateTools",
+        Title = "Integrate Top Work Tools",
+        Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.",
+        ToolList = 
+            [
+                new ImageViewModel { ImageUrl = "Images/tools/google.svg", AltText = "Picture of google icon", Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis." },
+                new ImageViewModel { ImageUrl = "Images/tools/zoom.svg", AltText = "Picture of zoom icon", Description = "In eget a mauris quis. Tortor dui tempus quis integer est sit natoque placerat dolor." },
+                new ImageViewModel { ImageUrl = "Images/tools/slack.svg", AltText = "Picture of slack icon", Description = "Id mollis consectetur congue egestas egestas suspendisse blandit justo." },
+                new ImageViewModel { ImageUrl = "Images/tools/gmail.svg", AltText = "Picture of gmail icon", Description = "Rutrum interdum tortor, sed at nulla. A cursus bibendum elit purus cras praesent." },
+                new ImageViewModel { ImageUrl = "Images/tools/trello.svg", AltText = "Picture of trello icon", Description = "Congue pellentesque amet, viverra curabitur quam diam scelerisque fermentum urna." },
+                new ImageViewModel { ImageUrl = "Images/tools/mailchimp.svg", AltText = "Picture of mailchimp icon", Description = "A elementum, imperdiet enim, pretium etiam facilisi in aenean quam mauris." },
+                new ImageViewModel { ImageUrl = "Images/tools/dropbox.svg", AltText = "Picture of dropbox icon", Description = "Ut in turpis consequat odio diam lectus elementum. Est faucibus blandit platea." },
+                new ImageViewModel { ImageUrl = "Images/tools/evernote.svg", AltText = "Picture of evernorte icon", Description = "Faucibus cursus maecenas lorem cursus nibh. Sociis sit risus id. Sit facilisis dolor arcu." }
+            ]
+    };
+
+    public NewsletterViewModel Newsletter { get; set; } = new NewsletterViewModel
+    {
+        Id = "Newsletter",
+        Title = "Don't Want to Miss Anything?",
+        Arrow = new ImageViewModel { ImageUrl = "Images/arrows.svg", AltText = "wavy arrow" },
+        Newsletter = 
+            [
+                new RegisterNewsletterViewModel { Id = "dailyNewsletter", LabelText = "Daily Newsletter" },
+                new RegisterNewsletterViewModel { Id = "advertisingUpdates", LabelText = "Advertising Updates" },
+                new RegisterNewsletterViewModel { Id = "weekInReview", LabelText = "Week in Review" },
+                new RegisterNewsletterViewModel { Id = "eventUpdates", LabelText = "Event Updates" },
+                new RegisterNewsletterViewModel { Id = "startupsWeekly", LabelText = "Startups Weekly" },
+                new RegisterNewsletterViewModel { Id = "podcasts", LabelText = "Podcasts" }
+            ],
+        Link = new () { LinkText = "Subscribe *" }
+    };
 }
