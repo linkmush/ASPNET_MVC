@@ -2732,3 +2732,53 @@ footer .container .social-media {
 #signup .container form .content #form-submit {
   grid-area: button;
 }
+
+#signin {
+  height: 100%;
+}
+#signin .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+@media (min-width: 992px) {
+  #signin .container {
+    width: 60%;
+  }
+}
+@media (min-width: 1200px) {
+  #signin .container {
+    width: 30%;
+  }
+}
+#signin .container form {
+  padding: 1rem;
+}
+#signin .container form #form-error {
+  color: red;
+}
+#signin .container form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr;
+  grid-template-areas: "email" "password" "remember" "button" "forgot";
+}
+#signin .container form .content #form-email {
+  grid-area: email;
+}
+#signin .container form .content #form-password {
+  grid-area: password;
+}
+#signin .container form .content #form-remember {
+  grid-area: remember;
+}
+#signin .container form .content #form-button {
+  grid-area: button;
+}
+#signin .container form .content #form-forgot-password {
+  width: 100%;
+  grid-area: forgot;
+  margin: 1rem 0 0 0;
+  text-align: center;
+}

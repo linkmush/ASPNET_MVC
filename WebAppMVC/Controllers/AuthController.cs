@@ -1,16 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebAppMVC.ViewModels.Sections;
+using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
 
 public class AuthController : Controller
 {
-    [Route("/signin")]
-    public IActionResult SignIn()
-    {
-        ViewData["Title"] = "Sign In";
-        return View();
-    }
 
     [Route("/signup")]        // route är det som avgör sökvägen i webbläsaren.
     [HttpGet]
@@ -29,6 +23,33 @@ public class AuthController : Controller
             return View(viewModel);
 
         return RedirectToAction("SignIn", "Auth");
+    }
+
+    [Route("/signin")]
+    [HttpGet]
+    public IActionResult SignIn()
+    {
+        ViewData["Title"] = "Sign In";
+        var viewModel = new SignInViewModel();
+        return View(viewModel);
+    }
+
+    [Route("/signin")]
+    [HttpPost]
+    public IActionResult SignIn(SignInViewModel viewModel)
+    {
+
+        if (!ModelState.IsValid)
+        {
+            return View(viewModel);
+        }
+
+        // var result = _authService.SignInAsync(viewModel.Form);
+        // if (result)
+        //     return RedirectToAction("Account", "Index");
+
+        viewModel.ErrorMessage = "Incorrect email or password";
+        return View(viewModel);
     }
 
     public new IActionResult SignOut()

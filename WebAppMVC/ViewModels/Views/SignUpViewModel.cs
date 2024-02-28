@@ -1,6 +1,6 @@
 ﻿using WebAppMVC.Models;
 
-namespace WebAppMVC.ViewModels.Sections;
+namespace WebAppMVC.ViewModels.Views;
 
 public class SignUpViewModel
 {
