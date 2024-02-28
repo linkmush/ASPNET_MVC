@@ -38,7 +38,7 @@
     } 
 }
 
-.btn-gray { 
+.btn-gray {
     @include button;
     background: $gray-200;
     color: $gray-800;
@@ -48,7 +48,22 @@
         text-decoration: none;
         background: $gray-700;
         color: $white;
-    } 
+    }
+}
+
+.btn-transparent {
+    @include button;
+    background: transparent;
+    color: $gray-700;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 13px;
+
+    &:hover {
+        text-decoration: none;
+        background: $gray-700;
+        color: $white;
+    }
 }
 
 .btn-red {
