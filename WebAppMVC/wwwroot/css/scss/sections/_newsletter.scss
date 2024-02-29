@@ -91,7 +91,12 @@
                     position: absolute;
                     color: $gray-500;
                     top: 15px;
-                    left: 15px;
+                    left: 30px;
+
+                    @media(max-width: 991px) {
+                        top: 35px;
+                        left: 15px;
+                    }
                 }
 
                 input {
@@ -122,6 +127,10 @@
 
             p {
                 padding-top: 10px;
+
+                @media(min-width: 992px) {
+                    margin-left: 20px;
+                }
 
                 a {
                     color: $theme;

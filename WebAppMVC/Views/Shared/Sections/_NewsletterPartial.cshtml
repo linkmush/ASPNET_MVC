@@ -11,24 +11,37 @@
             <div class="choose-newsletter">
                 <h5>Sign up for<br> Newsletters</h5>
                 <div class="checkboxes">
-                    @if (Model.Newsletter != null)
-                    {
-                        @foreach (var newsletter in Model.Newsletter)
-                        {
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="@newsletter.Id">
-                                <label class="form-check-label" for="@newsletter.Id">
-                                    @newsletter.LabelText
-                                </label>
-                            </div>
-                        }
-                    }
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.DailyNewsletter" />
+                        <label class="form-check-label" asp-for=Newsletter.DailyNewsletter></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.AdvertisingUpdates" />
+                        <label class="form-check-label" asp-for=Newsletter.AdvertisingUpdates></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.WeekInReview" />
+                        <label class="form-check-label" asp-for=Newsletter.WeekInReview></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.EventUpdates" />
+                        <label class="form-check-label" asp-for=Newsletter.EventUpdates></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.StartupsWeekly" />
+                        <label class="form-check-label" asp-for=Newsletter.StartupsWeekly></label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.Podcasts" />
+                        <label class="form-check-label" asp-for=Newsletter.Podcasts></label>
+                    </div>
                 </div>
             </div>
             <div class="subscribe">
                 <i class="fa-regular fa-envelope"></i>
-                <input type="email" id="email" name="Email" class="form-input" placeholder="Your Email">
-                <button type="submit" class="btn-theme">@Model.Link.LinkText</button>
+                <span asp-validation-for="Newsletter.Email"></span>
+                <input id="email" class="form-input" asp-for="Newsletter.Email" />
+                <button id="form-submit" type="submit" class="btn-theme">@Model.Link.LinkText</button>
             </div>
 
             <p class="terms-and-privacy">* Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy.</a></p>

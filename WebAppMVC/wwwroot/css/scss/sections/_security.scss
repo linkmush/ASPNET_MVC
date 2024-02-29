@@ -1,0 +1,128 @@
+#security-account {
+    display: grid;
+    grid-template-columns: 2fr 5fr;
+    gap: 150px;
+    margin-bottom: 70px;
+
+    aside {
+        border-right: 1px solid $gray-300;
+        padding-right: 20px;
+
+        .profile-info {
+            margin: 20px;
+            text-align: center;
+
+            img {
+                width: 120px;
+                height: 120px;
+            }
+
+            h5 {
+                margin-top: 15px;
+                margin-bottom: 0;
+            }
+
+            p {
+                @include text-m;
+            }
+        }
+
+        nav {
+            margin-top: 50px;
+            text-align: left;
+
+            a {
+                margin-left: 10px 0;
+                text-align: left;
+                justify-content: flex-start;
+            }
+
+            .btn-theme-s {
+                text-align: left;
+                justify-content: flex-start;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .details {
+        margin-top: 50px;
+        width: 100%;
+
+        .basic-info {
+
+            form {
+                padding: 1rem;
+
+                h5 {
+                    color: $theme;
+                }
+
+                .content {
+                    display: grid;
+                    gap: 1rem 2rem;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-areas: "current current" "new confirm" "buttons buttons";
+
+                    #form-current {
+                        grid-area: current;
+                        width: 48%
+                    }
+
+                    #form-new {
+                        grid-area: new;
+                    }
+
+                    #form-confirm {
+                        grid-area: confirm;
+                    }
+
+                    #form-buttons {
+                        grid-area: buttons;
+                        margin: 20px 0;
+                        display: flex;
+                        gap: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .delete-account {
+        display: flex;
+        flex-direction: column;
+
+        form {
+            margin-top: 20px;
+
+            h5 {
+                color: $theme;
+            }
+
+            p {
+                @include text-m;
+            }
+
+            .content {
+                .input-group {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 10px;
+                    
+                    .delete-account-label {
+                        color: $gray-700;
+                        font-weight: 400;
+                    }
+                }
+
+                #form-buttons {
+                    margin-top: 20px;
+                }
+
+                label.delete-account-label {
+                    color: blue;
+                }
+            }
+        }
+    }
+}

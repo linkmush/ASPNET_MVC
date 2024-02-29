@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebAppMVC.Models;
 using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
@@ -36,5 +37,38 @@ public class AccountController : Controller
         //_accountService.SaveAddressInfo(viewModel.AddressInfo);
 
         return RedirectToAction(nameof(Details), viewModel);
+    }
+
+    [Route("/account/security")]
+    [HttpGet]
+    public IActionResult Security()
+    {
+        var viewModel = new SecurityViewModel();
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult ChangePassword(SecurityViewModel viewModel)
+    {
+        if (!ModelState.IsValid)
+        {
+            // Om validering inte funkar, retunera view med validation errors
+            return View("Security", viewModel);
+        }
+
+        return RedirectToAction(nameof(Security));
+    }
+
+    [HttpPost]
+    public IActionResult Delete(DeleteAccountModel deleteModel)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View("Security", new SecurityViewModel { DeleteAccount = deleteModel });
+        }
+
+        // måste nog ha en service för att testa om det funkar. 
+
+        return RedirectToAction("Index", "Home");
     }
 }

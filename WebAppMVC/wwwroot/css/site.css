@@ -1125,7 +1125,13 @@ header .container .hide {
   position: absolute;
   color: #B4B7C9;
   top: 15px;
-  left: 15px;
+  left: 30px;
+}
+@media (max-width: 991px) {
+  .newsletter .container #registerNewsletter .subscribe i {
+    top: 35px;
+    left: 15px;
+  }
 }
 .newsletter .container #registerNewsletter .subscribe input {
   background-color: #FFFFFF;
@@ -1152,6 +1158,11 @@ header .container .hide {
 }
 .newsletter .container #registerNewsletter p {
   padding-top: 10px;
+}
+@media (min-width: 992px) {
+  .newsletter .container #registerNewsletter p {
+    margin-left: 20px;
+  }
 }
 .newsletter .container #registerNewsletter p a {
   color: #6366F1;
@@ -2940,4 +2951,112 @@ footer .container .social-media {
   margin: 20px 0;
   display: flex;
   gap: 20px;
+}
+
+#security-account {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  gap: 150px;
+  margin-bottom: 70px;
+}
+#security-account aside {
+  border-right: 1px solid #E2E5F1;
+  padding-right: 20px;
+}
+#security-account aside .profile-info {
+  margin: 20px;
+  text-align: center;
+}
+#security-account aside .profile-info img {
+  width: 120px;
+  height: 120px;
+}
+#security-account aside .profile-info h5 {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
+#security-account aside .profile-info p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#security-account aside nav {
+  margin-top: 50px;
+  text-align: left;
+}
+#security-account aside nav a {
+  margin-left: 10px 0;
+  text-align: left;
+  justify-content: flex-start;
+}
+#security-account aside nav .btn-theme-s {
+  text-align: left;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+#security-account .details {
+  margin-top: 50px;
+  width: 100%;
+}
+#security-account .details .basic-info form {
+  padding: 1rem;
+}
+#security-account .details .basic-info form h5 {
+  color: #6366F1;
+}
+#security-account .details .basic-info form .content {
+  display: grid;
+  gap: 1rem 2rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "current current" "new confirm" "buttons buttons";
+}
+#security-account .details .basic-info form .content #form-current {
+  grid-area: current;
+  width: 48%;
+}
+#security-account .details .basic-info form .content #form-new {
+  grid-area: new;
+}
+#security-account .details .basic-info form .content #form-confirm {
+  grid-area: confirm;
+}
+#security-account .details .basic-info form .content #form-buttons {
+  grid-area: buttons;
+  margin: 20px 0;
+  display: flex;
+  gap: 20px;
+}
+#security-account .delete-account {
+  display: flex;
+  flex-direction: column;
+}
+#security-account .delete-account form {
+  margin-top: 20px;
+}
+#security-account .delete-account form h5 {
+  color: #6366F1;
+}
+#security-account .delete-account form p {
+  line-height: 160%;
+  font-weight: 400;
+  color: #565973;
+  font-family: "Manrope", sans-serif;
+  font-size: 16px !important;
+}
+#security-account .delete-account form .content .input-group {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+#security-account .delete-account form .content .input-group .delete-account-label {
+  color: #565973;
+  font-weight: 400;
+}
+#security-account .delete-account form .content #form-buttons {
+  margin-top: 20px;
+}
+#security-account .delete-account form .content label.delete-account-label {
+  color: blue;
 }

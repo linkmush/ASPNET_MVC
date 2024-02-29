@@ -1,6 +1,6 @@
 ﻿@model AccountDetailsViewModel
 @{
-    ViewData["Title"] = "{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}'s profile";
+    ViewData["Title"] = "Your Profile";
 }
 
 <div class="container">
@@ -12,10 +12,10 @@
                 <p>@Model.BasicInfo.Email</p>
             </div>
             <nav>
-                <a class="btn-theme-s" asp-controller="Account" asp-action="Details">Account Details</a>
-                <a class="btn-transparent" asp-controller="Account" asp-action="Security">Security</a>
-                <a class="btn-transparent" asp-controller="Account" asp-action="SavedCourses">Saved Courses</a>
-                <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut">Sign out</a>
+                <a class="btn-theme-s" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i>Account Details</a>
+                <a class="btn-transparent" asp-controller="Account" asp-action="Security"><i class="fa-solid fa-lock"></i>Security</a>
+                <a class="btn-transparent" asp-controller="Account" asp-action="SavedCourses"><i class="fa-regular fa-file"></i>Saved Courses</a>
+                <a class="btn-transparent" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-from-bracket"></i>Sign out</a>
             </nav>
         </aside>
 

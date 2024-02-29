@@ -104,15 +104,6 @@ public class HomeIndexViewModel
         Id = "Newsletter",
         Title = "Don't Want to Miss Anything?",
         Arrow = new ImageViewModel { ImageUrl = "Images/arrows.svg", AltText = "wavy arrow" },
-        Newsletter =
-            [
-                new RegisterNewsletterViewModel { Id = "dailyNewsletter", LabelText = "Daily Newsletter" },
-                new RegisterNewsletterViewModel { Id = "advertisingUpdates", LabelText = "Advertising Updates" },
-                new RegisterNewsletterViewModel { Id = "weekInReview", LabelText = "Week in Review" },
-                new RegisterNewsletterViewModel { Id = "eventUpdates", LabelText = "Event Updates" },
-                new RegisterNewsletterViewModel { Id = "startupsWeekly", LabelText = "Startups Weekly" },
-                new RegisterNewsletterViewModel { Id = "podcasts", LabelText = "Podcasts" }
-            ],
         Link = new() { LinkText = "Subscribe *" }
     };
 }
