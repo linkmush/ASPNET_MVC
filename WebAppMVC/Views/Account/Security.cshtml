@@ -28,7 +28,7 @@
                     <div class="content">
                         <div id="form-current" class="input-group">
                             <label asp-for=Security.CurrentPassword></label>
-                            <span asp-validation-for="Security.CurrentPassword"></span>
+                            <span asp-validation-for="Security.CurrentPassword"></span> @* span asp-validation-for skriver ut fel meddelandet på sidan. *@
                             <input asp-for="Security.CurrentPassword" />
                         </div>
 
@@ -53,7 +53,7 @@
             </section>
             <hr />
 
-            <section class="delete-account">
+@*             <section class="delete-account">
                 <form method="post" asp-controller="Account" asp-action="Delete">
                     <h5>Delete account</h5>
                     <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
@@ -68,7 +68,10 @@
                         </div>
                     </div>
                 </form>
-            </section>
+            </section> *@
         </div>
     </section>
 </div>
+
+
+@await Html.PartialAsync("_ValidationScriptPartial")

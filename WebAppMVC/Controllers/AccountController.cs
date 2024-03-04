@@ -39,8 +39,8 @@ public class AccountController : Controller
         return RedirectToAction(nameof(Details), viewModel);
     }
 
-    [Route("/account/security")]
     [HttpGet]
+    [Route("/account/security")]
     public IActionResult Security()
     {
         var viewModel = new SecurityViewModel();
@@ -59,16 +59,16 @@ public class AccountController : Controller
         return RedirectToAction(nameof(Security));
     }
 
-    [HttpPost]
-    public IActionResult Delete(DeleteAccountModel deleteModel)
-    {
-        if (!ModelState.IsValid)
-        {
-            return View("Security", new SecurityViewModel { DeleteAccount = deleteModel });
-        }
+    //[HttpPost]
+    //public IActionResult Delete(DeleteAccountModel deleteModel)
+    //{
+    //    if (!ModelState.IsValid)
+    //    {
+    //        return View("Security", new SecurityViewModel { DeleteAccount = deleteModel });
+    //    }
 
-        // måste nog ha en service för att testa om det funkar. 
+    //    // måste nog ha en service för att testa om det funkar. 
 
-        return RedirectToAction("Index", "Home");
-    }
+    //    return RedirectToAction("Index", "Home");
+    //}
 }
