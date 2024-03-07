@@ -1,13 +1,13 @@
-﻿using WebAppMVC.Models;
+﻿using Infrastructure.Models;
 
 namespace WebAppMVC.ViewModels.Views;
 
 public class SecurityViewModel
 {
     public string Title { get; set; } = "Security";
-    public SecurityModel Security { get; set; } = new SecurityModel();
-    public DeleteAccountModel DeleteAccount { get; set; } = new DeleteAccountModel();
-    public AccountDetailsBasicInfoModel BasicInfo { get; set; } = new AccountDetailsBasicInfoModel()
+    public SecurityModel? Security { get; set; }
+    public DeleteAccountModel? DeleteAccount { get; set; }
+    public AccountDetailsBasicInfoModel BasicInfo { get; set; } = new AccountDetailsBasicInfoModel
     {
         ProfileImage = "Images/icon-picture.svg",
         FirstName = "Oskar",
