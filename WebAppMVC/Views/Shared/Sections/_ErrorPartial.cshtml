@@ -1,0 +1,10 @@
+﻿@model Error404ViewModel
+
+<section class="not-found">
+    <div class="container">
+        <img src="@Model.ErrorImage.ImageUrl" alt="@Model.ErrorImage.AltText">
+        <h1>@Model.Title</h1>
+        <p>@Model.Text</p>
+        <a class="btn-theme-s" asp-controller="@Model.ErrorLink.ControllerName" asp-action="@Model.ErrorLink.ActionName"><i class="fa-solid fa-house"></i>@Model.ErrorLink.LinkText</a>
+    </div>
+</section>

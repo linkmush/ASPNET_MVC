@@ -1,6 +1,5 @@
 using Infrastructure.Contexts;
-using Infrastructure.Repositories;
-using Infrastructure.Services;
+using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,14 +7,18 @@ builder.Services.AddRouting(x => x.LowercaseUrls = true);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
-builder.Services.AddScoped<AddressRepository>();
-builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<AddressService>();
-builder.Services.AddScoped<UserService>();
+
+builder.Services.AddDefaultIdentity<UserEntity>(x =>
+{
+    x.User.RequireUniqueEmail = true;
+    x.SignIn.RequireConfirmedAccount = false;
+    x.Password.RequiredLength = 8;
+}).AddEntityFrameworkStores<DataContext>();
 
 
 var app = builder.Build();
 app.UseHsts();
+//app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}");     // --- denna gör så att den går till error sidan om den inte hittar någon sida.
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

@@ -26,4 +26,12 @@ public class HomeController : Controller
         viewModel.ErrorMessage = "Incorrect email";
         return View(viewModel);
     }
+
+    [Route("/error")]
+    public IActionResult Error404(int statusCode)
+    {
+        var viewModel = new ErrorViewModel();
+        return View(viewModel);
+    }
+
 }
