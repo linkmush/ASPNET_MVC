@@ -2804,7 +2804,10 @@ footer .container .social-media {
   padding: 1rem;
 }
 #signin .container form #form-error {
-  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
 }
 #signin .container form .content {
   display: grid;

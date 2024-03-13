@@ -19,7 +19,10 @@
             padding: 1rem;
 
             #form-error {
-                color: red;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 15px;
             }
 
             .content {

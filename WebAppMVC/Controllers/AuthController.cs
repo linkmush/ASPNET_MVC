@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Entities;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -6,20 +7,21 @@ using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
 
-public class AuthController : Controller
+public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
 {
 
-    private readonly UserManager<UserEntity> _userManager;
-
-    public AuthController(UserManager<UserEntity> userManager)
-    {
-        _userManager = userManager;
-    }
+    private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly SignInManager<UserEntity> _signInManager = signInManager;
 
     [Route("/signup")]        // route är det som avgör sökvägen i webbläsaren.
     [HttpGet]
     public IActionResult SignUp()
     {
+        if (_signInManager.IsSignedIn(User))
+        {
+            return RedirectToAction("Details", "Account");
+        }
+
         ViewData["Title"] = "Sign Up";
         var viewModel = new SignUpViewModel();
         return View(viewModel);
@@ -57,35 +59,46 @@ public class AuthController : Controller
         return View(viewModel);                         // om det inte går går vi tillbaks till viewmodel(dvs signup sidan i detta fall)
     }
 
-    [Route("/signin")]
     [HttpGet]
+    [Route("/signin")]
     public IActionResult SignIn()
     {
+        if (_signInManager.IsSignedIn(User))
+        {
+            return RedirectToAction("Details", "Account");
+        }
+
         ViewData["Title"] = "Sign In";
         var viewModel = new SignInViewModel();
         return View(viewModel);
     }
 
-    [Route("/signin")]
     [HttpPost]
-    public IActionResult SignIn(SignInViewModel viewModel)
+    [Route("/signin")]
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel)
     {
 
         if (ModelState.IsValid)
         {
-                                                                        // detta är om det funkar. 
+            var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);      // detta är om det funkar. 
+            if (result.Succeeded)
+            {
                 return RedirectToAction("Details", "Account");
+            }
         }
 
-        // var result = _authService.SignInAsync(viewModel.Form);
-        // if (result)
-        //     return RedirectToAction("Account", "Details");
-        viewModel.ErrorMessage = "Incorrect email or password";
+
+        //viewModel.ErrorMessage = "Incorrect email or password";
+        ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
+        ViewData["ErrorMessage"] = "Incorrect email or password";
         return View(viewModel);
     }
 
-    public new IActionResult SignOut()
+    [HttpGet]
+    [Route("/signout")]
+    public new async Task<IActionResult> SignOut()
     {
+        await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
 }

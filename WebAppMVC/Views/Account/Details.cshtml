@@ -7,9 +7,9 @@
     <section id="account-details">
         <aside>
             <div class="profile-info">
-                <img src="@Model.BasicInfo.ProfileImage" alt="@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")" />
-                <h5>@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")</h5>
-                <p>@Model.BasicInfo.Email</p>
+               @*  <img src="@Model.User.ProfileImage" alt="@($"{Model.User.FirstName} {Model.User.LastName}")" /> *@
+                <h5>@($"{Model.User.FirstName} {Model.User.LastName}")</h5>
+                <p>@Model.User.Email</p>
             </div>
             <nav>
                 <a class="btn-theme-s" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i>Account Details</a>
@@ -27,33 +27,33 @@
 
                     <div class="content">
                         <div id="form-firstname" class="input-group">
-                            <label asp-for="BasicInfo.FirstName"></label>
-                            <span asp-validation-for="BasicInfo.FirstName"></span>
-                            <input asp-for="BasicInfo.FirstName" />
+                            <label asp-for="User.FirstName"></label>
+                            <span asp-validation-for="User.FirstName"></span>
+                            <input asp-for="User.FirstName" />
                         </div>
 
                         <div id="form-lastname" class="input-group">
-                            <label asp-for="BasicInfo.LastName"></label>
-                            <span asp-validation-for="BasicInfo.LastName"></span>
-                            <input asp-for="BasicInfo.LastName" />
+                            <label asp-for="User.LastName"></label>
+                            <span asp-validation-for="@Model.User.LastName"></span>
+                            <input asp-for="User.LastName" />
                         </div>
 
                         <div id="form-email" class="input-group">
-                            <label asp-for="BasicInfo.Email"></label>
-                            <span asp-validation-for="BasicInfo.Email"></span>
-                            <input asp-for="BasicInfo.Email" />
+                            <label asp-for="User.Email"></label>
+                            <span asp-validation-for="User.Email"></span>
+                            <input asp-for="User.Email" />
                         </div>
 
                         <div id="form-phone" class="input-group">
-                            <label asp-for="BasicInfo.Phone"></label>
-                            <span asp-validation-for="BasicInfo.Phone"></span>
-                            <input asp-for="BasicInfo.Phone" />
+                            <label asp-for="User.PhoneNumber"></label>
+                            <span asp-validation-for="User.PhoneNumber"></span>
+                            <input asp-for="User.PhoneNumber" />
                         </div>
 
-                        <div id="form-bio" class="input-group">
+@*                         <div id="form-bio" class="input-group">
                             <label asp-for=BasicInfo.Biography>Bio <span>(optional)</span></label>
                             <textarea asp-for="BasicInfo.Biography"></textarea>
-                        </div>
+                        </div> *@
 
                         <div id="form-buttons">
                             <button class="btn-gray" type="reset">Cancel</button>
@@ -64,32 +64,32 @@
             </section>
             <hr />
             <section class="address-info">
-                <form method="post" asp-controller="Account" asp-action="AddressInfo">
+                <form method="post" asp-controller="Account" asp-action="Details">
                     <h5>Address</h5>
 
                     <div class="content">
                         <div id="form-addressline-1" class="input-group">
-                            <label asp-for="AddressInfo.AddressLine_1">Address line 1</label>
-                            <span asp-validation-for="AddressInfo.AddressLine_1"></span>
-                            <input asp-for="AddressInfo.AddressLine_1" />
+                            <label asp-for="User.Address.StreetName">Address line 1</label>
+                            <span asp-validation-for="User.Address.StreetName"></span>
+                            <input asp-for="User.Address.StreetName" />
                         </div>
 
                         <div id="form-addressline-2" class="input-group">
-                            <label asp-for="AddressInfo.AddressLine_2">Address line 2 <span>(optional)</span></label>
-                            <span asp-validation-for="AddressInfo.AddressLine_2"></span>
-                            <input asp-for="AddressInfo.AddressLine_2" />
+                            <label asp-for="User.Address.StreetName">Address line 2 <span>(optional)</span></label>
+                            <span asp-validation-for="User.Address.StreetName"></span>
+                            <input asp-for="User.Address.StreetName" />
                         </div>
 
                         <div id="form-postalcode" class="input-group">
-                            <label asp-for="AddressInfo.PostalCode"></label>
-                            <span asp-validation-for="AddressInfo.PostalCode"></span>
-                            <input asp-for="AddressInfo.PostalCode" />
+                            <label asp-for="@Model.User.Address.PostalCode"></label>
+                            <span asp-validation-for="@Model.User.Address.PostalCode"></span>
+                            <input asp-for="@Model.User.Address.PostalCode" />
                         </div>
 
                         <div id="form-city" class="input-group">
-                            <label asp-for="AddressInfo.City"></label>
-                            <span asp-validation-for="AddressInfo.City"></span>
-                            <input asp-for="AddressInfo.City" />
+                            <label asp-for="@Model.User.Address.City"></label>
+                            <span asp-validation-for="@Model.User.Address.City"></span>
+                            <input asp-for="@Model.User.Address.City" />
                         </div>
 
                         <div id="form-buttons">

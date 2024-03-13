@@ -3,9 +3,14 @@
 <section id="signin">
     <div class="container">
         <form method="post" asp-controller="Auth" asp-action="SignIn" novalidate>
-            <div id="form-error">
-                @Model.ErrorMessage
-            </div>
+
+            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+            {
+                <div id="form-error" class="alert alert-danger" role="alert">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
+
             <h1>Welcome Back</h1>
             <p>Don’t have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here.</a></p>
             <div class="content">
@@ -32,4 +37,4 @@
     </div>
 </section>
 
-@await Html.PartialAsync("_ValidationScriptPartial")
+@await Html.PartialAsync("_ValidationScriptPartial")    @* ----Detta är javascript validation *@
