@@ -13,6 +13,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
 
+    #region Sign Up
     [Route("/signup")]        // route är det som avgör sökvägen i webbläsaren.
     [HttpGet]
     public IActionResult SignUp()
@@ -31,7 +32,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     [HttpPost]
     public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
     {
-        if (ModelState.IsValid)                                        
+        if (ModelState.IsValid)
         {
             var exists = await _userManager.Users.AnyAsync(x => x.Email == viewModel.Form.Email);
             if (exists)
@@ -53,12 +54,14 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             if (result.Succeeded)
             {
                 return RedirectToAction("SignIn", "Auth");
-            } 
+            }
         }
 
         return View(viewModel);                         // om det inte går går vi tillbaks till viewmodel(dvs signup sidan i detta fall)
     }
+    #endregion
 
+    #region Sign In
     [HttpGet]
     [Route("/signin")]
     public IActionResult SignIn()
@@ -93,6 +96,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         ViewData["ErrorMessage"] = "Incorrect email or password";
         return View(viewModel);
     }
+    #endregion
 
     [HttpGet]
     [Route("/signout")]

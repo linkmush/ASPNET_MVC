@@ -50,10 +50,10 @@
                             <input asp-for="User.PhoneNumber" />
                         </div>
 
-@*                         <div id="form-bio" class="input-group">
-                            <label asp-for=BasicInfo.Biography>Bio <span>(optional)</span></label>
-                            <textarea asp-for="BasicInfo.Biography"></textarea>
-                        </div> *@
+                        <div id="form-bio" class="input-group">
+                            <label asp-for=User.Bio>Bio <span>(optional)</span></label>
+                            <textarea asp-for="User.Bio" placeholder="Add a short bio..."></textarea>
+                        </div>
 
                         <div id="form-buttons">
                             <button class="btn-gray" type="reset">Cancel</button>
@@ -69,27 +69,27 @@
 
                     <div class="content">
                         <div id="form-addressline-1" class="input-group">
-                            <label asp-for="User.Address.StreetName">Address line 1</label>
-                            <span asp-validation-for="User.Address.StreetName"></span>
-                            <input asp-for="User.Address.StreetName" />
+                            <label asp-for="User.Address.AddressLine_1">Address line 1</label>
+                            <span asp-validation-for="User.Address.AddressLine_1"></span>
+                            <input asp-for="User.Address.AddressLine_1" placeholder="@((Model.User.Address != null) ? Model.User.Address.AddressLine_1 : "Enter your address line")" />
                         </div>
 
                         <div id="form-addressline-2" class="input-group">
-                            <label asp-for="User.Address.StreetName">Address line 2 <span>(optional)</span></label>
-                            <span asp-validation-for="User.Address.StreetName"></span>
-                            <input asp-for="User.Address.StreetName" />
+                            <label asp-for="User.Address.AddressLine_2">Address line 2 <span>(optional)</span></label>
+                            <span asp-validation-for="User.Address.AddressLine_2"></span>
+                            <input asp-for="User.Address.AddressLine_2" placeholder="@((Model.User.Address != null) ? Model.User.Address.AddressLine_2 : "Enter second address line")" />
                         </div>
 
                         <div id="form-postalcode" class="input-group">
-                            <label asp-for="@Model.User.Address.PostalCode"></label>
-                            <span asp-validation-for="@Model.User.Address.PostalCode"></span>
-                            <input asp-for="@Model.User.Address.PostalCode" />
+                            <label asp-for="User.Address.PostalCode"></label>
+                            <span asp-validation-for="User.Address.PostalCode"></span>
+                            <input asp-for="User.Address.PostalCode" placeholder="@((Model.User.Address != null) ? Model.User.Address.PostalCode : "Enter your postal code")" />
                         </div>
 
                         <div id="form-city" class="input-group">
-                            <label asp-for="@Model.User.Address.City"></label>
-                            <span asp-validation-for="@Model.User.Address.City"></span>
-                            <input asp-for="@Model.User.Address.City" />
+                            <label asp-for="User.Address.City"></label>
+                            <span asp-validation-for="User.Address.City"></span>
+                            <input asp-for="User.Address.City" placeholder="@((Model.User.Address != null) ? Model.User.Address.City : "Enter your city")" />
                         </div>
 
                         <div id="form-buttons">
