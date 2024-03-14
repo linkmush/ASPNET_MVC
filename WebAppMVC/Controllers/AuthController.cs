@@ -64,12 +64,14 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     #region Sign In
     [HttpGet]
     [Route("/signin")]
-    public IActionResult SignIn()
+    public IActionResult SignIn(string returnUrl)
     {
         if (_signInManager.IsSignedIn(User))
         {
             return RedirectToAction("Details", "Account");
         }
+
+        ViewData["ReturnUrl"] = returnUrl ?? Url.Content("~/");
 
         ViewData["Title"] = "Sign In";
         var viewModel = new SignInViewModel();
@@ -78,7 +80,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
     [HttpPost]
     [Route("/signin")]
-    public async Task<IActionResult> SignIn(SignInViewModel viewModel)
+    public async Task<IActionResult> SignIn(SignInViewModel viewModel, string returnUrl)
     {
 
         if (ModelState.IsValid)
@@ -86,6 +88,9 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);      // detta är om det funkar. 
             if (result.Succeeded)
             {
+                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+                    return Redirect(returnUrl);
+
                 return RedirectToAction("Details", "Account");
             }
         }

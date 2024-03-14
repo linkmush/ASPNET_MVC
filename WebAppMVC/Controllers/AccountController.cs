@@ -1,12 +1,14 @@
 ﻿using Infrastructure.Entities;
 using Infrastructure.Models;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
 
+[Authorize]  // kräver att du måste vara inloggad för att se dessa sidor. 
 public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AccountService accountService) : Controller
 {
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
@@ -17,10 +19,10 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     [Route("/account")]
     public async Task<IActionResult> Details()
     {
-        if (!_signInManager.IsSignedIn(User))
-        {
-            return RedirectToAction("SignIn", "Auth");
-        }
+        //if (!_signInManager.IsSignedIn(User))
+        //{
+        //    return RedirectToAction("SignIn", "Auth");           // fråga hans om denna ska bort eller inte.
+        //}
 
         var userEntity = await _userManager.GetUserAsync(User);
         var viewModel = new AccountDetailsViewModel()

@@ -2,7 +2,7 @@
 
 <section id="signin">
     <div class="container">
-        <form method="post" asp-controller="Auth" asp-action="SignIn" novalidate>
+        <form method="post" asp-controller="Auth" asp-action="SignIn" asp-route-ReturnUrl="@ViewData["ReturnUrl"]" novalidate>
 
             @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
             {
