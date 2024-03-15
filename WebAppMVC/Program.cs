@@ -9,7 +9,6 @@ builder.Services.AddRouting(x => x.LowercaseUrls = true);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer")));
-builder.Services.AddScoped<AccountService>();
 
 builder.Services.AddDefaultIdentity<UserEntity>(x =>
 {
@@ -30,9 +29,11 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.SlidingExpiration = true;    // nollställer expiretimespan om man är aktiv igen innan expire tiden.
 });
 
+builder.Services.AddScoped<AddressManager>();
+
 var app = builder.Build();
 app.UseHsts();
-//app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}");     // --- denna gör så att den går till error sidan om den inte hittar någon sida.
+app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}");      /*--- denna gör så att den går till error sidan om den inte hittar någon sida.*/
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

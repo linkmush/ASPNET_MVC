@@ -9,53 +9,114 @@ using WebAppMVC.ViewModels.Views;
 namespace WebAppMVC.Controllers;
 
 [Authorize]  // kräver att du måste vara inloggad för att se dessa sidor. 
-public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AccountService accountService) : Controller
+public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AddressManager AddressManager) : Controller
 {
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly UserManager<UserEntity> _userManager = userManager;
-    private readonly AccountService _accountService = accountService;
+    private readonly AddressManager _addressManager = AddressManager;
 
+    #region Details
     [HttpGet]
     [Route("/account")]
     public async Task<IActionResult> Details()
     {
-        //if (!_signInManager.IsSignedIn(User))
-        //{
-        //    return RedirectToAction("SignIn", "Auth");           // fråga hans om denna ska bort eller inte.
-        //}
+        var viewModel = new AccountDetailsViewModel();
 
-        var userEntity = await _userManager.GetUserAsync(User);
-        var viewModel = new AccountDetailsViewModel()
-        {
-            User = userEntity!
-        };
-        //viewModel.BasicInfo = _accountService.GetBasicInfo();
-        //viewModel.AddressInfo = _accountService.GetAddressinfo();
+        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+
+        viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
+
+        viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
+
 
         return View(viewModel);
     }
+    #endregion
 
+    #region [HttpPost] Details
     [HttpPost]
-    public async Task<IActionResult> BasicInfo(AccountDetailsViewModel viewModel)
+    [Route("/account")]
+    public async Task<IActionResult> Details(AccountDetailsViewModel viewModel)
     {
-        var result = await _userManager.UpdateAsync(viewModel.User);   // byt ut _userManger mot din service. Det vill säga _accountService
-        if (!result.Succeeded)
+        if (viewModel.BasicInfo != null)
         {
-            ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
-            ViewData["ErrorMessage"] = "Failed to save data";
+            if (viewModel.BasicInfo.FirstName != null && viewModel.BasicInfo.LastName != null && viewModel.BasicInfo.Email != null)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user != null)
+                {
+                    user.FirstName = viewModel.BasicInfo.FirstName;
+                    user.LastName = viewModel.BasicInfo.LastName;
+                    user.Email = viewModel.BasicInfo.Email;
+                    user.PhoneNumber = viewModel.BasicInfo.Phone;
+                    user.Bio = viewModel.BasicInfo.Biography;
+
+                    var result = await _userManager.UpdateAsync(user);
+                    if (!result.Succeeded)
+                    {
+                        ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
+                        ViewData["ErrorMessage"] = "Failed to save data";
+                    }
+                }
+            }
         }
+        if (viewModel.AddressInfo != null)
+        {
+            if (viewModel.AddressInfo.AddressLine_1 != null && viewModel.AddressInfo.PostalCode != null && viewModel.AddressInfo.City != null)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user != null)
+                {
+                    var address = await _addressManager.GetAddressAsync(user.Id);
+                    if (address != null)
+                    {
+                        address.AddressLine_1 = viewModel.AddressInfo.AddressLine_1;
+                        address.AddressLine_2 = viewModel.AddressInfo.AddressLine_2;
+                        address.PostalCode = viewModel.AddressInfo.PostalCode;
+                        address.City = viewModel.AddressInfo.City;
 
-        return RedirectToAction(nameof(Details), viewModel);
+                        user.Address = address;
+
+                        var result = await _addressManager.UpdateAddressAsync(address);
+                        if (!result)
+                        {
+                            ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
+                            ViewData["ErrorMessage"] = "Failed to save data";
+                        }
+                    }
+                    else
+                    {
+                        address = new AddressEntity
+                        {
+                            AddressLine_1 = viewModel.AddressInfo.AddressLine_1,
+                            AddressLine_2 = viewModel.AddressInfo.AddressLine_2,
+                            PostalCode = viewModel.AddressInfo.PostalCode,
+                            City = viewModel.AddressInfo.City,
+                        };
+
+                        user.Address = address;
+
+                        var result = await _addressManager.CreateAddressAsync(address);
+                        if (!result)
+                        {
+                            ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
+                            ViewData["ErrorMessage"] = "Failed to save data";
+                        }
+                    }
+                }
+            }
+        }
+        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+
+        viewModel.BasicInfo ??= await PopulateBasicInfoAsync();
+
+        viewModel.AddressInfo ??= await PopulateAddressInfoAsync();
+
+        return View(viewModel);
     }
+    #endregion
 
-    [HttpPost]
-    public IActionResult AddressInfo(AccountDetailsViewModel viewModel)
-    {
-        //_accountService.SaveAddressInfo(viewModel.AddressInfo);
-
-        return RedirectToAction(nameof(Details), viewModel);
-    }
-
+    #region Security
     [HttpGet]
     [Route("/account/security")]
     public IActionResult Security()
@@ -63,6 +124,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
         var viewModel = new SecurityViewModel();
         return View(viewModel);
     }
+    #endregion
 
     [HttpPost]
     public IActionResult ChangePassword(SecurityViewModel viewModel)
@@ -87,5 +149,53 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
         // måste nog ha en service för att testa om det funkar. 
 
         return RedirectToAction("Index", "Home");
+    }
+
+    public async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        return new ProfileInfoViewModel
+        {
+            FirstName = user!.FirstName,
+            LastName = user.LastName,
+            Email = user.Email!
+        };
+    }
+
+    public async Task<AccountDetailsBasicInfoModel> PopulateBasicInfoAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+
+        return new AccountDetailsBasicInfoModel
+        {
+            UserId = user!.Id,
+            FirstName = user.FirstName,
+            LastName = user.LastName,
+            Email = user.Email!,
+            Phone = user.PhoneNumber,
+            Biography = user.Bio,
+        };
+    }
+
+    public async Task<AccountDetailsAddressInfoModel> PopulateAddressInfoAsync()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            var address = await _addressManager.GetAddressAsync(user.Id);
+            if (address != null)
+            {
+                return new AccountDetailsAddressInfoModel
+                {
+                    AddressLine_1 = address.AddressLine_1,
+                    AddressLine_2 = address.AddressLine_2,
+                    PostalCode = address.PostalCode,
+                    City = address.City,
+                };
+            }
+        }
+
+        return new AccountDetailsAddressInfoModel();
     }
 }

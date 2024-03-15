@@ -4,6 +4,8 @@ namespace Infrastructure.Models;
 
 public class AccountDetailsBasicInfoModel
 {
+    public string UserId { get; set; } = null!;
+
     [DataType(DataType.ImageUrl)]
     public string? ProfileImage { get; set; }
 
@@ -27,8 +29,7 @@ public class AccountDetailsBasicInfoModel
 
     [Display(Name = "Phone", Prompt = "Enter your phone", Order = 3)]
     [DataType(DataType.PhoneNumber)]
-    [Required(ErrorMessage = "phone is required")]
-    public string Phone { get; set; } = null!;
+    public string? Phone { get; set; }
 
     [Display(Name = "Bio", Prompt = "Add short bio....", Order = 4)]
     [DataType(DataType.MultilineText)]
