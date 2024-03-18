@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
@@ -103,6 +104,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     }
     #endregion
 
+    #region Sign Out
     [HttpGet]
     [Route("/signout")]
     public new async Task<IActionResult> SignOut()
@@ -110,4 +112,66 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Home");
     }
+    #endregion
+
+    #region External Account Facebook
+
+    [HttpGet]
+    public IActionResult Facebook()
+    {
+        var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Facebook", Url.Action("FacebookCallback"));   /*man gör samma sak för google bara att man skriver google istället för facebook.*/
+        return new ChallengeResult("Facebook", authProps);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> FacebookCallback()
+    {
+        var info = await _signInManager.GetExternalLoginInfoAsync();
+        if (info != null)
+        {
+            var userEntity = new UserEntity
+            {
+                FirstName = info.Principal.FindFirstValue(ClaimTypes.GivenName)!,
+                LastName = info.Principal.FindFirstValue(ClaimTypes.Surname)!,
+                Email = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                UserName = info.Principal.FindFirstValue(ClaimTypes.Email)!,
+                IsExternalAccount = true
+            };
+
+            var user = await _userManager.FindByEmailAsync(userEntity.Email);
+            if (user == null)
+            {
+                var result = await _userManager.CreateAsync(userEntity);
+                if (result.Succeeded)
+                {
+                    user = await _userManager.FindByEmailAsync(userEntity.Email);
+                }
+            }
+
+            if (user != null)
+            {
+                if (user.FirstName != userEntity.FirstName || user.LastName != userEntity.LastName || user.Email != userEntity.Email)
+                {
+                    user.FirstName = userEntity.FirstName;
+                    user.LastName = userEntity.LastName;
+                    user.Email = userEntity.Email;
+
+                    await _userManager.UpdateAsync(user);
+                }
+
+                await _signInManager.SignInAsync(user, isPersistent: false);
+
+                if (HttpContext.User != null)
+                {
+                    return RedirectToAction("Details", "Account");
+                }
+            }
+        }
+
+        ModelState.AddModelError("InvalidFacebook Authenticaction", "Failed to log in with facebook.");
+        ViewData["ErrorMessage"] = "Failed to authenticate with facebook.";
+        return RedirectToAction("SignIn", "Auth");
+    }
+
+    #endregion
 }

@@ -49,6 +49,13 @@
         margin-top: 50px;
         width: 100%;
 
+        #form-success {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+        }
+            
         .basic-info {
 
             form {

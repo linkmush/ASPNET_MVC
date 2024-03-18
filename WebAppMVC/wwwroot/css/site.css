@@ -248,7 +248,7 @@ a:hover {
 .btn-theme-s:hover {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   text-decoration: none;
-  background: #565973;
+  background: #000000;
   color: #FFFFFF;
 }
 
@@ -2833,6 +2833,35 @@ footer .container .social-media {
   margin: 1rem 0 0 0;
   text-align: center;
 }
+#signin .container form .content .border-line {
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#signin .container form .content .external-providers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#signin .container form .content .external-providers .h6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#signin .container form .content .external-providers .providers {
+  display: flex;
+  gap: 15px;
+}
+#signin .container form .content .external-providers .providers .btn-theme-s {
+  background-color: #EFF2FC;
+  color: #33354D;
+}
+#signin .container form .content .external-providers .providers .btn-theme-s:hover {
+  text-decoration: none;
+  background: #565973;
+  color: #FFFFFF;
+}
 
 #account-details {
   display: grid;
@@ -2880,6 +2909,12 @@ footer .container .social-media {
 #account-details .details {
   margin-top: 50px;
   width: 100%;
+}
+#account-details .details #form-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
 }
 #account-details .details .basic-info form {
   padding: 1rem;

@@ -52,7 +52,12 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                     user.Bio = viewModel.BasicInfo.Biography;
 
                     var result = await _userManager.UpdateAsync(user);
-                    if (!result.Succeeded)
+
+                    if (result.Succeeded)
+                    {
+                        ViewData["SuccessMessage"] = "Successfully Saved Data";
+                    }
+                    else
                     {
                         ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
                         ViewData["ErrorMessage"] = "Failed to save data";
@@ -78,7 +83,11 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                         user.Address = address;
 
                         var result = await _addressManager.UpdateAddressAsync(address);
-                        if (!result)
+                        if (result)
+                        {
+                            ViewData["SuccessMessage"] = "Successfully Saved Data";
+                        }
+                        else
                         {
                             ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
                             ViewData["ErrorMessage"] = "Failed to save data";
@@ -97,7 +106,11 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                         user.Address = address;
 
                         var result = await _addressManager.CreateAddressAsync(address);
-                        if (!result)
+                        if (result)
+                        {
+                            ViewData["SuccessMessage"] = "Successfully Saved Data";
+                        }
+                        else
                         {
                             ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
                             ViewData["ErrorMessage"] = "Failed to save data";
@@ -159,7 +172,8 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
         {
             FirstName = user!.FirstName,
             LastName = user.LastName,
-            Email = user.Email!
+            Email = user.Email!,
+            IsExternalAccount = user.IsExternalAccount,
         };
     }
 
@@ -173,6 +187,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
             FirstName = user.FirstName,
             LastName = user.LastName,
             Email = user.Email!,
+            IsExternalAccount = user.IsExternalAccount,
             Phone = user.PhoneNumber,
             Biography = user.Bio,
         };
@@ -192,6 +207,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                     AddressLine_2 = address.AddressLine_2,
                     PostalCode = address.PostalCode,
                     City = address.City,
+                    IsExternalAccount = user.IsExternalAccount,
                 };
             }
         }

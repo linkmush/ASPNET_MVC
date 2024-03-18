@@ -53,6 +53,41 @@
                     margin: 1rem 0 0 0;
                     text-align: center;
                 }
+
+                .border-line {
+                    border-top: 1px solid #ccc;
+                    margin-top: 10px;
+                    margin-bottom: 10px; 
+                }
+
+                .external-providers {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .h6 {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                    .providers {
+                        display: flex;
+                        gap: 15px;
+
+                        .btn-theme-s {
+                            background-color: $gray-200;
+                            color: $gray-800;
+
+                            &:hover {
+                                text-decoration: none;
+                                background: $gray-700;
+                                color: $white;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

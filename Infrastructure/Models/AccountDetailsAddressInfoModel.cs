@@ -23,4 +23,6 @@ public class AccountDetailsAddressInfoModel
     [Display(Name = "City", Prompt = "Enter your city", Order = 3)]
     [Required(ErrorMessage = "City is required")]
     public string City { get; set; } = null!;
+
+    public bool IsExternalAccount { get; set; }
 }

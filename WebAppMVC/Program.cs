@@ -29,6 +29,14 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.SlidingExpiration = true;    // nollställer expiretimespan om man är aktiv igen innan expire tiden.
 });
 
+builder.Services.AddAuthentication().AddFacebook(x =>
+{
+    x.AppId = "1410996332869705";
+    x.AppSecret = "8725b3ee2aaa0fe3ccffb9c8382efccf";
+    x.Fields.Add("first_name");
+    x.Fields.Add("last_name");
+});
+
 builder.Services.AddScoped<AddressManager>();
 
 var app = builder.Build();

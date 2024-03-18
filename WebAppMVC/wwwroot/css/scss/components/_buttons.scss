@@ -33,7 +33,7 @@
     &:hover {
         @include theme-secondary-shadow;
         text-decoration: none;
-        background: $gray-700;
+        background: $black;
         color: $white;
     } 
 }
