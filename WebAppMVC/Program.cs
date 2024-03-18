@@ -2,7 +2,9 @@ using Infrastructure.Contexts;
 using Infrastructure.Entities;
 using Infrastructure.Helpers.Middlewares;
 using Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
@@ -29,13 +31,24 @@ builder.Services.ConfigureApplicationCookie(x =>
     x.SlidingExpiration = true;    // nollställer expiretimespan om man är aktiv igen innan expire tiden.
 });
 
-builder.Services.AddAuthentication().AddFacebook(x =>
-{
-    x.AppId = "1410996332869705";
-    x.AppSecret = "8725b3ee2aaa0fe3ccffb9c8382efccf";
-    x.Fields.Add("first_name");
-    x.Fields.Add("last_name");
-});
+builder.Services.AddAuthentication()
+    .AddFacebook(x =>
+    {
+        x.AppId = "1410996332869705";
+        x.AppSecret = "8725b3ee2aaa0fe3ccffb9c8382efccf";
+        x.Fields.Add("first_name");
+        x.Fields.Add("last_name");
+    })
+    .AddGoogle(options =>
+    {
+        options.ClientId = "302258497567-cctb0l24gsij9lr27bpfj6uoaal8h7e7.apps.googleusercontent.com";
+        options.ClientSecret = "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";
+        options.Scope.Add("profile");
+
+        options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
+        options.ClaimActions.MapJsonKey(ClaimTypes.GivenName, "given_name");
+        options.ClaimActions.MapJsonKey(ClaimTypes.Surname, "family_name");
+    });
 
 builder.Services.AddScoped<AddressManager>();
 
