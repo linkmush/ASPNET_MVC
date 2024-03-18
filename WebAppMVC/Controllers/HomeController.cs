@@ -5,7 +5,7 @@ using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
 
-[Authorize]   // skyddar sidan, skyddar alla actions. Annars sätter man den över den action man vill skydda. kräver att du måste inloggad för att se dessa actions/sidor.
+//[Authorize]   skyddar sidan, skyddar alla actions. Annars sätter man den över den action man vill skydda. kräver att du måste inloggad för att se dessa actions/sidor.
 public class HomeController : Controller
 {
     public IActionResult Index()
