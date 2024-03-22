@@ -50,6 +50,7 @@ builder.Services.AddAuthentication()
         options.ClaimActions.MapJsonKey(ClaimTypes.Surname, "family_name");
     });
 
+builder.Services.AddHttpClient();
 builder.Services.AddScoped<AddressManager>();
 
 var app = builder.Build();

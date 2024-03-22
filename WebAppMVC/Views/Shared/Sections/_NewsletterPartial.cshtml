@@ -7,44 +7,72 @@
             <img src="@Model.Arrow.ImageUrl" alt="@Model.Arrow.AltText">
         </div>
 
-        <form id="registerNewsletter" novalidate>
+        <form id="registerNewsletter" asp-action="Index" asp-controller="Home" method="post" novalidate>
             <div class="choose-newsletter">
                 <h5>Sign up for<br> Newsletters</h5>
                 <div class="checkboxes">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.DailyNewsletter" />
-                        <label class="form-check-label" asp-for=Newsletter.DailyNewsletter></label>
+                        <input class="form-check-input" type="checkbox" asp-for="DailyNewsletter" name="Newsletter.DailyNewsletter" />
+                        <label class="form-check-label" asp-for=DailyNewsletter></label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.AdvertisingUpdates" />
-                        <label class="form-check-label" asp-for=Newsletter.AdvertisingUpdates></label>
+                        <input class="form-check-input" type="checkbox" asp-for="AdvertisingUpdates" name="Newsletter.AdvertisingUpdates" />
+                        <label class="form-check-label" asp-for=AdvertisingUpdates></label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.WeekInReview" />
-                        <label class="form-check-label" asp-for=Newsletter.WeekInReview></label>
+                        <input class="form-check-input" type="checkbox" asp-for="WeekInReview" name="Newsletter.WeekInReview" />
+                        <label class="form-check-label" asp-for=WeekInReview></label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.EventUpdates" />
-                        <label class="form-check-label" asp-for=Newsletter.EventUpdates></label>
+                        <input class="form-check-input" type="checkbox" asp-for="EventUpdates" name="Newsletter.EventUpdates" />
+                        <label class="form-check-label" asp-for=EventUpdates></label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.StartupsWeekly" />
-                        <label class="form-check-label" asp-for=Newsletter.StartupsWeekly></label>
+                        <input class="form-check-input" type="checkbox" asp-for="StartupsWeekly" name="Newsletter.StartupsWeekly" />
+                        <label class="form-check-label" asp-for=StartupsWeekly></label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" asp-for="Newsletter.Podcasts" />
-                        <label class="form-check-label" asp-for=Newsletter.Podcasts></label>
+                        <input class="form-check-input" type="checkbox" asp-for="Podcasts" name="Newsletter.Podcasts" />
+                        <label class="form-check-label" asp-for=Podcasts></label>
                     </div>
                 </div>
             </div>
             <div class="subscribe">
                 <i class="fa-regular fa-envelope"></i>
-                <span asp-validation-for="Newsletter.Email"></span>
-                <input id="email" class="form-input" asp-for="Newsletter.Email" />
-                <button id="form-submit" type="submit" class="btn-theme">@Model.Link.LinkText</button>
+                <input id="email" class="form-input" asp-for="Email" />
+                <button id="form-submit" type="submit" class="btn-theme">Subscribe *</button>
             </div>
-
-            <p class="terms-and-privacy">* Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy.</a></p>
         </form>
+
+        <span class="information">
+            @if (ViewData["Status"]?.ToString() == "Success")
+            {
+                <span class="alert alert-success">
+                    You have been subscribed
+                </span>
+            }
+            else if (ViewData["Status"]?.ToString() == "AlreadyExists")
+            {
+                <span class="alert alert-warning">
+                    You have already subscribed
+                </span>
+            }
+            else if (ViewData["Status"]?.ToString() == "Invalid")
+            {
+                <span class="alert alert-danger">
+                    You must enter an valid email address
+                </span>
+            }
+            else if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+            {
+                <span class="alert alert-danger">
+                    Unabled to connect to server. Please try again later!
+                </span>
+            }
+            else
+            {
+                <p class="terms-and-privacy">* Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy.</a></p>
+            }
+        </span>
     </div>
 </section>

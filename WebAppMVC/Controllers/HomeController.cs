@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
 using WebAppMVC.ViewModels.Sections;
 using WebAppMVC.ViewModels.Views;
 
@@ -8,6 +10,13 @@ namespace WebAppMVC.Controllers;
 //[Authorize]   skyddar sidan, skyddar alla actions. Annars sätter man den över den action man vill skydda. kräver att du måste inloggad för att se dessa actions/sidor.
 public class HomeController : Controller
 {
+    private readonly HttpClient _http;
+
+    public HomeController(HttpClient http)
+    {
+        _http = http;
+    }
+
     public IActionResult Index()
     {
         var viewModel = new HomeIndexViewModel();
@@ -18,23 +27,45 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult Newsletter(NewsletterViewModel viewModel)
+    public async Task<IActionResult> Index(NewsletterViewModel viewModel)
     {
-        if (!ModelState.IsValid)
+        if (ModelState.IsValid)
         {
-            return View(viewModel);
+            try
+            {
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                var response = await _http.PostAsync("https://localhost:7091/api/Subscribers", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    ViewData["Status"] = "Success";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
+                {
+                    ViewData["Status"] = "AlreadyExists";
+                }
+            }
+            catch
+            {
+                ViewData["Status"] = "ConnectionFailed";
+            }
+        }
+        else
+        {
+            ViewData["Status"] = "Invalid";
         }
 
-        viewModel.ErrorMessage = "Incorrect email";
-        return View(viewModel);
+        var homeViewModel = new HomeIndexViewModel();
+
+        return View("Index", homeViewModel);
     }
 
-    [AllowAnonymous]   // tillåter användare att kolla sidan även om du kör Authorize längst uppe.
+    //[AllowAnonymous]   // tillåter användare att kolla sidan även om du kör Authorize längst uppe.
     [Route("/error")]
     public IActionResult Error404(int statusCode)
     {
         var viewModel = new ErrorViewModel();
-        return View(viewModel);
+        return View("Index", viewModel);
     }
 
 }

@@ -104,6 +104,5 @@ public class HomeIndexViewModel
         Id = "Newsletter",
         Title = "Don't Want to Miss Anything?",
         Arrow = new ImageViewModel { ImageUrl = "Images/arrows.svg", AltText = "wavy arrow" },
-        Link = new() { LinkText = "Subscribe *" }
     };
 }

@@ -1125,11 +1125,11 @@ header .container .hide {
   position: absolute;
   color: #B4B7C9;
   top: 15px;
-  left: 30px;
+  left: 15px;
 }
 @media (max-width: 991px) {
   .newsletter .container #registerNewsletter .subscribe i {
-    top: 35px;
+    top: 15px;
     left: 15px;
   }
 }
@@ -1156,15 +1156,25 @@ header .container .hide {
   text-wrap: nowrap;
   transition: all 0.15s ease-in-out;
 }
-.newsletter .container #registerNewsletter p {
+.newsletter .container .information {
+  margin-top: 5px;
+}
+.newsletter .container .information .alert {
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 20px;
+  display: inline-block;
+}
+.newsletter .container .information p {
   padding-top: 10px;
 }
 @media (min-width: 992px) {
-  .newsletter .container #registerNewsletter p {
+  .newsletter .container .information p {
     margin-left: 20px;
   }
 }
-.newsletter .container #registerNewsletter p a {
+.newsletter .container .information p a {
   color: #6366F1;
 }
 
