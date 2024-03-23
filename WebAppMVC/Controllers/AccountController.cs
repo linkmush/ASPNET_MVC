@@ -132,24 +132,41 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     #region Security
     [HttpGet]
     [Route("/account/security")]
-    public IActionResult Security()
+    public async Task<IActionResult> Security()
     {
         var viewModel = new SecurityViewModel();
+
+        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+
+        return View(viewModel);
+    }
+
+    [HttpPost]
+    [Route("/account/security")]
+    public async Task<IActionResult> Security(SecurityViewModel viewModel)
+    {
+        if (ModelState.IsValid)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user != null)
+            {
+                var changePassword = await _userManager.ChangePasswordAsync(user, viewModel.Security!.CurrentPassword, viewModel.Security.NewPassword);
+                if (changePassword.Succeeded)
+                {
+                    ViewData["SuccessMessage"] = "New password created";
+                }
+                else
+                {
+                    ModelState.AddModelError("IncorrectValues", "Incorrect password");
+                    ViewData["ErrorMessage"] = "Incorrect password, try again.";
+                }
+            }
+        }
+
+        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
         return View(viewModel);
     }
     #endregion
-
-    [HttpPost]
-    public IActionResult ChangePassword(SecurityViewModel viewModel)
-    {
-        if (!ModelState.IsValid)
-        {
-            // Om validering inte funkar, retunera view med validation errors
-            return View("Security", viewModel);
-        }
-
-        return RedirectToAction(nameof(Security));
-    }
 
     [HttpPost]
     public IActionResult Delete(DeleteAccountModel deleteModel)

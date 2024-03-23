@@ -7,9 +7,9 @@
     <section id="security-account">
         <aside>
             <div class="profile-info">
-                <img src="@Model.BasicInfo.ProfileImage" alt="@($"{Model.BasicInfo.FirstName} {Model.BasicInfo.LastName}")" />
-                <h5>@($"{Model.BasicInfo.FirstName} {Model.BasicInfo!.LastName}")</h5>
-                <p>@Model.BasicInfo.Email</p>
+                <img src="@Model.ProfileInfo?.ProfileImage" alt="@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")" />
+                <h5>@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")</h5>
+                <p>@Model.ProfileInfo?.Email</p>
             </div>
             <nav>
                 <a class="btn-transparent" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i>Account Details</a>
@@ -20,28 +20,41 @@
         </aside>
 
         <div class="details">
+            @if (!string.IsNullOrEmpty(ViewData["SuccessMessage"]?.ToString()))
+            {
+                <div id="form-success" class="alert alert-success" role="alert">
+                    @ViewData["SuccessMessage"]
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+            {
+                <div id="form-error" class="alert alert-danger" role="alert">
+                    @ViewData["ErrorMessage"]
+                </div>
+            }
             <section class="basic-info">
-                <form method="post" asp-controller="Account" asp-action="ChangePassword">
+                <form method="post" asp-controller="Account" asp-action="Security">
                     <h2>Security</h2>
                     <h5>Password</h5>
 
                     <div class="content">
                         <div id="form-current" class="input-group">
-                            <label asp-for=Security.CurrentPassword></label>
-                            <span asp-validation-for="Security.CurrentPassword"></span> @* span asp-validation-for skriver ut fel meddelandet på sidan. *@
-                            <input asp-for="Security.CurrentPassword" />
+                            <label asp-for=Security!.CurrentPassword></label>
+                            <span asp-validation-for="Security!.CurrentPassword"></span> @* span asp-validation-for skriver ut fel meddelandet på sidan. *@
+                            <input asp-for="Security!.CurrentPassword" />
                         </div>
 
                         <div id="form-new" class="input-group">
-                            <label asp-for=Security.NewPassword></label>
-                            <span asp-validation-for="Security.NewPassword"></span>
-                            <input asp-for="Security.NewPassword" />
+                            <label asp-for=Security!.NewPassword></label>
+                            <span asp-validation-for="Security!.NewPassword"></span>
+                            <input asp-for="Security!.NewPassword" />
                         </div>
 
                         <div id="form-confirm" class="input-group">
-                            <label asp-for=Security.ConfirmPassword></label>
-                            <span asp-validation-for="Security.ConfirmPassword"></span>
-                            <input asp-for="Security.ConfirmPassword" />
+                            <label asp-for=Security!.ConfirmPassword></label>
+                            <span asp-validation-for="Security!.ConfirmPassword"></span>
+                            <input asp-for="Security!.ConfirmPassword" />
                         </div>
 
                         <div id="form-buttons">
