@@ -69,6 +69,12 @@
                     Unabled to connect to server. Please try again later!
                 </span>
             }
+            else if (ViewData["Status"]?.ToString() == "Unauthorized")
+            {
+                <span class="alert alert-danger">
+                    Something went wrong. Please contact web admin.
+                </span>
+            }
             else
             {
                 <p class="terms-and-privacy">* Yes, I agree to the <a href="#">terms</a> and <a href="#">privacy policy.</a></p>

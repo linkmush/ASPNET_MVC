@@ -34,7 +34,7 @@ public class HomeController : Controller
             try
             {
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
-                var response = await _http.PostAsync("https://localhost:7091/api/subscribers", content);
+                var response = await _http.PostAsync("https://localhost:7091/api/subscribers?key=YzUyZjYyZGEtYjc0Ny00ZDI4LWFkNmUtMTQ4ZTc0YjU0YTdk", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -43,6 +43,10 @@ public class HomeController : Controller
                 else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
                 {
                     ViewData["Status"] = "AlreadyExists";
+                }
+                else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+                {
+                    ViewData["Status"] = "Unauthorized";
                 }
             }
             catch
