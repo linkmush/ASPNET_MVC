@@ -72,20 +72,26 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                 var user = await _userManager.GetUserAsync(User);
                 if (user != null)
                 {
-                    var address = await _addressManager.GetAddressAsync(user.Id);
-                    if (address != null)
+                    var newAddress = new AddressEntity
                     {
-                        address.AddressLine_1 = viewModel.AddressInfo.AddressLine_1;
-                        address.AddressLine_2 = viewModel.AddressInfo.AddressLine_2;
-                        address.PostalCode = viewModel.AddressInfo.PostalCode;
-                        address.City = viewModel.AddressInfo.City;
+                        AddressLine_1 = viewModel.AddressInfo.AddressLine_1,
+                        AddressLine_2 = viewModel.AddressInfo.AddressLine_2,
+                        PostalCode = viewModel.AddressInfo.PostalCode,
+                        City = viewModel.AddressInfo.City,
+                    };
 
-                        user.Address = address;
+                    var existingAddress = await _addressManager.GetExistingAddressAsync(newAddress);
 
-                        var result = await _addressManager.UpdateAddressAsync(address);
+                    if (existingAddress != null)
+                    {
+                        user.Address = existingAddress;
+                    }
+                    else
+                    {
+                        var result = await _addressManager.CreateAddressAsync(newAddress);
                         if (result)
                         {
-                            ViewData["SuccessMessage"] = "Successfully Saved Data";
+                            user.Address = newAddress;
                         }
                         else
                         {
@@ -93,32 +99,21 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
                             ViewData["ErrorMessage"] = "Failed to save data";
                         }
                     }
+
+                    var updateResult = await _userManager.UpdateAsync(user);
+                    if (updateResult.Succeeded)
+                    {
+                        ViewData["SuccessMessage"] = "Successfully Saved Data";
+                    }
                     else
                     {
-                        address = new AddressEntity
-                        {
-                            AddressLine_1 = viewModel.AddressInfo.AddressLine_1,
-                            AddressLine_2 = viewModel.AddressInfo.AddressLine_2,
-                            PostalCode = viewModel.AddressInfo.PostalCode,
-                            City = viewModel.AddressInfo.City,
-                        };
-
-                        user.Address = address;
-
-                        var result = await _addressManager.CreateAddressAsync(address);
-                        if (result)
-                        {
-                            ViewData["SuccessMessage"] = "Successfully Saved Data";
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
-                            ViewData["ErrorMessage"] = "Failed to save data";
-                        }
+                        ModelState.AddModelError("Failed To Save Data", "Failed to update contact");
+                        ViewData["ErrorMessage"] = "Failed to save data";
                     }
                 }
             }
         }
+
         viewModel.ProfileInfo = await PopulateProfileInfoAsync();
 
         viewModel.BasicInfo ??= await PopulateBasicInfoAsync();

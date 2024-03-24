@@ -175,7 +175,6 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
     #endregion
 
-
     #region External Account Google
 
     [HttpGet]

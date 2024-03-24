@@ -34,4 +34,14 @@ public class AddressManager(DataContext context)
         
         return false;
     }
+
+    public async Task<AddressEntity?> GetExistingAddressAsync(AddressEntity address)
+    {
+        // Look for an existing address in the database with the exact information provided
+        return await _context.Addresses.FirstOrDefaultAsync(a =>
+            a.AddressLine_1 == address.AddressLine_1 &&
+            a.AddressLine_2 == address.AddressLine_2 &&
+            a.PostalCode == address.PostalCode &&
+            a.City == address.City);
+    }
 }
