@@ -129,7 +129,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     }
     #endregion
 
-    #region Security
+    #region Security Password
     [HttpGet]
     [Route("/account/security")]
     public async Task<IActionResult> Security()
@@ -168,18 +168,29 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     }
     #endregion
 
+    #region Security Delete
     [HttpPost]
-    public IActionResult Delete(DeleteAccountModel deleteModel)
+    public async Task<IActionResult> Delete(DeleteAccountModel deleteModel)
     {
-        if (!ModelState.IsValid)
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
         {
-            return View("Security", new SecurityViewModel { DeleteAccount = deleteModel });
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                await _signInManager.SignOutAsync(); // SignOutAsync() tar bort autentiseringscookies, vilket förhindrar obehörig åtkomst även om användarens konto tas bort från databasen.
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("DeleteError", "Could not delete account");
+                ViewData["ErrorMessage"] = "Something went wrong, could not delete account. Contact WebAdmin.";
+            }
         }
 
-        // måste nog ha en service för att testa om det funkar. 
-
-        return RedirectToAction("Index", "Home");
+        return RedirectToAction("Security", "Account");
     }
+    #endregion
 
     public async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()
     {
