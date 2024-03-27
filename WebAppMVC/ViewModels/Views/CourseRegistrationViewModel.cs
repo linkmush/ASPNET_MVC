@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using WebAppMVC.ViewModels.Components;
 
 namespace WebAppMVC.ViewModels.Views;
 
@@ -29,4 +30,5 @@ public class CourseRegistrationViewModel
 
     [Display(Name = "Author(s)")]
     public string? Author { get; set; }
+    public string? ImageUrl { get; set; }
 }

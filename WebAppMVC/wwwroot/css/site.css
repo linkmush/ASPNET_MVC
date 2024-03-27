@@ -1819,18 +1819,54 @@ footer .container .social-media {
   }
 }
 .courses .container .courses-square .grid-item {
+  position: relative;
   border: 1px solid #DAD9D3;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
+  margin-bottom: 20px;
 }
 .courses .container .courses-square .grid-item:hover {
   box-shadow: 0 6px 12px rgb(0, 0, 0);
 }
+.courses .container .courses-square .grid-item .img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 15px;
+}
 .courses .container .courses-square .grid-item img {
   width: 100%;
   height: auto;
+  display: block;
+}
+.courses .container .courses-square .grid-item .overlay-content {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+}
+.courses .container .courses-square .grid-item .overlay-content .text-top {
+  font-size: 13px;
+  color: #ffffff;
+  background-color: rgba(11, 172, 37, 0.7);
+  padding: 5px;
+  border-radius: 3px;
+}
+.courses .container .courses-square .grid-item .overlay-content .button-top {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #dfdcdc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.courses .container .courses-square .grid-item .overlay-content .button-top i {
+  color: black;
+  font-size: 16px;
 }
 .courses .container .courses-square .grid-item .text-info {
   text-align: left;
@@ -1847,6 +1883,13 @@ footer .container .social-media {
   color: #6366F1;
   border-bottom: 1px solid #DAD9D3;
   padding-bottom: 15px;
+}
+.courses .container .courses-square .grid-item .text-info .price.discount {
+  color: red;
+}
+.courses .container .courses-square .grid-item .text-info .price.discount del {
+  color: #9397AD;
+  font-weight: 400;
 }
 .courses .container .courses-square .grid-item .text-info .clock {
   display: flex;

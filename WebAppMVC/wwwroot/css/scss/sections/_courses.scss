@@ -31,7 +31,6 @@
                 @media (max-width: 992px ) {
                     display: none;
                 }
-
             }
 
             .categorylist {
@@ -72,7 +71,7 @@
                 }
             }
         }
-        
+
         .courses-square {
             display: grid;
             grid-template-columns: auto;
@@ -91,19 +90,60 @@
             }
 
             .grid-item {
+                position: relative;
                 border: 1px solid #DAD9D3;
                 border-radius: 15px;
                 overflow: hidden;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 transition: box-shadow 0.3s ease-in-out;
+                margin-bottom: 20px;
 
                 &:hover {
                     box-shadow: 0 6px 12px rgba(0, 0, 0, 10);
                 }
-                
+
+                .img-container {
+                    position: relative;
+                    overflow: hidden;
+                    border-radius: 15px;
+                }
+
                 img {
                     width: 100%;
                     height: auto;
+                    display: block;
+                }
+
+                .overlay-content {
+                    position: absolute;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    padding: 20px;
+
+                    .text-top {
+                        font-size: 13px;
+                        color: #ffffff;
+                        background-color: rgba(11, 172, 37, 0.7);
+                        padding: 5px;
+                        border-radius: 3px;
+                    }
+
+                    .button-top {
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        background-color: #dfdcdc;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        i {
+                            color: black;
+                            font-size: 16px;
+                        }
+                    }
                 }
 
                 .text-info {
@@ -113,7 +153,7 @@
                     h5 {
                         margin-top: 10px;
                     }
-    
+
                     .creator {
                         color: $gray-600;
                     }
@@ -121,9 +161,17 @@
                     .price {
                         font-weight: 700;
                         color: $theme;
-
                         border-bottom: 1px solid #DAD9D3;
                         padding-bottom: 15px;
+
+                        &.discount {
+                            color: red; // Set the color to red for the discounted price
+
+                            del {
+                                color: $gray-600;
+                                font-weight: 400;
+                            }
+                        }
                     }
 
                     .clock {
@@ -172,7 +220,7 @@
                 i {
                     font-size: 0.8rem;
                 }
-              
+
                 &.active,
                 &:hover {
                     color: #FFFFFF;
