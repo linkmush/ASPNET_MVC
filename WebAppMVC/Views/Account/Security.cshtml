@@ -72,19 +72,16 @@
                     <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
                     <div class="content">
                         <div class="input-group">
-                            <input type="checkbox" asp-for="DeleteAccount!.ConfirmDelete" />
-                            <label class="delete-account-label" asp-for="DeleteAccount!.ConfirmDelete">Yes, I want to delete my account.</label>
+                            <input type="checkbox" id="ConfirmDelete" name="ConfirmDelete" value="true" />
+                            <label class="delete-account-label" for="ConfirmDelete">Yes, I want to delete my account.</label>
                             <span asp-validation-for="DeleteAccount!.ConfirmDelete"></span>
+@*                             <input type="checkbox" asp-for="DeleteAccount!.ConfirmDelete" />
+                            <label class="delete-account-label" asp-for="DeleteAccount!.ConfirmDelete">Yes, I want to delete my account.</label>
+                            <span asp-validation-for="DeleteAccount!.ConfirmDelete"></span> *@
                         </div>
                         <div id="form-buttons">
                             <button class="btn-red" type="submit">Delete</button>
                         </div>
-                        @if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
-                        {
-                            <div id="form-error" class="alert alert-danger" role="alert">
-                                @ViewData["ErrorMessage"]
-                            </div>
-                        }
                     </div>
                 </form>
             </section>

@@ -127,11 +127,13 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     #region Security Password
     [HttpGet]
     [Route("/account/security")]
-    public async Task<IActionResult> Security()
+    public async Task<IActionResult> Security(string errorMessage)
     {
         var viewModel = new SecurityViewModel();
 
         viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+
+        ViewData["ErrorMessage"] = errorMessage;
 
         return View(viewModel);
     }
@@ -166,20 +168,30 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     #region Security Delete
     [HttpPost]
     public async Task<IActionResult> Delete(DeleteAccountModel deleteModel)
-    {
+    { 
         var user = await _userManager.GetUserAsync(User);
         if (user != null)
         {
-            var result = await _userManager.DeleteAsync(user);
-            if (result.Succeeded)
+            if (ModelState.IsValid && deleteModel.ConfirmDelete == true)
             {
-                await _signInManager.SignOutAsync(); // SignOutAsync() tar bort autentiseringscookies, vilket förhindrar obehörig åtkomst även om användarens konto tas bort från databasen.
-                return RedirectToAction("Index", "Home");
+                var result = await _userManager.DeleteAsync(user);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignOutAsync(); // SignOutAsync() tar bort autentiseringscookies, vilket förhindrar obehörig åtkomst även om användarens konto tas bort från databasen.
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("DeleteError", "Could not delete account");
+                    //ViewData["ErrorMessage"] = "Something went wrong, could not delete account. Contact WebAdmin.";
+                    return RedirectToAction("Security", "Account", new { errorMessage = "Something went wrong, could not delete account. Contact WebAdmin." });
+                }
             }
             else
             {
                 ModelState.AddModelError("DeleteError", "Could not delete account");
-                ViewData["ErrorMessage"] = "Something went wrong, could not delete account. Contact WebAdmin.";
+                //ViewData["ErrorMessage"] = "Something went wrong, could not delete account. Contact WebAdmin.";
+                return RedirectToAction("Security", "Account", new { errorMessage = "You must confirm to delete your account." });
             }
         }
 
