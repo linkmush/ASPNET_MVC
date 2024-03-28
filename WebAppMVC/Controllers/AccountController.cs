@@ -127,13 +127,11 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     #region Security Password
     [HttpGet]
     [Route("/account/security")]
-    public async Task<IActionResult> Security(string errorMessage)
+    public async Task<IActionResult> Security()
     {
         var viewModel = new SecurityViewModel();
 
         viewModel.ProfileInfo = await PopulateProfileInfoAsync();
-
-        ViewData["ErrorMessage"] = errorMessage;
 
         return View(viewModel);
     }
@@ -147,15 +145,32 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
             var user = await _userManager.GetUserAsync(User);
             if (user != null)
             {
-                var changePassword = await _userManager.ChangePasswordAsync(user, viewModel.Security!.CurrentPassword, viewModel.Security.NewPassword);
-                if (changePassword.Succeeded)
+                if (viewModel.Security != null)
                 {
-                    ViewData["SuccessMessage"] = "New password created";
+                    var changePassword = await _userManager.ChangePasswordAsync(user, viewModel.Security!.CurrentPassword, viewModel.Security.NewPassword);
+                    if (changePassword.Succeeded)
+                    {
+                        ViewData["SuccessMessage"] = "New password created";
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("IncorrectValues", "Incorrect password");
+                        ViewData["ErrorMessage"] = "Incorrect password, try again.";
+                    }
                 }
-                else
+                if (viewModel.DeleteAccount != null && viewModel.DeleteAccount.ConfirmDelete)
                 {
-                    ModelState.AddModelError("IncorrectValues", "Incorrect password");
-                    ViewData["ErrorMessage"] = "Incorrect password, try again.";
+                    var result = await _userManager.DeleteAsync(user);
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignOutAsync(); // SignOutAsync() tar bort autentiseringscookies, vilket förhindrar obehörig åtkomst även om användarens konto tas bort från databasen.
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("DeleteError", "Could not delete account");
+                        ViewData["ErrorMessage"] = "Something went wrong, could not delete account. Contact WebAdmin.";
+                    }
                 }
             }
         }
