@@ -15,7 +15,7 @@
             <label>Light</label>
             <label class="switch" for="switch-mode">
                 <input type="checkbox" id="switch-mode" />
-                <div class="slider round"></div>
+                <span class="slider round"></span>
             </label>
             <label>Dark</label>
         </div>
@@ -23,7 +23,7 @@
         <div id="account-buttons" class="hide">
             @if (_signInManager.IsSignedIn(User))
             {
-                <a class="btn-theme" asp-controller="Account" asp-action="Details"><i class="fa-regular fa-user"></i><span>My Account</span></a>
+                <a class="btn-photo" asp-controller="Account" asp-action="Details"><img src="~/Images/small-iconimg.svg" alt="Image of profile picture"></a>
                 <a class="btn-gray" asp-controller="Auth" asp-action="SignOut"><i class="fa-solid fa-right-to-bracket"></i><span>Sign out</span></a>
             }
             else

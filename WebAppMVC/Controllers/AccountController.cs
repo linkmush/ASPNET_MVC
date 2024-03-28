@@ -172,7 +172,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
         var user = await _userManager.GetUserAsync(User);
         if (user != null)
         {
-            if (ModelState.IsValid && deleteModel.ConfirmDelete == true)
+            if (deleteModel.ConfirmDelete == true)
             {
                 var result = await _userManager.DeleteAsync(user);
                 if (result.Succeeded)

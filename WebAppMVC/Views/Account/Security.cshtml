@@ -7,9 +7,9 @@
     <section id="security-account">
         <aside>
             <div class="profile-info">
-                <img src="@Model.ProfileInfo?.ProfileImage" alt="@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")" />
-                <h5>@($"{Model.ProfileInfo?.FirstName} {Model.ProfileInfo?.LastName}")</h5>
-                <p>@Model.ProfileInfo?.Email</p>
+                <img src="@Model.ProfileInfo!.ProfileImage" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")" />
+                <h5>@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")</h5>
+                <p>@Model.ProfileInfo.Email</p>
             </div>
             <nav>
                 <a class="btn-transparent" asp-controller="Account" asp-action="Details"><i class="fa-solid fa-gear"></i>Account Details</a>
@@ -72,12 +72,9 @@
                     <p>When you delete your account, your public profile will be deactivated immediately. If you change your mind before the 14 days are up, sign in with your email and password, and we’ll send you a link to reactivate your account.</p>
                     <div class="content">
                         <div class="input-group">
-                            <input type="checkbox" id="ConfirmDelete" name="ConfirmDelete" value="true" />
-                            <label class="delete-account-label" for="ConfirmDelete">Yes, I want to delete my account.</label>
-                            <span asp-validation-for="DeleteAccount!.ConfirmDelete"></span>
-@*                             <input type="checkbox" asp-for="DeleteAccount!.ConfirmDelete" />
+                            <input asp-for="DeleteAccount!.ConfirmDelete" />
                             <label class="delete-account-label" asp-for="DeleteAccount!.ConfirmDelete">Yes, I want to delete my account.</label>
-                            <span asp-validation-for="DeleteAccount!.ConfirmDelete"></span> *@
+                            <span asp-validation-for="DeleteAccount!.ConfirmDelete"></span>
                         </div>
                         <div id="form-buttons">
                             <button class="btn-red" type="submit">Delete</button>

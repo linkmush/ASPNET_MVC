@@ -7,5 +7,5 @@ public class DeleteAccountModel
 {
     [Display(Name = "Delete Account")]
     [CheckBoxRequired(ErrorMessage = "You must confirm to delete your account.")]
-    public bool ConfirmDelete { get; set; } = false;
+    public bool ConfirmDelete { get; set; }
 }
