@@ -1,12 +1,22 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+:root.light {
+  --text-color: var(--color-gray-700);
+  --background-color: var(--color-gray-000);
+}
+
+:root.dark {
+  --text-color: var(--color-white);
+  --background-color: var(--color-gray-900);
+}
+
 html, body {
   line-height: 160%;
   font-weight: 400;
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px;
-  color: var(--color-gray-700);
-  background-color: var(--color-gray-000);
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 .text-xs {
@@ -235,7 +245,7 @@ a {
   font-weight: 400;
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
-  color: #6366F1;
+  color: var(--color-theme);
   text-decoration: none;
   transition: all 0.25s ease-in-out;
 }
@@ -254,9 +264,15 @@ a:hover {
   text-decoration: none;
   transition: color 0.25s ease-in-out;
 }
+.light .menu-link {
+  color: var(--color-black);
+}
+.dark .menu-link {
+  color: var(--color-white);
+}
 .menu-link:hover, .menu-link:active, .menu-link:focus,
 .menu-link .active {
-  color: #6366F1;
+  color: var(--color-theme);
   text-decoration: none;
 }
 
@@ -269,14 +285,14 @@ a:hover {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  background: #6366F1;
-  color: #FFFFFF;
+  background: var(--color-theme);
+  color: var(--color-white);
   border: none;
 }
 .btn-theme:hover {
   text-decoration: none;
-  background: #565973;
-  color: #FFFFFF;
+  background: var(--color-gray-700);
+  color: var(--color-white);
 }
 
 .btn-theme-s {
@@ -289,16 +305,16 @@ a:hover {
   align-items: center;
   gap: 12px;
   box-shadow: 0px 8px 18px -8px rgba(99, 102, 241, 0.9);
-  background: #6366F1;
-  color: #FFFFFF;
+  background: var(--color-theme);
+  color: var(--color-white);
   padding-top: 10px;
   padding-bottom: 13px;
 }
 .btn-theme-s:hover {
   box-shadow: 0px 8px 18px -8px rgba(19, 16, 34, 0.15);
   text-decoration: none;
-  background: #000000;
-  color: #FFFFFF;
+  background: var(--color-black);
+  color: var(--color-white);
 }
 
 .btn-gray {
@@ -310,14 +326,14 @@ a:hover {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  background: #EFF2FC;
-  color: #33354D;
+  background: var(--color-gray-200);
+  color: var(--color-gray-800);
   border: none;
 }
 .btn-gray:hover {
   text-decoration: none;
-  background: #565973;
-  color: #FFFFFF;
+  background: var(--color-gray-700);
+  color: var(--color-white);
 }
 
 .btn-transparent {
@@ -330,15 +346,15 @@ a:hover {
   align-items: center;
   gap: 12px;
   background: transparent;
-  color: #565973;
+  color: var(--color-gray-700);
   border: none;
   padding-top: 10px;
   padding-bottom: 13px;
 }
 .btn-transparent:hover {
   text-decoration: none;
-  background: #565973;
-  color: #FFFFFF;
+  background: var(--color-gray-700);
+  color: var(--color-white);
 }
 
 .btn-red {
@@ -350,13 +366,13 @@ a:hover {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  background: #EF4444;
-  color: #FFFFFF;
+  background: var(--color-danger);
+  color: var(--color-gray-700);
   border: none;
 }
 .btn-red:hover {
   text-decoration: none;
-  background: #565973;
+  background: var(--color-gray-700);
   box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
 }
 
@@ -461,7 +477,7 @@ form .checkbox span.field-validation-error {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: #EF4444;
+  color: var(--color-danger);
 }
 form .checkbox-group {
   display: flex;
@@ -487,7 +503,7 @@ form .checkbox-group span.field-validation-error {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: #EF4444;
+  color: var(--color-danger);
 }
 form label {
   margin-bottom: 0.188rem;
@@ -496,33 +512,33 @@ form label {
 form input {
   padding: 1rem;
   border-radius: 0.5rem !important;
-  border: 0.063rem solid #D4D7E5;
+  border: 0.063rem solid var(--color-gray-400);
 }
 form input::placeholder {
   opacity: 0.4;
 }
 form input.input-validation-error {
-  border: 0.063rem solid #EF4444 !important;
-  color: #EF4444;
+  border: 0.063rem solid var(--color-danger) !important;
+  color: var(--color-danger);
 }
 form input.input-validation-error::placeholder {
-  color: #EF4444;
+  color: var(--color-danger);
 }
 form textarea {
   padding: 1rem;
   border-radius: 0.5rem !important;
-  border: 0.063rem solid #D4D7E5;
+  border: 0.063rem solid var(--color-gray-400);
   resize: none;
 }
 form textarea::placeholder {
   opacity: 0.4;
 }
 form textarea.input-validation-error {
-  border: 0.063rem solid #EF4444 !important;
-  color: #EF4444;
+  border: 0.063rem solid var(--color-danger) !important;
+  color: var(--color-danger);
 }
 form textarea.input-validation-error::placeholder {
-  color: #EF4444;
+  color: var(--color-danger);
 }
 form span.field-validation-error {
   position: absolute;
@@ -533,7 +549,7 @@ form span.field-validation-error {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
-  color: #EF4444;
+  color: var(--color-danger);
 }
 
 header {
@@ -681,6 +697,12 @@ body.menu-open {
     font-size: 56px !important;
   }
 }
+.light .showcase .container .content h1 {
+  color: var(--color-black);
+}
+.dark .showcase .container .content h1 {
+  color: var(--color-white);
+}
 .showcase .container .content p {
   margin: 20px 0 40px 0;
   line-height: 160%;
@@ -699,6 +721,12 @@ body.menu-open {
     font-size: 18px !important;
   }
 }
+.light .showcase .container .content p {
+  color: var(--color-gray-700);
+}
+.dark .showcase .container .content p {
+  color: var(--color-white);
+}
 .showcase .container .content .btn-theme-s {
   display: inline-block;
 }
@@ -711,6 +739,12 @@ body.menu-open {
     margin: 100px 0 30px 0;
     display: flex;
   }
+}
+.light .showcase .container .content h6 {
+  color: var(--color-black);
+}
+.dark .showcase .container .content h6 {
+  color: var(--color-white);
 }
 .showcase .container .content .brands {
   display: none;

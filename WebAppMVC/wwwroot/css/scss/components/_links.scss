@@ -1,6 +1,6 @@
 a {
     @include standard-text;
-    color: $theme;
+    color: var(--color-theme);
     text-decoration: none;
     transition: all 0.25s ease-in-out;
 
@@ -14,11 +14,19 @@ a {
     text-decoration: none;
     transition: color 0.25s ease-in-out;
 
+    .light & {
+        color: var(--color-black);
+    }
+
+    .dark & {
+        color: var(--color-white);
+    }
+
     &:hover,
     &:active,
     &:focus,
     .active {
-        color: $theme;
+        color: var(--color-theme);
         text-decoration: none;
     }
 }

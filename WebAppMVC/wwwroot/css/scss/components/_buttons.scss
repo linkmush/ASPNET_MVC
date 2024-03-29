@@ -9,72 +9,72 @@
     gap: 12px;
 }
 
-.btn-theme { 
+.btn-theme {
     @include button;
-    background: $theme;
-    color: $white;
+    background: var(--color-theme);
+    color: var(--color-white);
     border: none;
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
-        color: $white;
-    } 
+        background: var(--color-gray-700);
+        color: var(--color-white);
+    }
 }
 
 .btn-theme-s {
     @include button;
     @include theme-shadow;
-    background: $theme;
-    color: $white;
+    background: var(--color-theme);
+    color: var(--color-white);
     padding-top: 10px;
     padding-bottom: 13px;
 
     &:hover {
         @include theme-secondary-shadow;
         text-decoration: none;
-        background: $black;
-        color: $white;
-    } 
+        background: var(--color-black);
+        color: var(--color-white);
+    }
 }
 
 .btn-gray {
     @include button;
-    background: $gray-200;
-    color: $gray-800;
+    background: var(--color-gray-200);
+    color: var(--color-gray-800);
     border: none;
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
-        color: $white;
+        background: var(--color-gray-700);
+        color: var(--color-white);
     }
 }
 
 .btn-transparent {
     @include button;
     background: transparent;
-    color: $gray-700;
+    color: var(--color-gray-700);
     border: none;
     padding-top: 10px;
     padding-bottom: 13px;
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
-        color: $white;
+        background: var(--color-gray-700);
+        color: var(--color-white);
     }
 }
 
 .btn-red {
     @include button;
-    background: $danger;
-    color: $white;
+    background: var(--color-danger);
+    color: var(--color-gray-700);
     border: none;
 
     &:hover {
         text-decoration: none;
-        background: $gray-700;
+        background: var(--color-gray-700);
         @include shadow-s;
     }
 }

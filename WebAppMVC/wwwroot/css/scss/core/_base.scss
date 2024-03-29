@@ -1,8 +1,18 @@
+:root.light {
+    --text-color: var(--color-gray-700);
+    --background-color: var(--color-gray-000);
+}
+
+:root.dark {
+    --text-color: var(--color-white);
+    --background-color: var(--color-gray-900);
+}
+
 html, body {
     @include standard-text;
     font-size: 16px;
-    color: var(--color-gray-700);
-    background-color: var(--color-gray-000);
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 .text-xs { @include text-xs; }
