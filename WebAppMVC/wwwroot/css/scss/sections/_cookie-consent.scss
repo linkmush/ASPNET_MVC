@@ -1,0 +1,12 @@
+#cookie-consent {
+    background-color: var(--color-gray-400);
+
+    .container {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 40px;
+    }
+
+}

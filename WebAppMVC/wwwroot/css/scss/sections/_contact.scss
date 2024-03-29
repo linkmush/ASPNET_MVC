@@ -1,7 +1,7 @@
 .contact {
     position: relative;
     z-index: 1;
-    background-color: $gray-100;
+    background-color: var(--color-gray-100);
     padding-bottom: 50px;
 
     @include xl {
@@ -27,22 +27,24 @@
                 gap: 15px;
                 margin-bottom: 20px;
                 font-size: 14px;
-    
+
                 i {
-                    color: $gray-600;
+                    color: var(--color-gray-600);
                 }
+
                 a {
                     text-decoration: none;
-                    color: $gray-600;
-    
+                    color: var(--color-gray-600);
+
                     &:hover {
                         transition: all 0.15s ease-in-out;
                         cursor: pointer;
-                        color: $info;
+                        color: var(--color-info);
                     }
                 }
+
                 .active {
-                    color: $theme;
+                    color: var(--color-theme);
                 }
             }
 
@@ -77,16 +79,16 @@
                     display: flex;
                     justify-content: center;
                     padding-top: 40px;
-    
+
                     @include lg {
                         gap: 30px;
                     }
-    
+
                     .icon {
                         display: none;
                         align-items: center;
                         justify-content: center;
-                        background-color: $white;
+                        background-color: var(--color-white);
                         width: 60px;
                         height: 60px;
                         border-radius: 100%;
@@ -94,18 +96,19 @@
                         @include lg {
                             display: flex;
                         }
-                        
+
                         i {
-                            color: $theme;
+                            color: var(--color-theme);
                             font-size: 1.3em;
                         }
                     }
-    
+
                     .text {
                         max-width: 350px;
-    
+
                         a {
                             font-weight: 600;
+
                             i {
                                 margin-left: 8px;
                                 font-weight: 600;
@@ -119,7 +122,7 @@
         .contact-form {
             flex: 1;
             @include shadow-l;
-            background-color: $white;
+            background-color: var(--color-white);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -137,11 +140,11 @@
                 }
 
                 label {
-                    color: $gray-900;
+                    color: var(--color-gray-900);
                     font-weight: 600;
-                    
+
                     span {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                     }
                 }
 
@@ -150,7 +153,7 @@
                     border-radius: 8px;
 
                     &::placeholder {
-                        color: $gray-500;
+                        color: var(--color-gray-500);
                     }
 
                     &:focus {
@@ -161,8 +164,9 @@
 
                 textarea {
                     resize: none;
+
                     &::placeholder {
-                        color: $gray-500;
+                        color: var(--color-gray-500);
                     }
 
                     &:focus {
@@ -174,7 +178,7 @@
                 select {
                     padding: 10px 15px;
                     border-radius: 8px;
-                    color: $gray-500;
+                    color: var(--color-gray-500);
 
                     &:focus {
                         @include theme-secondary-shadow;

@@ -4,7 +4,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%; 
+        height: 100%;
 
         .form-square-box {
             display: flex;
@@ -18,7 +18,7 @@
                 display: flex;
                 flex-direction: column;
                 width: 80%;
-    
+
                 .header-signup {
                     display: flex;
                     flex-direction: row;
@@ -27,7 +27,6 @@
                     a {
                         text-decoration: underline;
                     }
-
                 }
             }
 
@@ -40,11 +39,11 @@
                 .form-row {
                     display: block;
                 }
-        
+
                 .form-row label {
                     display: block;
                     margin-bottom: 5px;
-                    color: $black;
+                    color: var(--color-black);
                     font-weight: 700;
                 }
 
@@ -52,9 +51,9 @@
                     width: 100%;
                     padding: 8px;
                     box-sizing: border-box;
-                    border: 1px solid $gray-400;
+                    border: 1px solid var(--color-gray-400);
                     border-radius: 8px;
-                    color: $gray-400;
+                    color: var(--color-gray-400);
                 }
 
                 .checkbox-input {
@@ -71,7 +70,7 @@
                     justify-content: center;
                     align-items: center;
                     margin-top: 20px;
-        
+
                     a {
                         font-weight: 700;
                     }

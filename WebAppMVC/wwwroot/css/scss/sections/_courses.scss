@@ -10,12 +10,12 @@
 
             a {
                 text-decoration: none;
-                color: $gray-600;
+                color: var(--color-gray-600);
 
                 &:hover {
                     transition: all 0.15s ease-in-out;
                     cursor: pointer;
-                    color: $info;
+                    color: var(--color-info);
                 }
             }
         }
@@ -155,12 +155,12 @@
                     }
 
                     .creator {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                     }
 
                     .price {
                         font-weight: 700;
-                        color: $theme;
+                        color: var(--color-theme);
                         border-bottom: 1px solid #DAD9D3;
                         padding-bottom: 15px;
 
@@ -168,7 +168,7 @@
                             color: red; // Set the color to red for the discounted price
 
                             del {
-                                color: $gray-600;
+                                color: var(--color-gray-600);
                                 font-weight: 400;
                             }
                         }
@@ -180,12 +180,12 @@
                         gap: 5px;
 
                         .fa-regular {
-                            color: $gray-600;
+                            color: var(--color-gray-600);
                             margin-top: 3px;
                         }
 
                         p {
-                            color: $gray-600;
+                            color: var(--color-gray-600);
                         }
 
                         .thumbs-up {
@@ -224,7 +224,7 @@
                 &.active,
                 &:hover {
                     color: #FFFFFF;
-                    background-color: $info;
+                    background-color: var(--color-info);
                 }
             }
         }
@@ -232,7 +232,7 @@
         .work-section {
             display: flex;
             justify-content: center;
-            background-color: $gray-100;
+            background-color: var(--color-gray-100);
             align-items: center;
             gap: 80px;
 
@@ -240,17 +240,17 @@
 
                 h5 {
                     @include h6;
-                    color: $gray-700;
+                    color: var(--color-gray-700);
                     margin-top: 50px;
 
                     @include md {
                         @include h5;
-                        color: $gray-700;
+                        color: var(--color-gray-700);
                     }
 
                     @include xl {
                         @include h5;
-                        color: $gray-700;
+                        color: var(--color-gray-700);
                     }
                 }
 

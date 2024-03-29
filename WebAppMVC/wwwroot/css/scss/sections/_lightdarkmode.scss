@@ -14,15 +14,15 @@
         }
 
         .dark-mode {
-            background-color: $gray-900;
+            background-color: var(--color-gray-900);
             width: 50%;
-            border-right: 2px solid $theme;
+            border-right: 2px solid var(--color-theme);
             display: flex;
             flex-direction: column;
             align-items: end;
 
             h1 {
-                color: $white;
+                color: var(--color-white);
                 text-align: end;
                 margin-right: 2%;
                 margin-top: 15%;
@@ -36,9 +36,9 @@
         }
 
         .light-mode {
-            background-color: $white;
+            background-color: var(--color-white);
             width: 50%;
-            border-left: 2px solid $theme;
+            border-left: 2px solid var(--color-theme);
 
             h1 {
                 text-align: start;

@@ -1,19 +1,19 @@
 ﻿const toggleMenu = () => {
-    document.getElementById('menu').classList.toggle('hide');
-    document.getElementById('account-buttons').classList.toggle('hide');
-}
+    const menu = document.getElementById('menu');
+    const accountButtons = document.getElementById('account-buttons');
+
+    menu.classList.toggle('hide');
+    accountButtons.classList.toggle('hide');
+    document.body.classList.toggle('menu-open');
+};
 
 const checkScreenSize = () => {
     if (window.innerWidth >= 1200) {
         document.getElementById('menu').classList.remove('hide');
-        document.getElementById('account-buttons').classList.remove('hide')
+        document.getElementById('account-buttons').classList.remove('hide');
     } else {
-        if (!document.getElementById('menu').classList.contains('hide')) {
-            document.getElementById('menu').classList.add('hide');
-        }
-        if (!document.getElementById('account-buttons').classList.contains('hide')) {
-            document.getElementById('account-buttons').classList.add('hide');
-        }
+        document.getElementById('menu').classList.add('hide');
+        document.getElementById('account-buttons').classList.add('hide');
     }
 };
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sw.addEventListener('change', function () {
         let theme = this.checked ? "dark" : "light"
 
-        fetch(`/settings/changetheme?mode=${theme}`)
+        fetch(`/settings/ChangeTheme?mode=${theme}`)
             .then(res => {
                 if (res.ok)
                     window.location.reload()

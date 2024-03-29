@@ -42,26 +42,26 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    background-color: $white;
-                    border: 1px solid $gray-300;
+                    background-color: var(--color-white);
+                    border: 1px solid var(--color-gray-300);
                     border-radius: 100%;
                     width: 40px;
                     height: 40px;
-    
+
                     i {
-                        color: $gray-800;
+                        color: var(--color-gray-800);
                         font-size: 16px;
-                        font-weight: 600;   
+                        font-weight: 600;
                     }
-    
+
                     &:hover {
                         text-decoration: none;
-                        background: $gray-600;
-    
+                        background: var(--color-gray-600);
+
                         i {
-                            color: $white;
+                            color: var(--color-white);
                         }
-                    } 
+                    }
                 }
             }
 
@@ -85,9 +85,9 @@
                     padding-top: 10px;
                     padding-bottom: 10px;
                     margin-left: 20px;
-    
+
                     i {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                         margin-right: 10px;
                     }
                 }
@@ -95,7 +95,6 @@
         }
 
         .box-savedcourses {
-
             display: flex;
             flex-direction: column;
             margin-top: 50px;
@@ -103,7 +102,7 @@
 
             @include lg {
                 padding: 50px 100px;
-                border-left: 1px solid $gray-300;
+                border-left: 1px solid var(--color-gray-300);
             }
 
             .saved-header {
@@ -122,8 +121,8 @@
                     &:hover {
                         text-decoration: none;
                         background-color: red;
-                        color: $white;
-                    } 
+                        color: var(--color-white);
+                    }
                 }
             }
 
@@ -131,69 +130,68 @@
                 display: grid;
                 grid-template-columns: auto;
                 gap: 25px;
-    
+
                 @include md {
                     display: grid;
                     grid-template-columns: auto auto;
                     gap: 25px;
                 }
-    
+
                 @include lg {
                     display: grid;
                     grid-template-columns: auto auto;
                     gap: 30px;
                 }
-    
+
                 .grid-item {
                     border: 1px solid #DAD9D3;
                     border-radius: 15px;
                     overflow: hidden;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                     transition: box-shadow 0.3s ease-in-out;
-    
+
                     &:hover {
                         box-shadow: 0 6px 12px rgba(0, 0, 0, 10);
                     }
-                    
+
                     img {
                         width: 100%;
                         height: auto;
                     }
-    
+
                     .text-info {
                         text-align: left;
                         padding: 20px;
-    
+
                         h5 {
                             margin-top: 10px;
                         }
-        
+
                         .creator {
-                            color: $gray-600;
+                            color: var(--color-gray-600);
                         }
-    
+
                         .price {
                             font-weight: 700;
-                            color: $theme;
-    
+                            color: var(--color-theme);
                             border-bottom: 1px solid #DAD9D3;
                             padding-bottom: 15px;
                         }
-    
+
                         .clock {
                             display: flex;
                             flex-direction: row;
                             gap: 5px;
-    
+
                             .fa-regular {
-                                color: $gray-600;
+                                color: var(--color-gray-600);
                                 margin-top: 3px;
                             }
-    
+
                             p {
-                                color: $gray-600;
+                                color: var(--color-gray-600);
                             }
-    
+
                             .thumbs-up {
                                 display: flex;
                                 flex-direction: row;

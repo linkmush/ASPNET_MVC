@@ -5,7 +5,7 @@
     margin-bottom: 70px;
 
     aside {
-        border-right: 1px solid $gray-300;
+        border-right: 1px solid var(--color-gray-300);
         padding-right: 20px;
 
         .profile-info {
@@ -55,7 +55,7 @@
                 padding: 1rem;
 
                 h5 {
-                    color: $theme;
+                    color: var(--color-theme);
                 }
 
                 .content {
@@ -96,7 +96,7 @@
             margin-top: 20px;
 
             h5 {
-                color: $theme;
+                color: var(--color-theme);
             }
 
             p {
@@ -110,7 +110,7 @@
                     gap: 10px;
 
                     .delete-account-label {
-                        color: $gray-700;
+                        color: var(--color-gray-700);
                         font-weight: 400;
                     }
                 }

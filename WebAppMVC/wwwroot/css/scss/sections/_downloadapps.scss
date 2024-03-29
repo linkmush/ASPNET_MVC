@@ -1,11 +1,11 @@
 .download-apps {
-    background-color: $gray-100;
+    background-color: var(--color-gray-100);
 
     .container {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: $gray-200;
+        background-color: var(--color-gray-200);
         flex: 1;
         padding: 50px 0;
 
@@ -54,21 +54,22 @@
 
                 div {
                     .light-text {
-                        color: $gray-600;
+                        color: var(--color-gray-600);
                         margin-bottom: 0px;
                     }
 
                     .stars {
-                        color: $warning;
+                        color: var(--color-warning);
                         margin-bottom: 20px;
                     }
                 }
-                
+
                 a {
                     @include xl {
                         align-self: end;
                         margin-bottom: 20px;
                     }
+
                     img {
                         max-width: 180px;
                         height: auto;

@@ -16,7 +16,7 @@
         }
 
         .description {
-            color: $gray-600;
+            color: var(--color-gray-600);
 
             @include lg {
                 margin: 1% 20% 5% 20%;
@@ -53,7 +53,7 @@
 
                 p {
                     margin-top: 20px;
-                    color: $gray-700; 
+                    color: var(--color-gray-700);
                 }
 
                 &:hover {

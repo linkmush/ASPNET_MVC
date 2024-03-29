@@ -45,9 +45,9 @@
                 @include xl {
                     margin: 0;
                 }
-                
+
                 i {
-                    color: $theme;
+                    color: var(--color-theme);
                     align-self: center;
                 }
 
@@ -66,7 +66,7 @@
             .btn-theme-s {
                 display: inline-block;
                 margin-top: 20px;
-                
+
                 i {
                     margin-left: 5px;
                 }

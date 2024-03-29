@@ -16,7 +16,7 @@
                     display: block;
                 }
             }
-    
+
             .albert-text {
                 display: flex;
                 flex-direction: column;
@@ -38,11 +38,11 @@
                 }
 
                 p {
-                    color: $gray-500;
+                    color: var(--color-gray-500);
 
                     @media (max-width: 602px) {
                         @include text-xs;
-                        color: $gray-500;
+                        color: var(--color-gray-500);
                     }
                 }
 
@@ -53,7 +53,6 @@
                         @include text-lead;
                         color: #ffff;
                     }
-
                 }
 
                 .albert-buttons {
@@ -68,8 +67,8 @@
                         &:hover {
                             text-decoration: none;
                             background: #4C82F7;
-                            color: $white;
-                        } 
+                            color: var(--color-white);
+                        }
                     }
 
                     .btn-gray {
@@ -79,11 +78,11 @@
                         &:hover {
                             box-shadow: none;
                             text-decoration: none;
-                            background:  red;
-                            color: $white;
-                        } 
+                            background: red;
+                            color: var(--color-white);
+                        }
                     }
-                } 
+                }
             }
         }
     }

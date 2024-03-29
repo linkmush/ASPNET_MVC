@@ -57,7 +57,7 @@
                 .border-line {
                     border-top: 1px solid #ccc;
                     margin-top: 10px;
-                    margin-bottom: 10px; 
+                    margin-bottom: 10px;
                 }
 
                 .external-providers {
@@ -77,13 +77,13 @@
                         gap: 15px;
 
                         .btn-theme-s {
-                            background-color: $gray-200;
-                            color: $gray-800;
+                            background-color: var(--color-gray-200);
+                            color: var(--color-gray-800);
 
                             &:hover {
                                 text-decoration: none;
-                                background: $gray-700;
-                                color: $white;
+                                background: var(--color-gray-700);
+                                color: var(--color-white);
                             }
                         }
                     }
