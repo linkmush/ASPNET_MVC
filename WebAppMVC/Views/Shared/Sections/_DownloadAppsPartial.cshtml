@@ -1,5 +1,10 @@
 ﻿@model DownloadAppsViewModel
 
+@{
+    var themeMode = Context.Request.Cookies["ThemeMode"] ?? "light";
+    var isDark = (themeMode == "dark") ? true : false;
+}
+
 <section id="@Model.Id" class="download-apps">
     <div class="container">
         <img class="phone-app" src="@Model.PhoneApp.ImageUrl" alt="@Model.PhoneApp.AltText">
@@ -25,11 +30,11 @@
                         <a href="#">
                             @if (apps.LightText == "App Store")
                             {
-                                <img src="@Model.AppStore.ImageUrl" alt="@Model.AppStore.AltText">
+                                <img src="~/images/@(isDark ? "appstoredark.svg" : "appstore.svg" )" alt="@Model.AppStore.AltText">
                             }
                             else if (apps.LightText == "Google Play")
                             {
-                                <img src="@Model.GooglePlay.ImageUrl" alt="@Model.GooglePlay.AltText">
+                                <img src="~/images/@(isDark ? "googleplaydark.svg" : "googleplay.svg" )" alt="@Model.GooglePlay.AltText">
                             }
                         </a>
                     </div>

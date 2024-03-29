@@ -77,8 +77,6 @@ public class HomeIndexViewModel
                 new AppViewModel { LightText = "App Store", Stars = { "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star" }, SmallTitle = "Editor's Choice", Text = "rating 4.7, 187K+ reviews" },
                 new AppViewModel { LightText = "Google Play", Stars = { "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star", "fa-solid fa-star" }, SmallTitle = "App of the Day", Text = "rating 4.8, 187K+ reviews" }
             ],
-        AppStore = new ImageViewModel { ImageUrl = "Images/appstore.svg", AltText = "Button to appstore" },
-        GooglePlay = new ImageViewModel { ImageUrl = "Images/googleplay.svg", AltText = "Button to Google Play" },
     };
 
     public IntegrateToolsViewModel IntegrateTools { get; set; } = new IntegrateToolsViewModel

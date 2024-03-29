@@ -35,6 +35,10 @@
         text-decoration: none;
         background: var(--color-black);
         color: var(--color-white);
+
+        .dark & {
+            background: var(--color-gray-700);
+        }
     }
 }
 
@@ -43,6 +47,10 @@
     background: var(--color-gray-200);
     color: var(--color-gray-800);
     border: none;
+
+    .dark & {
+        color: var(--color-black);
+    }
 
     &:hover {
         text-decoration: none;
@@ -157,9 +165,13 @@
     background-color: $gray-200;
     color: $gray-800;
 
+    .dark & {
+        background-color: var(--color-gray-800);
+    }
+
     &:hover {
         text-decoration: none;
         background: $gray-700;
         color: $white;
-    } 
+    }
 }

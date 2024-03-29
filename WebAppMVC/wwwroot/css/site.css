@@ -18,6 +18,9 @@ html, body {
   color: var(--text-color);
   background-color: var(--background-color);
 }
+.dark html, .dark body {
+  color: var(--color-white);
+}
 
 .text-xs {
   line-height: 160%;
@@ -25,6 +28,9 @@ html, body {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
+}
+.dark .text-xs {
+  color: var(--color-white);
 }
 
 .text-s {
@@ -34,6 +40,9 @@ html, body {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
 }
+.dark .text-s {
+  color: var(--color-white);
+}
 
 .text-m {
   line-height: 160%;
@@ -41,6 +50,9 @@ html, body {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
+}
+.dark .text-m {
+  color: var(--color-white);
 }
 
 .text-lg {
@@ -50,6 +62,9 @@ html, body {
   font-family: "Manrope", sans-serif;
   font-size: 18px !important;
 }
+.dark .text-lg {
+  color: var(--color-white);
+}
 
 .text-xl {
   line-height: 160%;
@@ -58,6 +73,9 @@ html, body {
   font-family: "Manrope", sans-serif;
   font-size: 20px !important;
 }
+.dark .text-xl {
+  color: var(--color-white);
+}
 
 .text-lead {
   line-height: 160%;
@@ -65,6 +83,9 @@ html, body {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 24px !important;
+}
+.dark .text-lead {
+  color: var(--color-white);
 }
 
 .d1 {
@@ -76,6 +97,12 @@ html, body {
   color: var(--color-gray-900);
   font-size: 80px !important;
 }
+.dark .d1 {
+  color: var(--color-white);
+}
+.dark .d1 {
+  color: var(--color-white);
+}
 
 .d2 {
   line-height: 160%;
@@ -85,6 +112,12 @@ html, body {
   font-weight: 800;
   color: var(--color-gray-900);
   font-size: 72px !important;
+}
+.dark .d2 {
+  color: var(--color-white);
+}
+.dark .d2 {
+  color: var(--color-white);
 }
 
 .d3 {
@@ -96,6 +129,12 @@ html, body {
   color: var(--color-gray-900);
   font-size: 64px !important;
 }
+.dark .d3 {
+  color: var(--color-white);
+}
+.dark .d3 {
+  color: var(--color-white);
+}
 
 .d4 {
   line-height: 160%;
@@ -105,6 +144,12 @@ html, body {
   font-weight: 800;
   color: var(--color-gray-900);
   font-size: 56px !important;
+}
+.dark .d4 {
+  color: var(--color-white);
+}
+.dark .d4 {
+  color: var(--color-white);
 }
 
 .d5 {
@@ -116,6 +161,12 @@ html, body {
   color: var(--color-gray-900);
   font-size: 48px !important;
 }
+.dark .d5 {
+  color: var(--color-white);
+}
+.dark .d5 {
+  color: var(--color-white);
+}
 
 .d6 {
   line-height: 160%;
@@ -125,6 +176,12 @@ html, body {
   font-weight: 800;
   color: var(--color-gray-900);
   font-size: 42px !important;
+}
+.dark .d6 {
+  color: var(--color-white);
+}
+.dark .d6 {
+  color: var(--color-white);
 }
 
 h1, .h1 {
@@ -136,6 +193,12 @@ h1, .h1 {
   color: var(--color-gray-900);
   font-size: 40px !important;
 }
+.dark h1, .dark .h1 {
+  color: var(--color-white);
+}
+.dark h1, .dark .h1 {
+  color: var(--color-white);
+}
 
 h2, .h2 {
   line-height: 160%;
@@ -145,6 +208,12 @@ h2, .h2 {
   font-weight: 800;
   color: var(--color-gray-900);
   font-size: 32px !important;
+}
+.dark h2, .dark .h2 {
+  color: var(--color-white);
+}
+.dark h2, .dark .h2 {
+  color: var(--color-white);
 }
 
 h3, .h3 {
@@ -156,6 +225,12 @@ h3, .h3 {
   color: var(--color-gray-900);
   font-size: 28px !important;
 }
+.dark h3, .dark .h3 {
+  color: var(--color-white);
+}
+.dark h3, .dark .h3 {
+  color: var(--color-white);
+}
 
 h4, .h4 {
   line-height: 160%;
@@ -165,6 +240,12 @@ h4, .h4 {
   font-weight: 800;
   color: var(--color-gray-900);
   font-size: 24px !important;
+}
+.dark h4, .dark .h4 {
+  color: var(--color-white);
+}
+.dark h4, .dark .h4 {
+  color: var(--color-white);
 }
 
 h5, .h5 {
@@ -176,6 +257,12 @@ h5, .h5 {
   color: var(--color-gray-900);
   font-size: 20px !important;
 }
+.dark h5, .dark .h5 {
+  color: var(--color-white);
+}
+.dark h5, .dark .h5 {
+  color: var(--color-white);
+}
 
 h6, .h6 {
   line-height: 160%;
@@ -185,6 +272,12 @@ h6, .h6 {
   font-weight: 800;
   color: var(--color-gray-900);
   font-size: 16px !important;
+}
+.dark h6, .dark .h6 {
+  color: var(--color-white);
+}
+.dark h6, .dark .h6 {
+  color: var(--color-white);
 }
 
 .wrapper {
@@ -249,6 +342,9 @@ a {
   text-decoration: none;
   transition: all 0.25s ease-in-out;
 }
+.dark a {
+  color: var(--color-white);
+}
 a:hover {
   text-decoration: underline;
 }
@@ -263,6 +359,12 @@ a:hover {
   font-weight: 600 !important;
   text-decoration: none;
   transition: color 0.25s ease-in-out;
+}
+.dark .menu-link {
+  color: var(--color-white);
+}
+.dark .menu-link {
+  color: var(--color-white);
 }
 .light .menu-link {
   color: var(--color-black);
@@ -316,6 +418,9 @@ a:hover {
   background: var(--color-black);
   color: var(--color-white);
 }
+.dark .btn-theme-s:hover {
+  background: var(--color-gray-700);
+}
 
 .btn-gray {
   border-radius: 6px;
@@ -329,6 +434,9 @@ a:hover {
   background: var(--color-gray-200);
   color: var(--color-gray-800);
   border: none;
+}
+.dark .btn-gray {
+  color: var(--color-black);
 }
 .btn-gray:hover {
   text-decoration: none;
@@ -389,6 +497,12 @@ a:hover {
   font-size: 16px;
   color: var(--color-gray-800);
   font-weight: 600 !important;
+}
+.dark .btn-switch label {
+  color: var(--color-white);
+}
+.dark .btn-switch label {
+  color: var(--color-white);
 }
 .btn-switch .switch {
   position: relative;
@@ -453,6 +567,12 @@ a:hover {
   background-color: #EFF2FC;
   color: #33354D;
 }
+.dark .btn-social {
+  color: var(--color-white);
+}
+.dark .btn-social {
+  background-color: var(--color-gray-800);
+}
 .btn-social:hover {
   text-decoration: none;
   background: #565973;
@@ -479,6 +599,9 @@ form .checkbox span.field-validation-error {
   font-size: 14px !important;
   color: var(--color-danger);
 }
+.dark form .checkbox span.field-validation-error {
+  color: var(--color-white);
+}
 form .checkbox-group {
   display: flex;
   justify-content: flex-start;
@@ -504,6 +627,9 @@ form .checkbox-group span.field-validation-error {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   color: var(--color-danger);
+}
+.dark form .checkbox-group span.field-validation-error {
+  color: var(--color-white);
 }
 form label {
   margin-bottom: 0.188rem;
@@ -550,6 +676,9 @@ form span.field-validation-error {
   font-family: "Manrope", sans-serif;
   font-size: 14px !important;
   color: var(--color-danger);
+}
+.dark form span.field-validation-error {
+  color: var(--color-white);
 }
 
 header {
@@ -686,6 +815,12 @@ body.menu-open {
   color: var(--color-gray-900);
   font-size: 32px !important;
 }
+.dark .showcase .container .content h1 {
+  color: var(--color-white);
+}
+.dark .showcase .container .content h1 {
+  color: var(--color-white);
+}
 @media (min-width: 992px) {
   .showcase .container .content h1 {
     line-height: 160%;
@@ -696,9 +831,12 @@ body.menu-open {
     color: var(--color-gray-900);
     font-size: 56px !important;
   }
-}
-.light .showcase .container .content h1 {
-  color: var(--color-black);
+  .dark .showcase .container .content h1 {
+    color: var(--color-white);
+  }
+  .dark .showcase .container .content h1 {
+    color: var(--color-white);
+  }
 }
 .dark .showcase .container .content h1 {
   color: var(--color-white);
@@ -711,6 +849,9 @@ body.menu-open {
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
+.dark .showcase .container .content p {
+  color: var(--color-white);
+}
 @media (min-width: 992px) {
   .showcase .container .content p {
     margin: 40px 0 50px 0;
@@ -720,9 +861,9 @@ body.menu-open {
     font-family: "Manrope", sans-serif;
     font-size: 18px !important;
   }
-}
-.light .showcase .container .content p {
-  color: var(--color-gray-700);
+  .dark .showcase .container .content p {
+    color: var(--color-white);
+  }
 }
 .dark .showcase .container .content p {
   color: var(--color-white);
@@ -739,9 +880,6 @@ body.menu-open {
     margin: 100px 0 30px 0;
     display: flex;
   }
-}
-.light .showcase .container .content h6 {
-  color: var(--color-black);
 }
 .dark .showcase .container .content h6 {
   color: var(--color-white);
@@ -762,6 +900,9 @@ body.menu-open {
 #features {
   background: var(--color-gray-100);
   padding: 80px 0;
+}
+.dark #features {
+  background: var(--color-gray-800);
 }
 #features .container {
   display: grid;
@@ -801,6 +942,12 @@ body.menu-open {
   background: var(--color-white);
   box-shadow: 0px 4px 9px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 20px -1px rgba(19, 16, 34, 0.05);
 }
+.dark #features .container .tool-features .box:hover h5 {
+  color: var(--color-black);
+}
+.dark #features .container .tool-features .box:hover p {
+  color: var(--color-black);
+}
 #features .container .tool-features .box img {
   padding: 10px;
   background-color: var(--color-gray-100);
@@ -816,12 +963,21 @@ body.menu-open {
   color: var(--color-gray-900);
   font-size: 20px !important;
 }
+.dark #features .container .tool-features .box h5 {
+  color: var(--color-white);
+}
+.dark #features .container .tool-features .box h5 {
+  color: var(--color-white);
+}
 #features .container .tool-features .box p {
   line-height: 160%;
   font-weight: 400;
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
+}
+.dark #features .container .tool-features .box p {
+  color: var(--color-white);
 }
 
 .light-dark-mode .container {
@@ -866,6 +1022,9 @@ body.menu-open {
   text-align: start;
   margin-left: 2%;
   margin-top: 15%;
+}
+.dark .light-dark-mode .container .light-mode h1 {
+  color: var(--color-black);
 }
 .light-dark-mode .container .light-mode img {
   max-width: 538px;
@@ -950,6 +1109,9 @@ body.menu-open {
 .download-apps {
   background-color: var(--color-gray-100);
 }
+.dark .download-apps {
+  background: var(--color-gray-800);
+}
 .download-apps .container {
   display: flex;
   align-items: center;
@@ -957,6 +1119,9 @@ body.menu-open {
   background-color: var(--color-gray-200);
   flex: 1;
   padding: 50px 0;
+}
+.dark .download-apps .container {
+  background: var(--color-gray-700);
 }
 @media (min-width: 1200px) {
   .download-apps .container {
@@ -992,6 +1157,12 @@ body.menu-open {
   font-size: 32px !important;
   margin: 30px 0;
 }
+.dark .download-apps .container .apps h1 {
+  color: var(--color-white);
+}
+.dark .download-apps .container .apps h1 {
+  color: var(--color-white);
+}
 @media (min-width: 992px) {
   .download-apps .container .apps h1 {
     line-height: 160%;
@@ -1002,6 +1173,12 @@ body.menu-open {
     color: var(--color-gray-900);
     font-size: 40px !important;
     margin-bottom: 50px;
+  }
+  .dark .download-apps .container .apps h1 {
+    color: var(--color-white);
+  }
+  .dark .download-apps .container .apps h1 {
+    color: var(--color-white);
   }
 }
 .download-apps .container .apps .app-name {
@@ -1053,6 +1230,12 @@ body.menu-open {
   color: var(--color-gray-900);
   font-size: 32px !important;
 }
+.dark .integrate-tools .container h1 {
+  color: var(--color-white);
+}
+.dark .integrate-tools .container h1 {
+  color: var(--color-white);
+}
 @media (min-width: 992px) {
   .integrate-tools .container h1 {
     line-height: 160%;
@@ -1062,6 +1245,12 @@ body.menu-open {
     font-weight: 800;
     color: var(--color-gray-900);
     font-size: 40px !important;
+  }
+  .dark .integrate-tools .container h1 {
+    color: var(--color-white);
+  }
+  .dark .integrate-tools .container h1 {
+    color: var(--color-white);
   }
 }
 .integrate-tools .container .description {
@@ -1107,6 +1296,9 @@ body.menu-open {
   margin-top: 20px;
   color: var(--color-gray-700);
 }
+.dark .integrate-tools .container .tools .box p {
+  color: var(--color-gray-400);
+}
 .integrate-tools .container .tools .box:hover {
   transition: all 0.15s ease-in-out;
   cursor: pointer;
@@ -1114,9 +1306,15 @@ body.menu-open {
   border-radius: 8px;
   box-shadow: 0px 2px 6.4px -1px rgba(19, 16, 34, 0.03), 0px 4.4px 12px -1px rgba(19, 16, 34, 0.06);
 }
+.dark .integrate-tools .container .tools .box:hover {
+  background-color: var(--color-gray-700);
+}
 
 .newsletter {
   background-color: var(--color-gray-100);
+}
+.dark .newsletter {
+  background-color: var(--color-gray-800);
 }
 .newsletter .container {
   display: flex;
@@ -1147,6 +1345,12 @@ body.menu-open {
   font-size: 32px !important;
   text-align: center;
 }
+.dark .newsletter .container .content h1 {
+  color: var(--color-white);
+}
+.dark .newsletter .container .content h1 {
+  color: var(--color-white);
+}
 @media (min-width: 992px) {
   .newsletter .container .content h1 {
     line-height: 160%;
@@ -1157,6 +1361,12 @@ body.menu-open {
     color: var(--color-gray-900);
     font-size: 40px !important;
     text-align: start;
+  }
+  .dark .newsletter .container .content h1 {
+    color: var(--color-white);
+  }
+  .dark .newsletter .container .content h1 {
+    color: var(--color-white);
   }
 }
 .newsletter .container .content img {
@@ -1197,6 +1407,9 @@ body.menu-open {
 .newsletter .container #registerNewsletter .choose-newsletter .checkboxes .form-check .form-check-input {
   border: 2px solid var(--color-gray-500);
 }
+.dark .newsletter .container #registerNewsletter .choose-newsletter .checkboxes .form-check .form-check-input {
+  background-color: var(--color-gray-700);
+}
 .newsletter .container #registerNewsletter .choose-newsletter .checkboxes .form-check .form-check-input:checked {
   background-color: var(--color-theme);
   border-color: var(--color-theme);
@@ -1233,6 +1446,9 @@ body.menu-open {
   outline: none;
   border: 1px solid var(--color-gray-400);
   width: 100%;
+}
+.dark .newsletter .container #registerNewsletter .subscribe input {
+  background: var(--color-gray-800);
 }
 @media (min-width: 992px) {
   .newsletter .container #registerNewsletter .subscribe input {
@@ -1277,6 +1493,9 @@ footer {
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
   color: var(--color-gray-600);
+}
+.dark footer {
+  color: var(--color-white);
 }
 footer .container {
   text-align: center;
@@ -1396,6 +1615,12 @@ footer .container .social-media {
   color: var(--color-gray-900);
   font-size: 28px !important;
 }
+.dark .account-details .container .details-preview h2 {
+  color: var(--color-white);
+}
+.dark .account-details .container .details-preview h2 {
+  color: var(--color-white);
+}
 @media (min-width: 992px) {
   .account-details .container .details-preview h2 {
     line-height: 160%;
@@ -1405,6 +1630,12 @@ footer .container .social-media {
     font-weight: 800;
     color: var(--color-gray-900);
     font-size: 32px !important;
+  }
+  .dark .account-details .container .details-preview h2 {
+    color: var(--color-white);
+  }
+  .dark .account-details .container .details-preview h2 {
+    color: var(--color-white);
   }
 }
 .account-details .container .details-preview form h5 {
@@ -1550,6 +1781,12 @@ footer .container .social-media {
   color: var(--color-gray-900);
   font-size: 28px !important;
 }
+.dark .account-security .container .security-preview h2 {
+  color: var(--color-white);
+}
+.dark .account-security .container .security-preview h2 {
+  color: var(--color-white);
+}
 @media (min-width: 992px) {
   .account-security .container .security-preview h2 {
     line-height: 160%;
@@ -1559,6 +1796,12 @@ footer .container .social-media {
     font-weight: 800;
     color: var(--color-gray-900);
     font-size: 32px !important;
+  }
+  .dark .account-security .container .security-preview h2 {
+    color: var(--color-white);
+  }
+  .dark .account-security .container .security-preview h2 {
+    color: var(--color-white);
   }
 }
 .account-security .container .security-preview form h5 {
@@ -1822,12 +2065,21 @@ footer .container .social-media {
   color: var(--color-gray-900);
   font-size: 48px !important;
 }
+.dark .not-found .container h1 {
+  color: var(--color-white);
+}
+.dark .not-found .container h1 {
+  color: var(--color-white);
+}
 .not-found .container p {
   line-height: 160%;
   font-weight: 400;
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 20px !important;
+}
+.dark .not-found .container p {
+  color: var(--color-white);
 }
 .not-found .container a {
   max-width: fit-content;
@@ -2043,6 +2295,12 @@ footer .container .social-media {
   color: var(--color-gray-700);
   margin-top: 50px;
 }
+.dark .courses .container .work-section .work-text h5 {
+  color: var(--color-white);
+}
+.dark .courses .container .work-section .work-text h5 {
+  color: var(--color-white);
+}
 @media (min-width: 768px) {
   .courses .container .work-section .work-text h5 {
     line-height: 160%;
@@ -2053,6 +2311,12 @@ footer .container .social-media {
     color: var(--color-gray-900);
     font-size: 20px !important;
     color: var(--color-gray-700);
+  }
+  .dark .courses .container .work-section .work-text h5 {
+    color: var(--color-white);
+  }
+  .dark .courses .container .work-section .work-text h5 {
+    color: var(--color-white);
   }
 }
 @media (min-width: 1200px) {
@@ -2065,6 +2329,12 @@ footer .container .social-media {
     color: var(--color-gray-900);
     font-size: 20px !important;
     color: var(--color-gray-700);
+  }
+  .dark .courses .container .work-section .work-text h5 {
+    color: var(--color-white);
+  }
+  .dark .courses .container .work-section .work-text h5 {
+    color: var(--color-white);
   }
 }
 .courses .container .work-section .work-text h1 {
@@ -2076,6 +2346,12 @@ footer .container .social-media {
   color: var(--color-gray-900);
   font-size: 28px !important;
 }
+.dark .courses .container .work-section .work-text h1 {
+  color: var(--color-white);
+}
+.dark .courses .container .work-section .work-text h1 {
+  color: var(--color-white);
+}
 @media (min-width: 768px) {
   .courses .container .work-section .work-text h1 {
     line-height: 160%;
@@ -2085,6 +2361,12 @@ footer .container .social-media {
     font-weight: 800;
     color: var(--color-gray-900);
     font-size: 40px !important;
+  }
+  .dark .courses .container .work-section .work-text h1 {
+    color: var(--color-white);
+  }
+  .dark .courses .container .work-section .work-text h1 {
+    color: var(--color-white);
   }
 }
 @media (min-width: 1200px) {
@@ -2096,6 +2378,12 @@ footer .container .social-media {
     font-weight: 800;
     color: var(--color-gray-900);
     font-size: 40px !important;
+  }
+  .dark .courses .container .work-section .work-text h1 {
+    color: var(--color-white);
+  }
+  .dark .courses .container .work-section .work-text h1 {
+    color: var(--color-white);
   }
 }
 .courses .container .work-section .work-text .header-skills {
@@ -2287,6 +2575,9 @@ footer .container .social-media {
     font-family: "Manrope", sans-serif;
     font-size: 12px !important;
   }
+  .dark .singlecourseshowcase .container .header-singlecourse .action-buttons {
+    color: var(--color-white);
+  }
 }
 .singlecourseshowcase .container .header-singlecourse .action-buttons .a-courses {
   color: white;
@@ -2360,6 +2651,12 @@ footer .container .social-media {
   font-size: 28px !important;
   color: white;
 }
+.dark .singlecourseshowcase .container .header-singlecourse .text-header h1 {
+  color: var(--color-white);
+}
+.dark .singlecourseshowcase .container .header-singlecourse .text-header h1 {
+  color: var(--color-white);
+}
 @media (max-width: 621px) {
   .singlecourseshowcase .container .header-singlecourse .text-header h1 {
     line-height: 160%;
@@ -2368,6 +2665,9 @@ footer .container .social-media {
     font-family: "Manrope", sans-serif;
     font-size: 18px !important;
     color: white;
+  }
+  .dark .singlecourseshowcase .container .header-singlecourse .text-header h1 {
+    color: var(--color-white);
   }
 }
 @media (min-width: 1200px) {
@@ -2381,6 +2681,12 @@ footer .container .social-media {
     font-size: 40px !important;
     color: white;
   }
+  .dark .singlecourseshowcase .container .header-singlecourse .text-header h1 {
+    color: var(--color-white);
+  }
+  .dark .singlecourseshowcase .container .header-singlecourse .text-header h1 {
+    color: var(--color-white);
+  }
 }
 .singlecourseshowcase .container .header-singlecourse .text-header p {
   line-height: 160%;
@@ -2389,6 +2695,9 @@ footer .container .social-media {
   font-family: "Manrope", sans-serif;
   font-size: 12px !important;
   color: var(--color-gray-400);
+}
+.dark .singlecourseshowcase .container .header-singlecourse .text-header p {
+  color: var(--color-white);
 }
 @media (max-width: 621px) {
   .singlecourseshowcase .container .header-singlecourse .text-header p {
@@ -2399,6 +2708,9 @@ footer .container .social-media {
     font-size: 12px !important;
     color: var(--color-gray-400);
   }
+  .dark .singlecourseshowcase .container .header-singlecourse .text-header p {
+    color: var(--color-white);
+  }
 }
 @media (min-width: 1200px) {
   .singlecourseshowcase .container .header-singlecourse .text-header p {
@@ -2408,6 +2720,9 @@ footer .container .social-media {
     font-family: "Manrope", sans-serif;
     font-size: 16px !important;
     color: var(--color-gray-400);
+  }
+  .dark .singlecourseshowcase .container .header-singlecourse .text-header p {
+    color: var(--color-white);
   }
 }
 @media (max-width: 468px) {
@@ -2559,6 +2874,9 @@ footer .container .social-media {
   font-size: 24px !important;
   font-weight: 700;
 }
+.dark .description-course .container .description-header .singlecourse-box .price-box .discount-price {
+  color: var(--color-white);
+}
 .description-course .container .description-header .singlecourse-box .price-box .actual-price {
   color: var(--color-gray-600);
   text-decoration: line-through;
@@ -2648,6 +2966,9 @@ footer .container .social-media {
     font-size: 12px !important;
     color: var(--color-gray-500);
   }
+  .dark .albert-flores .container .albert-img-text .albert-text p {
+    color: var(--color-white);
+  }
 }
 .albert-flores .container .albert-img-text .albert-text h2 {
   color: white;
@@ -2660,6 +2981,9 @@ footer .container .social-media {
     font-family: "Manrope", sans-serif;
     font-size: 24px !important;
     color: white;
+  }
+  .dark .albert-flores .container .albert-img-text .albert-text h2 {
+    color: var(--color-white);
   }
 }
 .albert-flores .container .albert-img-text .albert-text .albert-buttons {
@@ -3036,6 +3360,9 @@ footer .container .social-media {
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
+.dark #account-details aside .profile-info p {
+  color: var(--color-white);
+}
 #account-details aside nav {
   margin-top: 50px;
   text-align: left;
@@ -3164,6 +3491,9 @@ footer .container .social-media {
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
 }
+.dark #security-account aside .profile-info p {
+  color: var(--color-white);
+}
 #security-account aside nav {
   margin-top: 50px;
   text-align: left;
@@ -3226,6 +3556,9 @@ footer .container .social-media {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
+}
+.dark #security-account .delete-account form p {
+  color: var(--color-white);
 }
 #security-account .delete-account form .content .input-group {
   display: flex;

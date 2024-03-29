@@ -44,10 +44,6 @@
                     @include d4;
                 }
 
-                .light & {
-                    color: var(--color-black);
-                }
-
                 .dark & {
                     color: var(--color-white);
                 }
@@ -60,10 +56,6 @@
                 @include lg {
                     margin: 40px 0 50px 0;
                     @include text-lg;
-                }
-
-                .light & {
-                    color: var(--color-gray-700);
                 }
 
                 .dark & {
@@ -82,10 +74,6 @@
                 @include lg {
                     margin: 100px 0 30px 0;
                     display: flex;
-                }
-
-                .light & {
-                    color: var(--color-black);
                 }
 
                 .dark & {

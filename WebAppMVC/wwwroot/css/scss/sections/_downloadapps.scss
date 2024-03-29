@@ -1,6 +1,10 @@
 .download-apps {
     background-color: var(--color-gray-100);
 
+    .dark & {
+        background: var(--color-gray-800);
+    }
+
     .container {
         display: flex;
         align-items: center;
@@ -8,6 +12,10 @@
         background-color: var(--color-gray-200);
         flex: 1;
         padding: 50px 0;
+
+        .dark & {
+            background: var(--color-gray-700);
+        }
 
         @include xl {
             justify-content: space-around;

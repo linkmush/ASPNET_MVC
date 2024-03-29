@@ -54,6 +54,10 @@
                 p {
                     margin-top: 20px;
                     color: var(--color-gray-700);
+
+                    .dark & {
+                        color: var(--color-gray-400);
+                    }
                 }
 
                 &:hover {
@@ -62,6 +66,10 @@
                     border: 1px solid transparent;
                     border-radius: 8px;
                     @include shadow-s;
+
+                    .dark & {
+                        background-color: var(--color-gray-700);
+                    }
                 }
             }
         }

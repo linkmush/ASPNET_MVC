@@ -1,6 +1,10 @@
 .newsletter {
     background-color: var(--color-gray-100);
 
+    .dark & {
+        background-color: var(--color-gray-800);
+    }
+
     .container {
         display: flex;
         flex-direction: column;
@@ -68,6 +72,10 @@
                         .form-check-input {
                             border: 2px solid var(--color-gray-500);
 
+                            .dark & {
+                                background-color: var(--color-gray-700);
+                            }
+
                             &:checked {
                                 background-color: var(--color-theme);
                                 border-color: var(--color-theme);
@@ -108,6 +116,10 @@
                     outline: none;
                     border: 1px solid var(--color-gray-400);
                     width: 100%;
+
+                    .dark & {
+                        background: var(--color-gray-800);
+                    }
 
                     @include lg {
                         width: 688px;

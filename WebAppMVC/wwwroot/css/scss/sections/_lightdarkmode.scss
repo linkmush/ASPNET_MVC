@@ -44,6 +44,10 @@
                 text-align: start;
                 margin-left: 2%;
                 margin-top: 15%;
+
+                .dark & {
+                        color: var(--color-black);
+                }
             }
 
             img {
