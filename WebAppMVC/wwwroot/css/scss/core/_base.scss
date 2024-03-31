@@ -15,6 +15,14 @@ html, body {
     background-color: var(--background-color);
 }
 
+
+/*html, body {
+    @include standard-text;
+    font-size: 16px;
+    background-color: var(--color-gray-000);
+    color: var(--color-gray-700);
+}*/
+
 .text-xs { @include text-xs; }
 .text-s { @include text-s; }
 .text-m { @include text-m; }

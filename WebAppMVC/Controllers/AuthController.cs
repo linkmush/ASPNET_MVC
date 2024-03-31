@@ -3,16 +3,20 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System.Security.Claims;
+using System.Text;
 using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
 
-public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager) : Controller
+public class AuthController(UserManager<UserEntity> userManager, SignInManager<UserEntity> signInManager, HttpClient http, IConfiguration configuration) : Controller
 {
 
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
+    private readonly HttpClient _http = http;
+    private readonly IConfiguration _configuration = configuration;
 
     #region Sign Up
     [Route("/signup")]        // route är det som avgör sökvägen i webbläsaren.
@@ -86,13 +90,24 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
         if (ModelState.IsValid)
         {
-            var result = await _signInManager.PasswordSignInAsync(viewModel.Form.Email, viewModel.Form.Password, viewModel.Form.RememberMe, false);      // detta är om det funkar. 
-            if (result.Succeeded)
-            {
-                if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
-                    return Redirect(returnUrl);
+            if ((await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false)).Succeeded)  // för att token fetchen ska funka måste jag ha samma attribut i min viewmodel som i min model som är på webapi action. på min viewmodel får attributet inte ligga inbäddat i en annan model. Det måste vara rakt i min viewmodel.
+            { 
+                var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
+                var response = await _http.PostAsync($"https://localhost:7091/api/auth/token?key={_configuration["ApiKey"]}", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var token = await response.Content.ReadAsStringAsync();
+                    var cookieOption = new CookieOptions
+                    {
+                        HttpOnly = true,
+                        Secure = true,
+                        Expires = DateTime.Now.AddDays(1)
+                    };
 
-                return RedirectToAction("Details", "Account");
+                    Response.Cookies.Append("AccessToken", token, cookieOption);
+                }
+
+                return LocalRedirect(returnUrl);
             }
         }
 

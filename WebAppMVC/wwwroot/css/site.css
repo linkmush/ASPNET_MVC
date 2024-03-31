@@ -1,4 +1,23 @@
 ﻿@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+/*@mixin standard-text {
+    line-height: 160%;
+    font-weight: 400;
+    color: var(--color-gray-700);
+    font-family: $font-manrope;
+}
+
+@mixin standard-heading {
+    @include standard-text();
+    font-weight: 800;
+    color: var(--color-gray-900);
+}
+
+@mixin text-nav {
+    @include standard-text;
+    font-size: 16px;
+    color: var(--color-gray-800);
+    font-weight: 600 !important;
+}*/
 :root.light {
   --text-color: var(--color-gray-700);
   --background-color: var(--color-gray-000);
@@ -22,6 +41,12 @@ html, body {
   color: var(--color-white);
 }
 
+/*html, body {
+    @include standard-text;
+    font-size: 16px;
+    background-color: var(--color-gray-000);
+    color: var(--color-gray-700);
+}*/
 .text-xs {
   line-height: 160%;
   font-weight: 400;
@@ -365,9 +390,6 @@ a:hover {
 }
 .dark .menu-link {
   color: var(--color-white);
-}
-.light .menu-link {
-  color: var(--color-black);
 }
 .dark .menu-link {
   color: var(--color-white);
@@ -814,6 +836,9 @@ body.menu-open {
   font-weight: 800;
   color: var(--color-gray-900);
   font-size: 32px !important;
+  /*                .dark & {
+                      color: var(--color-white);
+                  }*/
 }
 .dark .showcase .container .content h1 {
   color: var(--color-white);
@@ -838,9 +863,6 @@ body.menu-open {
     color: var(--color-white);
   }
 }
-.dark .showcase .container .content h1 {
-  color: var(--color-white);
-}
 .showcase .container .content p {
   margin: 20px 0 40px 0;
   line-height: 160%;
@@ -848,6 +870,10 @@ body.menu-open {
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 16px !important;
+  /*
+                  .dark & {
+                      color: var(--color-white);
+                  }*/
 }
 .dark .showcase .container .content p {
   color: var(--color-white);
@@ -865,24 +891,21 @@ body.menu-open {
     color: var(--color-white);
   }
 }
-.dark .showcase .container .content p {
-  color: var(--color-white);
-}
 .showcase .container .content .btn-theme-s {
   display: inline-block;
 }
 .showcase .container .content h6 {
   margin: 150px 0 30px 0;
   display: none;
+  /*                .dark & {
+                      color: var(--color-white);
+                  }*/
 }
 @media (min-width: 992px) {
   .showcase .container .content h6 {
     margin: 100px 0 30px 0;
     display: flex;
   }
-}
-.dark .showcase .container .content h6 {
-  color: var(--color-white);
 }
 .showcase .container .content .brands {
   display: none;
@@ -2202,7 +2225,7 @@ footer .container .social-media {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #dfdcdc;
+  background-color: var(--color-gray-100);
   display: flex;
   justify-content: center;
   align-items: center;

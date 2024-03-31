@@ -39,26 +39,28 @@
                         <a class="button-top" href="#"><i class="fa-regular fa-bookmark"></i></a>
                     </div>
                     <img src="@course.ImageUrl" alt="Image of @course.Title">
-                    <div class="text-info">
-                        <h5>@course.Title</h5>
-                        <p class="creator">By @course.Author</p>
-                        @if (!string.IsNullOrEmpty(course.DiscountPrice) && course.DiscountPrice != "0")
-                        {
-                            <p class="price discount">$@course.DiscountPrice <del>$@course.Price</del></p>
-                        }
-                        else
-                        {
-                            <p class="price">$@course.Price</p>
-                        }
-                        <div class="clock">
-                            <i class="fa-regular fa-clock"></i>
-                            <p>@course.Hours hours</p>
-                            <div class="thumbs-up">
-                                <i class="fa-regular fa-thumbs-up"></i>
-                                <p>@course.LikesInPoints% (@course.LikesInNumbers)</p>
+                    <a asp-controller="Courses" asp-action="CourseDetails">
+                        <div class="text-info">
+                            <h5>@course.Title</h5>
+                            <p class="creator">By @course.Author</p>
+                            @if (!string.IsNullOrEmpty(course.DiscountPrice) && course.DiscountPrice != "0")
+                            {
+                                <p class="price discount">$@course.DiscountPrice <del>$@course.Price</del></p>
+                            }
+                            else
+                            {
+                                <p class="price">$@course.Price</p>
+                            }
+                            <div class="clock">
+                                <i class="fa-regular fa-clock"></i>
+                                <p>@course.Hours hours</p>
+                                <div class="thumbs-up">
+                                    <i class="fa-regular fa-thumbs-up"></i>
+                                    <p>@course.LikesInPoints% (@course.LikesInNumbers)</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             }
         </div>

@@ -44,9 +44,9 @@
                     @include d4;
                 }
 
-                .dark & {
+/*                .dark & {
                     color: var(--color-white);
-                }
+                }*/
             }
 
             p {
@@ -57,10 +57,10 @@
                     margin: 40px 0 50px 0;
                     @include text-lg;
                 }
-
+/*
                 .dark & {
                     color: var(--color-white);
-                }
+                }*/
             }
 
             .btn-theme-s {
@@ -76,9 +76,9 @@
                     display: flex;
                 }
 
-                .dark & {
+/*                .dark & {
                     color: var(--color-white);
-                }
+                }*/
             }
 
             .brands {

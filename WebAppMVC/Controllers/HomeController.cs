@@ -8,17 +8,18 @@ using WebAppMVC.ViewModels.Views;
 namespace WebAppMVC.Controllers;
 
 //[Authorize]   skyddar sidan, skyddar alla actions. Annars sätter man den över den action man vill skydda. kräver att du måste inloggad för att se dessa actions/sidor.
-public class HomeController : Controller
+public class HomeController(HttpClient http, IConfiguration configuration) : Controller
 {
-    private readonly HttpClient _http;
-
-    public HomeController(HttpClient http)
-    {
-        _http = http;
-    }
+    private readonly HttpClient _http = http;
+    private readonly IConfiguration _configuration = configuration;
 
     public IActionResult Index()
     {
+        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))  // kan hämta ut den i vilken controller du vill som behöver använda sig av den här tooken nyckeln.
+        {
+
+        }
+
         var viewModel = new HomeIndexViewModel();
 
         ViewData["Title"] = viewModel.Title;
@@ -34,7 +35,7 @@ public class HomeController : Controller
             try
             {
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
-                var response = await _http.PostAsync("https://localhost:7091/api/subscribers?key=YzUyZjYyZGEtYjc0Ny00ZDI4LWFkNmUtMTQ4ZTc0YjU0YTdk", content);
+                var response = await _http.PostAsync($"https://localhost:7091/api/subscribers?key={_configuration["ApiKey"]}", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -69,7 +70,7 @@ public class HomeController : Controller
     public IActionResult Error404(int statusCode)
     {
         var viewModel = new ErrorViewModel();
-        return View("Index", viewModel);
+        return View("Error404", viewModel);
     }
 
 }

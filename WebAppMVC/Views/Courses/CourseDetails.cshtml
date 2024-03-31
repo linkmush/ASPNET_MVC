@@ -1,5 +1,61 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model CourseDto
+
 @{
+    ViewData["Title"] = Model.Title;
 }
+
+<section class="singlecourseshowcase">
+    <img src="@Model.ImageUrl" alt="">
+    <div class="container">
+        <div class="header-singlecourse">
+            <div class="action-buttons">
+                <i class="fa-solid fa-house"></i>
+                <a href="home.html">Home</a>
+                <i class="fa-solid fa-angles-right"></i>
+                <a class="a-courses" href="course.html">Courses</a>
+                <i class="fa-solid fa-angles-right"></i>
+                <a class="a-developer" href="singlecourse.html">@Model.Title</a>
+            </div>
+            <div class="seller-square">
+                @if (Model.IsBestSeller)
+                {
+                    <div class="green-box">
+                        <p>Best Seller</p>
+                    </div>
+                }
+                <div class="white-box">
+                    <p>Digital</p>
+                </div>
+            </div>
+            <div class="text-header">
+                <h1>@Model.Title</h1>
+                <p>Egestas feugiat lorem eu neque suspendisse ullamcorper scelerisque aliquam mauris.</p>
+            </div>
+            <div class="rating">
+                <div class="star">
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star"></span>
+                    <p>(1.2k reviews)</p>
+                </div>
+                <div class="rating-thumb">
+                    <i class="fa-regular fa-thumbs-up"></i>
+                    <p>@Model.LikesInNumbers likes</p>
+                </div>
+                <div class="rating-clock">
+                    <i class="fa-regular fa-clock"></i>
+                    <p>@Model.Hours hours</p>
+                </div>
+            </div>
+            <div class="img-text">
+                <img src="images/roundimage.svg" alt="picture of albert flores">
+                <div class="image-text-header">
+                    <P class="bold-p">Created by</P>
+                    <P class="p-normal">@Model.Author</P>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

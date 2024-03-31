@@ -6,6 +6,8 @@ namespace WebAppMVC.ViewModels.Views;
 
 public class CourseRegistrationViewModel
 {
+    public int Id { get; set; }
+
     [Required]
     [Display(Name = "Title")]
     public string Title { get; set; } = null!;

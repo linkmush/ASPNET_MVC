@@ -15,19 +15,27 @@
             <p>Don’t have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here.</a></p>
             <div class="content">
                 <div id="form-email" class="input-group">
-                    <label asp-for=Form.Email></label>
+@*                     <label asp-for=Form.Email></label>
                     <span asp-validation-for="Form.Email"></span>
-                    <input asp-for="Form.Email" />
+                    <input asp-for="Form.Email" /> *@
+                    <label asp-for=Email></label>
+                    <span asp-validation-for="Email"></span>
+                    <input asp-for="Email" />
                 </div>
                 <div id="form-password" class="input-group">
-                    <label asp-for=Form.Password></label>
+@*                     <label asp-for=Form.Password></label>
                     <span asp-validation-for="Form.Password"></span>
-                    <input asp-for="Form.Password" />
+                    <input asp-for="Form.Password" /> *@
+                    <label asp-for=Password></label>
+                    <span asp-validation-for="Password"></span>
+                    <input asp-for="Password" />
                 </div>
                 <div id="form-remember" class="checkbox">
                     <div class="checkbox-group">
-                        <input asp-for="Form.RememberMe" />
-                        <label asp-for="Form.RememberMe"></label>
+@*                         <input asp-for="Form.RememberMe" />
+                        <label asp-for="Form.RememberMe"></label> *@
+                        <input asp-for="RememberMe" />
+                        <label asp-for="RememberMe"></label>
                     </div>
                 </div>
                 <button id="form-submit" class="btn-theme" type="submit">@Model.Title</button>
