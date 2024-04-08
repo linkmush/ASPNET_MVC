@@ -91,7 +91,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         if (ModelState.IsValid)
         {
             if ((await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false)).Succeeded)  // för att token fetchen ska funka måste jag ha samma attribut i min viewmodel som i min model som är på webapi action. på min viewmodel får attributet inte ligga inbäddat i en annan model. Det måste vara rakt i min viewmodel.
-            { 
+            {
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
                 var response = await _http.PostAsync($"https://localhost:7091/api/auth/token?key={_configuration["ApiKey"]}", content);
                 if (response.IsSuccessStatusCode)

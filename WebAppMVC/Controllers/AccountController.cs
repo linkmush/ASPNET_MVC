@@ -4,16 +4,18 @@ using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
 
 [Authorize]  // kräver att du måste vara inloggad för att se dessa sidor. 
-public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AddressManager AddressManager) : Controller
+public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AddressManager AddressManager, AccountManager AccountManager) : Controller
 {
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly AddressManager _addressManager = AddressManager;
+    private readonly AccountManager _accountManager = AccountManager;
 
     #region Details
     [HttpGet]
@@ -183,7 +185,7 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
     #region Security Delete
     [HttpPost]
     public async Task<IActionResult> Delete(DeleteAccountModel deleteModel)
-    { 
+    {
         var user = await _userManager.GetUserAsync(User);
         if (user != null)
         {
@@ -212,6 +214,18 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
 
         return RedirectToAction("Security", "Account");
     }
+    #endregion
+
+    #region UploadImage
+
+    [HttpPost]
+    public async Task<IActionResult> UploadImage(IFormFile file)
+    {
+        var result = await _accountManager.UploadUserProfileImageAsync(User, file);
+
+        return RedirectToAction("Details", "Account");
+    }
+
     #endregion
 
     public async Task<ProfileInfoViewModel> PopulateProfileInfoAsync()

@@ -4,3 +4,6 @@
 @using Microsoft.AspNetCore.Identity
 @using Infrastructure.Entities
 @using Infrastructure.Dtos
+@inject UserManager<UserEntity> UserManager
+@inject SignInManager<UserEntity> SignInManager
+@inject IConfiguration Configuration

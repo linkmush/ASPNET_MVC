@@ -7,7 +7,13 @@
     <section id="security-account">
         <aside>
             <div class="profile-info">
-                <img src="~/@Model.ProfileInfo!.ProfileImage" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")" />
+                <div class="image-profile">
+                    <img src="~/@Model.ProfileInfo!.ProfileImage" alt="@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")" />
+                    <form enctype="multipart/form-data" method="post" asp-action="UploadImage" asp-controller="Account">
+                        <input id="fileUploader" type="file" name="file" hidden />
+                        <label for="fileUploader" class="btn-circle"><i class="fa-solid fa-arrows-rotate"></i></label>
+                    </form>
+                </div>
                 <h5>@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")</h5>
                 <p>@Model.ProfileInfo.Email</p>
             </div>

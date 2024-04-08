@@ -8,9 +8,9 @@
     <div class="container">
         <div class="action-buttons">
             <i class="fa-solid fa-house"></i>
-            <a href="home.html">Home</a>
+            <a asp-controller="Home" asp-action="Index">Home</a>
             <i class="fa-solid fa-angles-right"></i>
-            <a href="course.html">Courses</a>
+            <a asp-action="Course" asp-controller="Courses">Courses</a>
         </div>
         <div class="header-courses">
             <h1>Courses</h1>
@@ -28,40 +28,47 @@
             </div>
         </div>
         <div class="courses-square">
-            @foreach (var course in Model)
+            @if (Model != null)
             {
-                <div class="grid-item">
-                    <div class="overlay-content">
-                        @if (course.IsBestSeller)
-                        {
-                            <div class="text-top">Best Seller</div>
-                        }
-                        <a class="button-top" href="#"><i class="fa-regular fa-bookmark"></i></a>
-                    </div>
-                    <img src="@course.ImageUrl" alt="Image of @course.Title">
-                    <a asp-controller="Courses" asp-action="CourseDetails" asp-route-id="@course.Id">
-                        <div class="text-info">
-                            <h5>@course.Title</h5>
-                            <p class="creator">By @course.Author</p>
-                            @if (!string.IsNullOrEmpty(course.DiscountPrice) && course.DiscountPrice != "0")
+                @foreach (var course in Model)
+                {
+                    <div class="grid-item">
+                        <div class="overlay-content">
+                            @if (course.IsBestSeller)
                             {
-                                <p class="price discount">$@course.DiscountPrice <del>$@course.Price</del></p>
+                                <div class="text-top">Best Seller</div>
                             }
-                            else
-                            {
-                                <p class="price">$@course.Price</p>
-                            }
-                            <div class="clock">
-                                <i class="fa-regular fa-clock"></i>
-                                <p>@course.Hours hours</p>
-                                <div class="thumbs-up">
-                                    <i class="fa-regular fa-thumbs-up"></i>
-                                    <p>@course.LikesInPoints% (@course.LikesInNumbers)</p>
+                            <a class="button-top" href="#"><i class="fa-regular fa-bookmark"></i></a>
+                        </div>
+                        <img src="@course.ImageUrl" alt="Image of @course.Title">
+                        <a asp-controller="Courses" asp-action="CourseDetails" asp-route-id="@course.Id">
+                            <div class="text-info">
+                                <h5>@course.Title</h5>
+                                <p class="creator">By @course.Author</p>
+                                @if (!string.IsNullOrEmpty(course.DiscountPrice) && course.DiscountPrice != "0")
+                                {
+                                    <p class="price discount">$@course.DiscountPrice <del>$@course.Price</del></p>
+                                }
+                                else
+                                {
+                                    <p class="price">$@course.Price</p>
+                                }
+                                <div class="clock">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <p>@course.Hours hours</p>
+                                    <div class="thumbs-up">
+                                        <i class="fa-regular fa-thumbs-up"></i>
+                                        <p>@course.LikesInPoints% (@course.LikesInNumbers)</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
+                        </a>
+                    </div>
+                }
+            }
+            else
+            {
+                <div>No courses found!</div>
             }
         </div>
         <div class="pagination">

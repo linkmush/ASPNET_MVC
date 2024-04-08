@@ -1,11 +1,13 @@
 :root.light {
     --text-color: var(--color-gray-700);
     --background-color: var(--color-gray-000);
+    color-scheme: light;
 }
 
 :root.dark {
     --text-color: var(--color-white);
     --background-color: var(--color-gray-900);
+    color-scheme: dark;
 }
 
 html, body {

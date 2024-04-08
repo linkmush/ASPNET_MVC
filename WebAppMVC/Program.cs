@@ -52,6 +52,7 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<AddressManager>();
+builder.Services.AddScoped<AccountManager>();
 
 var app = builder.Build();
 app.UseHsts();

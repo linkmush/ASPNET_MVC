@@ -11,6 +11,9 @@ public class UserEntity : IdentityUser
     public string LastName { get; set; } = null!;
 
     [ProtectedPersonalData]
+    public string? ProfileImage { get; set; }
+
+    [ProtectedPersonalData]
     public string? Bio { get; set; }
 
     public int? AddressId { get; set; }
