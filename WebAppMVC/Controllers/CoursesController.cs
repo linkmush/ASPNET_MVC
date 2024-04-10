@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Dtos;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -10,27 +11,23 @@ using WebAppMVC.ViewModels.Views;
 namespace WebAppMVC.Controllers;
 
 [Authorize]
-public class CoursesController(IConfiguration configuration, HttpClient http) : Controller
+public class CoursesController(IConfiguration configuration, HttpClient http, CategoryService categoryService, CourseService courseService) : Controller
 {
     private readonly IConfiguration _configuration = configuration;
     private readonly HttpClient _http = http;
+    private readonly CategoryService _categoryService = categoryService;
+    private readonly CourseService _courseService = courseService;
 
     [Route("/courses")]
-    public async Task<IActionResult> Course()
+    public async Task<IActionResult> Course(string category = "", string searchQuery = "")
     {
-        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
+        var viewModel = new CourseViewModel
         {
-            _http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            Categories = await _categoryService.GetCategoriesAsync(),
+            Courses = await _courseService.GetCourseAsync(category, searchQuery),
+        };
 
-            var response = await _http.GetAsync($"https://localhost:7091/api/courses?key={_configuration["ApiKey"]}");
-            if (response.IsSuccessStatusCode)
-            {
-                var courses = JsonConvert.DeserializeObject<IEnumerable<CourseDto>>(await response.Content.ReadAsStringAsync());
-                return View(courses);
-            }
-        }
-
-        return RedirectToAction("Error404", "Home");
+        return View(viewModel);
     }
 
     public async Task<IActionResult> CourseDetails(string id)

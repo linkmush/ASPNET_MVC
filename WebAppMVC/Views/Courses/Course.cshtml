@@ -1,4 +1,5 @@
-﻿@model IEnumerable<CourseDto>
+﻿@* @model IEnumerable<CourseDto> *@
+@model CourseViewModel
 
 @{
     ViewData["Title"] = "Courses";
@@ -13,24 +14,37 @@
             <a asp-action="Course" asp-controller="Courses">Courses</a>
         </div>
         <div class="header-courses">
-            <h1>Courses</h1>
-            <div class="categorylist">
-                <form>
-                    <input type="text" placeholder="All Categories">
-                    <i class="fa-solid fa-chevron-down"></i>
-                </form>
+            <div class="header-left">
+                <h1>Courses</h1>
             </div>
-            <div class="search-form">
+            <div class="header-right">
                 <form>
-                    <input type="text" placeholder="Search Courses">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div class="select">
+                        <div class="selected">All Categories<i class="arrow-down fas fa-chevron-down"></i></div>
+                        <div class="select-options">
+                            <div class="option" data-value="all">All Categories</div>
+                            @if (Model.Categories != null)
+                            {
+                                foreach (var category in Model.Categories)
+                                {
+                                    <div class="option" data-value="@category.CategoryName">@category.CategoryName</div>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="input-search-group">
+                        <input id="searchQuery" name="searchQuery" placeholder="Search Courses" />
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
                 </form>
             </div>
         </div>
         <div class="courses-square">
-            @if (Model != null)
+            @if (Model.Courses != null)
             {
-                @foreach (var course in Model)
+                foreach (var course in Model.Courses)
                 {
                     <div class="grid-item">
                         <div class="overlay-content">
@@ -58,7 +72,7 @@
                                     <p>@course.Hours hours</p>
                                     <div class="thumbs-up">
                                         <i class="fa-regular fa-thumbs-up"></i>
-                                        <p>@course.LikesInPoints% (@course.LikesInNumbers)</p>
+                                        <p>@course.LikesInProcent% (@course.LikesInNumbers)</p>
                                     </div>
                                 </div>
                             </div>

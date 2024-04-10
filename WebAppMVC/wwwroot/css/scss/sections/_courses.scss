@@ -27,46 +27,109 @@
             align-items: center;
             margin-bottom: 30px;
 
-            h1 {
+            .header-left {
+
                 @media (max-width: 992px ) {
                     display: none;
                 }
             }
 
-            .categorylist {
-                border: 1px solid #DAD9D3;
-                padding: 8px;
-                border-radius: 15px;
-
-                @media (max-width: 768px) {
-                    display: none;
-                }
+            .header-right {
+                display: flex;
+                align-items: center;
+                gap: 15px;
 
                 form {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 12px;
 
-                    input {
-                        color: #191919;
-                        text-decoration: none;
-                        outline: none;
-                        border: transparent;
-                        margin-right: 50px;
+
+                    .select {
+                        position: relative;
+                        display: inline-block;
+                        border: 1px solid #DAD9D3;
+                        border-radius: 5px;
+                        height: 44px;
+                        width: 240px;
+                        margin-top: 8px;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: #606263;
+                            transition: color 0.35s ease-in-out;
+                            color: #ffffff;
+                        }
+
+                        .selected {
+                            position: relative;
+                            top: 7px;
+                            font-size: 16px;
+                            border: none;
+                            left: 30px;
+
+                            .arrow-down {
+                                margin-left: 50px;
+                            }
+                        }
+
+                        .select-options {
+                            display: none;
+                            background-color: #ffffff;
+                            min-width: 160px;
+                            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                            z-index: 1;
+                            position: relative;
+                            left: 0;
+                            top: 100%;
+                            height: auto;
+
+                            .option {
+                                color: black;
+                                padding: 12px 16px;
+                                text-decoration: none;
+                                display: block;
+                                cursor: pointer;
+
+                                &:hover {
+                                    background-color: #606263;
+                                    transition: color 0.35s ease-in-out;
+                                    color: #ffffff;
+                                }
+                            }
+                        }
                     }
-                }
-            }
 
-            .search-form {
-                border: 1px solid #DAD9D3;
-                padding: 8px;
-                border-radius: 15px;
+                    .input-search-group {
+                        position: relative;
+                        display: inline-block;
+                        border: 1px solid #DAD9D3;
+                        border-radius: 5px;
+                        height: 44px;
+                        width: 240px;
+                        margin-top: 8px;
+                        box-sizing: border-box;
+                        overflow: hidden;
 
-                form {
+                        input {
+                            height: 100%;
+                            width: calc(100% - 30px);
+                            padding: 0 10px;
+                            border: none;
+                            outline: none;
+                            box-sizing: border-box;
+                            /*                            &::-webkit-input-placeholder {
+                                color: #DAD9D3; // Adjust placeholder color as needed
+                            }*/
+                        }
 
-                    input {
-                        color: #191919;
-                        text-decoration: none;
-                        outline: none;
-                        border: transparent;
-                        margin-right: 50px;
+                        i {
+                            position: absolute;
+                            right: 5px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                        }
                     }
                 }
             }

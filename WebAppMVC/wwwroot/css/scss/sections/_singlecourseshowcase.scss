@@ -1,19 +1,23 @@
 .singlecourseshowcase {
     position: relative;
+    height: 600px;
 
     img {
-        position: relative;
         width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+    }
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* 0.5 opacity for a dark filter */
-        }
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 0;
     }
 
     .container {
@@ -22,6 +26,7 @@
         .header-singlecourse {
             position: absolute;
             top: 60px;
+            z-index: 1;
 
             @media(max-width: 782px) {
                 top: 10px;
@@ -31,6 +36,7 @@
                 display: flex;
                 align-items: center;
                 gap: 15px;
+                z-index: 1;
 
                 @media(max-width: 638px) {
                     @include text-xs;
@@ -68,7 +74,7 @@
                 }
 
                 .green-box {
-                    background-color: var(--color-success);
+                    background-color: #1f8c04;
                     border-radius: 8px;
                     width: 110px;
                     height: 25px;

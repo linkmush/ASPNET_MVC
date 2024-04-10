@@ -2145,38 +2145,96 @@ footer .container .social-media {
   margin-bottom: 30px;
 }
 @media (max-width: 992px) {
-  .courses .container .header-courses h1 {
+  .courses .container .header-courses .header-left {
     display: none;
   }
 }
-.courses .container .header-courses .categorylist {
+.courses .container .header-courses .header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.courses .container .header-courses .header-right form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.courses .container .header-courses .header-right form .select {
+  position: relative;
+  display: inline-block;
   border: 1px solid #DAD9D3;
-  padding: 8px;
-  border-radius: 15px;
+  border-radius: 5px;
+  height: 44px;
+  width: 240px;
+  margin-top: 8px;
+  cursor: pointer;
 }
-@media (max-width: 768px) {
-  .courses .container .header-courses .categorylist {
-    display: none;
-  }
+.courses .container .header-courses .header-right form .select:hover {
+  background-color: #606263;
+  transition: color 0.35s ease-in-out;
+  color: #ffffff;
 }
-.courses .container .header-courses .categorylist form input {
-  color: #191919;
+.courses .container .header-courses .header-right form .select .selected {
+  position: relative;
+  top: 7px;
+  font-size: 16px;
+  border: none;
+  left: 30px;
+}
+.courses .container .header-courses .header-right form .select .selected .arrow-down {
+  margin-left: 50px;
+}
+.courses .container .header-courses .header-right form .select .select-options {
+  display: none;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  position: relative;
+  left: 0;
+  top: 100%;
+  height: auto;
+}
+.courses .container .header-courses .header-right form .select .select-options .option {
+  color: black;
+  padding: 12px 16px;
   text-decoration: none;
-  outline: none;
-  border: transparent;
-  margin-right: 50px;
+  display: block;
+  cursor: pointer;
 }
-.courses .container .header-courses .search-form {
+.courses .container .header-courses .header-right form .select .select-options .option:hover {
+  background-color: #606263;
+  transition: color 0.35s ease-in-out;
+  color: #ffffff;
+}
+.courses .container .header-courses .header-right form .input-search-group {
+  position: relative;
+  display: inline-block;
   border: 1px solid #DAD9D3;
-  padding: 8px;
-  border-radius: 15px;
+  border-radius: 5px;
+  height: 44px;
+  width: 240px;
+  margin-top: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
 }
-.courses .container .header-courses .search-form form input {
-  color: #191919;
-  text-decoration: none;
+.courses .container .header-courses .header-right form .input-search-group input {
+  height: 100%;
+  width: calc(100% - 30px);
+  padding: 0 10px;
+  border: none;
   outline: none;
-  border: transparent;
-  margin-right: 50px;
+  box-sizing: border-box;
+  /*                            &::-webkit-input-placeholder {
+      color: #DAD9D3; // Adjust placeholder color as needed
+  }*/
+}
+.courses .container .header-courses .header-right form .input-search-group i {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .courses .container .courses-square {
   display: grid;
@@ -2580,19 +2638,23 @@ footer .container .social-media {
 
 .singlecourseshowcase {
   position: relative;
+  height: 600px;
 }
 .singlecourseshowcase img {
-  position: relative;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
-.singlecourseshowcase img::before {
+.singlecourseshowcase::after {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 0.5 opacity for a dark filter */
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 0;
 }
 .singlecourseshowcase .container {
   height: 100%;
@@ -2600,6 +2662,7 @@ footer .container .social-media {
 .singlecourseshowcase .container .header-singlecourse {
   position: absolute;
   top: 60px;
+  z-index: 1;
 }
 @media (max-width: 782px) {
   .singlecourseshowcase .container .header-singlecourse {
@@ -2610,6 +2673,7 @@ footer .container .social-media {
   display: flex;
   align-items: center;
   gap: 15px;
+  z-index: 1;
 }
 @media (max-width: 638px) {
   .singlecourseshowcase .container .header-singlecourse .action-buttons {
@@ -2651,7 +2715,7 @@ footer .container .social-media {
   }
 }
 .singlecourseshowcase .container .header-singlecourse .seller-square .green-box {
-  background-color: var(--color-success);
+  background-color: #1f8c04;
   border-radius: 8px;
   width: 110px;
   height: 25px;

@@ -53,6 +53,8 @@ builder.Services.AddAuthentication()
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<AddressManager>();
 builder.Services.AddScoped<AccountManager>();
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<CourseService>();
 
 var app = builder.Build();
 app.UseHsts();

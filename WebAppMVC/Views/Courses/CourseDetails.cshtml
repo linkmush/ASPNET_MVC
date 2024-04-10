@@ -5,7 +5,8 @@
 }
 
 <section class="singlecourseshowcase">
-    <img src="~/Images/pcpicture.svg" alt="Image of @Model.Title">   @* <img src="~/@Model.ImageUrl" alt="Image of @Model.Title"> *@
+    <img src="~/@Model.ImageUrl" alt="Image of @Model.Title">
+    @* <img src="~/Images/pcpicture.svg" alt="Image of @Model.Title"> *@
     <div class="container">
         <div class="header-singlecourse">
             <div class="action-buttons">
@@ -23,9 +24,12 @@
                         <p>Best Seller</p>
                     </div>
                 }
-                <div class="white-box">
-                    <p>Digital</p>
-                </div>
+                @if (Model.IsDigital)
+                {
+                    <div class="white-box">
+                        <p>Digital</p>
+                    </div>
+                }
             </div>
             <div class="text-header">
                 <h1>@Model.Title</h1>
