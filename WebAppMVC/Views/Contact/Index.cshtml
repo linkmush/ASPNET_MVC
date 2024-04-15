@@ -1,1 +1,106 @@
-﻿
+﻿@model ContactsViewModel
+
+<section class="contact">
+    <div class="container">
+        <div class="left-side">
+            <div class="breadcrumb">
+                <i class="fa-solid fa-house"></i>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <i class="fa-solid fa-angles-right"></i>
+                <a class="active" asp-controller="Contact" asp-action="Contact">Contact</a>
+            </div>
+            <h1>Contact Us</h1>
+            <div class="info">
+                <div class="box">
+                    <div class="icon">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <div class="text">
+                        <h4>Email us</h4>
+                        <p>Please feel free to drop us a line. We will respond as soon as possible.</p>
+                        <a asp-controller="Contact" asp-action="Contact">Leave a message <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="icon">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+                    <div class="text">
+                        <h4>Careers</h4>
+                        <p>Sit ac ipsum leo lorem magna nunc mattis maecenas non vestibulum.</p>
+                        <a asp-controller="Contact" asp-action="Contact">Send an application <i class="fa-regular fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="contact-form">
+            <form class="row g-4" asp-action="SubmitContact" asp-controller="Contact" method="post" novalidate>
+                <h2>Get In Contact With Us</h2>
+                <div class="col-12">
+                    <label class="form-label" asp-for="FullName">Full name</label>
+                    <input class="form-control" asp-for="FullName">
+                    <span class="errorspan" asp-validation-for="FullName"></span>
+                </div>
+                <div class="col-12">
+                    <label class="form-label" asp-for="Email"></label>
+                    <input class="form-control" asp-for="Email" />
+                    <span class="errorspan" asp-validation-for="Email"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="Service" class="form-label">Service <span>(optional)</span></label>
+                    <select id="selectService" asp-for="Service" class="form-select">
+                        <option selected>Choose the service you are interested in</option>
+                        <option value="1">Frontend Development</option>
+                        <option value="2">App Development</option>
+                        <option value="3">Game Development</option>
+                    </select>
+                </div>
+
+                <div class="col-12">
+                    <label asp-for="Message" class="form-label">Message</label>
+                    <textarea asp-for="Message" class="form-control" cols="30" rows="8"></textarea>
+                    <span class="errorspan" asp-validation-for="Message"></span>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn-theme">Send Contact Request</button>
+                </div>
+            </form>
+
+            <span class="information">
+                @if (ViewData["Status"]?.ToString() == "Success")
+                {
+                    <span class="alert alert-success">
+                        You have sent a contact request
+                    </span>
+                }
+                else if (ViewData["Status"]?.ToString() == "AlreadyExists")
+                {
+                    <span class="alert alert-warning">
+                        You have already sent a request
+                    </span>
+                }
+                else if (ViewData["Status"]?.ToString() == "Invalid")
+                {
+                    <span class="alert alert-danger">
+                        You must enter an valid email address
+                    </span>
+                }
+                else if (ViewData["Status"]?.ToString() == "ConnectionFailed")
+                {
+                    <span class="alert alert-danger">
+                        Unabled to connect to server. Please try again later!
+                    </span>
+                }
+                else if (ViewData["Status"]?.ToString() == "Unauthorized")
+                {
+                    <span class="alert alert-danger">
+                        Something went wrong. Please contact web admin.
+                    </span>
+                }
+            </span>
+        </div>
+        <img src="images/map.svg" alt="">
+    </div>
+</section>
+
+@await Html.PartialAsync("_ValidationScriptPartial")

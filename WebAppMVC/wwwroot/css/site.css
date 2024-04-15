@@ -499,7 +499,7 @@ a:hover {
   align-items: center;
   gap: 12px;
   background: var(--color-danger);
-  color: var(--color-gray-700);
+  color: var(--color-white);
   border: none;
 }
 .btn-red:hover {

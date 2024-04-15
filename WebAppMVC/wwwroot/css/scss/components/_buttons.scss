@@ -77,7 +77,7 @@
 .btn-red {
     @include button;
     background: var(--color-danger);
-    color: var(--color-gray-700);
+    color: var(--color-white);
     border: none;
 
     &:hover {
