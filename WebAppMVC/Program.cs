@@ -55,6 +55,7 @@ builder.Services.AddScoped<AddressManager>();
 builder.Services.AddScoped<AccountManager>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<CourseService>();
+builder.Services.AddScoped<SavedCourseService>();
 
 var app = builder.Build();
 app.UseHsts();

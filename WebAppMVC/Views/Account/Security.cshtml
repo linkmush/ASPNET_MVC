@@ -25,7 +25,7 @@
                         <label for="fileUploader" class="btn-circle"><i class="fa-solid fa-arrows-rotate"></i></label>
                     </form>
                 </div>
-                <h5>@($"{Model.ProfileInfo.FirstName} {Model.ProfileInfo.LastName}")</h5>
+                <h5>@($"{Model.ProfileInfo!.FirstName} {Model.ProfileInfo.LastName}")</h5>
                 <p>@Model.ProfileInfo.Email</p>
             </div>
             <nav>

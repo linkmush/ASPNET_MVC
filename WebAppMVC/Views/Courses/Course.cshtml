@@ -1,4 +1,5 @@
 ﻿@* @model IEnumerable<CourseDto> *@
+
 @model CourseViewModel
 
 @{
@@ -52,7 +53,7 @@
                             {
                                 <div class="text-top">Best Seller</div>
                             }
-                            <a class="button-top" href="#"><i class="fa-regular fa-bookmark"></i></a>
+                            <a class="button-top" data-courseid="@course.Id"><i class="fa-regular fa-bookmark"></i></a>
                         </div>
                         <img src="@course.ImageUrl" alt="Image of @course.Title">
                         <a asp-controller="Courses" asp-action="CourseDetails" asp-route-id="@course.Id">

@@ -10,12 +10,13 @@ using WebAppMVC.ViewModels.Views;
 namespace WebAppMVC.Controllers;
 
 [Authorize]  // kräver att du måste vara inloggad för att se dessa sidor. 
-public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AddressManager AddressManager, AccountManager AccountManager) : Controller
+public class AccountController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, AddressManager AddressManager, AccountManager AccountManager, SavedCourseService savedCourseService) : Controller
 {
     private readonly SignInManager<UserEntity> _signInManager = signInManager;
     private readonly UserManager<UserEntity> _userManager = userManager;
     private readonly AddressManager _addressManager = AddressManager;
     private readonly AccountManager _accountManager = AccountManager;
+    private readonly SavedCourseService _savedCourseService = savedCourseService;
 
     #region Details
     [HttpGet]
@@ -214,6 +215,27 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
 
         return RedirectToAction("Security", "Account");
     }
+    #endregion
+
+    #region SavedCourses
+
+    [HttpGet]
+    [Route("/account/saved")]
+    public async Task<IActionResult> SavedCourses()
+    {
+        var viewModel = new SavedCoursesViewModel();
+
+        viewModel.ProfileInfo = await PopulateProfileInfoAsync();
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user != null)
+        {
+            viewModel.SavedCourses = await _savedCourseService.GetCoursesByIdsAsync(user.Id);
+        }
+
+        return View(viewModel);
+    }
+
     #endregion
 
     #region UploadImage

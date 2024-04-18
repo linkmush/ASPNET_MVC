@@ -112,3 +112,34 @@ function updateCourseByFilter() {
             document.querySelector('.courses-square').innerHTML = dom.querySelector('.courses-square').innerHTML
         })
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('click', function (e) {
+        if (e.target && e.target.matches("a.button-top")) {
+            e.preventDefault();
+
+            var courseId = parseInt(e.target.getAttribute('data-courseid'), 10);
+            console.log("Course ID:", courseId);
+
+            fetch('/Courses/SaveCourse', { 
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ CourseId: courseId })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        var button = e.target.querySelector('.fa-bookmark');
+                        button.classList.add('saved');
+                    } else {
+                        console.log("Error saving course.");
+                    }
+                })
+                .catch(error => {
+                    console.log("Error saving course:", error);
+                });
+        }
+    });
+});

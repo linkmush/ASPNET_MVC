@@ -1,9 +1,14 @@
-﻿using Infrastructure.Dtos;
+﻿using Azure;
+using Infrastructure.Dtos;
+using Infrastructure.Entities;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Text;
 using WebAppMVC.ViewModels.Components;
 using WebAppMVC.ViewModels.Views;
@@ -11,12 +16,14 @@ using WebAppMVC.ViewModels.Views;
 namespace WebAppMVC.Controllers;
 
 [Authorize]
-public class CoursesController(IConfiguration configuration, HttpClient http, CategoryService categoryService, CourseService courseService) : Controller
+public class CoursesController(IConfiguration configuration, HttpClient http, CategoryService categoryService, CourseService courseService, UserManager<UserEntity> userManager, SavedCourseService savedCourseService) : Controller
 {
     private readonly IConfiguration _configuration = configuration;
     private readonly HttpClient _http = http;
     private readonly CategoryService _categoryService = categoryService;
     private readonly CourseService _courseService = courseService;
+    private readonly UserManager<UserEntity> _userManager = userManager;
+    private readonly SavedCourseService _savedCourseService = savedCourseService;
 
     [Route("/courses")]
     public async Task<IActionResult> Course(string category = "", string searchQuery = "")
@@ -46,6 +53,32 @@ public class CoursesController(IConfiguration configuration, HttpClient http, Ca
 
         return RedirectToAction("Error404", "Home");
     }
+
+    [HttpPost]
+    public async Task<IActionResult> SaveCourse([FromBody] SaveCourseDto saveCourseDto)
+    {
+        if (ModelState.IsValid)
+        {
+            try
+            {
+                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+                if (userId != null && saveCourseDto.CourseId != 0)
+                {
+                    await _savedCourseService.SaveCourseForUserAsync(saveCourseDto.CourseId, userId);
+
+                    return Json(new { success = true });
+                }
+            }
+            catch (Exception)
+            {
+                return Json(new { success = false });
+            }
+        }
+
+        return Json(new { success = false });
+    }
+
 
     //[Route("/courses")]
     //public async Task<IActionResult> Index()

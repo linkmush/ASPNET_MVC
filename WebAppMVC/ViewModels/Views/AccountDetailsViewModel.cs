@@ -1,4 +1,5 @@
-﻿using Infrastructure.Models;
+﻿using Infrastructure.Entities;
+using Infrastructure.Models;
 
 namespace WebAppMVC.ViewModels.Views;
 
