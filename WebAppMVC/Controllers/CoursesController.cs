@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Infrastructure.Dtos;
 using Infrastructure.Entities;
+using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -26,12 +27,21 @@ public class CoursesController(IConfiguration configuration, HttpClient http, Ca
     private readonly SavedCourseService _savedCourseService = savedCourseService;
 
     [Route("/courses")]
-    public async Task<IActionResult> Course(string category = "", string searchQuery = "")
+    public async Task<IActionResult> Course(string category = "", string searchQuery = "", int pageNumber = 1, int pageSize = 6)
     {
+        var courseResult = await _courseService.GetCourseAsync(category, searchQuery, pageNumber, pageSize);
+
         var viewModel = new CourseViewModel
         {
             Categories = await _categoryService.GetCategoriesAsync(),
-            Courses = await _courseService.GetCourseAsync(category, searchQuery),
+            Courses = courseResult.Courses,
+            Pagination = new Pagination
+            {
+                PageSize = pageSize,
+                CurrentPage = pageNumber,
+                TotalPages = courseResult.TotalPages,
+                TotalItems = courseResult.TotalItems
+            }
         };
 
         return View(viewModel);

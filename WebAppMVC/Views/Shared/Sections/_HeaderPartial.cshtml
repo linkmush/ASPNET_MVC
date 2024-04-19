@@ -10,13 +10,20 @@
     var isDark = (themeMode == "dark") ? true : false;
 }
 
-<header>
+<header class="@(ViewData["headerClass"] ?? "")">
     <div class="container">
         <a id="logo" asp-controller="Home" asp-action="Index"><img src="~/images/@(isDark ? "Logotype-Dark.svg" : "Logotype-Light.svg" )" alt="Logotype for Silicon"></a>
         <div id="menu" class="hide">
             <nav>
                 <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="overview">Overview</a>
-                <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+                @if (_signInManager.IsSignedIn(User))
+                {
+                    <a class="menu-link" asp-controller="Courses" asp-action="Course">Courses</a>
+                }
+                else
+                {
+                    <a class="menu-link" asp-controller="Home" asp-action="Index" asp-fragment="features">Features</a>
+                }
                 <a class="menu-link" asp-controller="Contact" asp-action="Index">Contact</a>
             </nav>
         </div>

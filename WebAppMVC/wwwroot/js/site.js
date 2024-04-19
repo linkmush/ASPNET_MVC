@@ -110,18 +110,22 @@ function updateCourseByFilter() {
             const parser = new DOMParser()
             const dom = parser.parseFromString(data, 'text/html')
             document.querySelector('.courses-square').innerHTML = dom.querySelector('.courses-square').innerHTML
+
+            const pagination = dom.querySelector('.pagination') ? dom.querySelector('.pagination').innerHTML : ''
+            document.querySelector('.pagination').innerHTML = pagination
         })
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('click', function (e) {
-        if (e.target && e.target.matches("a.button-top")) {
+        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
             e.preventDefault();
 
-            var courseId = parseInt(e.target.getAttribute('data-courseid'), 10);
+            var link = e.target.closest("a.button-top");
+            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
             console.log("Course ID:", courseId);
 
-            fetch('/Courses/SaveCourse', { 
+            fetch('/Courses/SaveCourse', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -131,8 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        var button = e.target.querySelector('.fa-bookmark');
-                        button.classList.add('saved');
+                        link.classList.toggle('saved');
                     } else {
                         console.log("Error saving course.");
                     }
