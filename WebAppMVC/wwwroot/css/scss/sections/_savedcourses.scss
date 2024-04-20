@@ -100,16 +100,24 @@
 
             .saved-header {
                 display: flex;
-                justify-content: space-between;
+                justify-content: space-between; /* This will push the elements to the sides */
                 align-items: baseline;
                 margin-bottom: 30px;
 
+                h1 {
+                    /* Optional: Add some margin-right to create a gap between h1 and btn */
+                    margin-right: 20px;
+                }
 
                 .btn-gray {
                     height: 60%;
                     background-color: transparent;
                     border: 1px solid red;
                     color: red;
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center; /* This will vertically center the content */
+                    gap: 10px; /* Add some gap between icon and text */
 
                     &:hover {
                         text-decoration: none;
@@ -132,20 +140,20 @@
 
                 @include lg {
                     display: grid;
-                    grid-template-columns: auto auto;
+                    grid-template-columns: auto auto auto;
                     gap: 30px;
                 }
 
                 .grid-item {
                     position: relative;
                     border: 1px solid #DAD9D3;
-                    border-radius: 10px;
+                    border-radius: 15px;
                     overflow: hidden;
                     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                     transition: box-shadow 0.3s ease-in-out;
                     margin-bottom: 20px;
-                    width: 100%; // Set width to 100% to fit two items per row
-                    max-width: 300px; // Maximum width for larger screens
+                    max-width: 416px;
+                    height: 473px;
 
                     &:hover {
                         box-shadow: 0 6px 12px rgba(0, 0, 0, 10);
@@ -163,34 +171,49 @@
                         display: block;
                     }
 
-                    .overlay-content {
+                    .text-top {
+                        font-size: 13px;
+                        color: #ffffff;
+                        background-color: rgba(11, 172, 37, 0.7);
+                        padding: 5px;
+                        border-radius: 3px;
                         position: absolute;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        width: 100%;
-                        padding: 20px;
+                        top: 15px;
+                        left: 15px;
+                    }
 
-                        .text-top {
-                            font-size: 13px;
-                            color: #ffffff;
-                            background-color: rgba(11, 172, 37, 0.7);
-                            padding: 5px;
-                            border-radius: 3px;
+                    .button-top {
+                        position: absolute;
+                        top: 15px;
+                        right: 15px;
+                        cursor: pointer;
+                        width: 30px;
+                        height: 30px;
+                        border-radius: 50%;
+                        background-color: var(--color-gray-100);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        transition: background-color 0.3s, color 0.3s;
+
+                        i {
+                            color: black;
+                            font-size: 16px;
                         }
 
-                        .button-top {
-                            width: 30px;
-                            height: 30px;
-                            border-radius: 50%;
-                            background-color: var(--color-gray-100);
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
+                        &:hover {
+                            background-color: var(--color-danger);
 
                             i {
-                                color: black;
-                                font-size: 16px;
+                                color: white;
+                            }
+                        }
+
+                        &.saved {
+                            background-color: var(--color-theme);
+
+                            i {
+                                color: white;
                             }
                         }
                     }
@@ -205,7 +228,6 @@
 
                         .creator {
                             color: var(--color-gray-600);
-                            font-size: 15px;
                         }
 
                         .price {

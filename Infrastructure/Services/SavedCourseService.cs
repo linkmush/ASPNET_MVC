@@ -83,4 +83,42 @@ public class SavedCourseService(DataContext context, UserManager<UserEntity> use
         return courses;
     }
 
+    public async Task DeleteSavedCourseForUserAsync(int courseId, string userId)
+    {
+        try
+        {
+            var savedCourse = await _context.SavedCourses.FirstOrDefaultAsync(x => x.UserId == userId && x.CourseId == courseId);
+
+            if (savedCourse != null)
+            {
+                _context.SavedCourses.Remove(savedCourse);
+                await _context.SaveChangesAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error deleting courseId {courseId} for userId {userId}: {ex.Message}");
+            throw;
+        }
+    }
+
+    public async Task DeleteAllSavedCoursesForUserAsync(string userId)
+    {
+        try
+        {
+            var savedCourses = await _context.SavedCourses.Where(x => x.UserId == userId).ToListAsync();
+
+            if (savedCourses.Count != 0)
+            {
+                _context.SavedCourses.RemoveRange(savedCourses);
+                await _context.SaveChangesAsync();
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error deleting all saved courses for userId {userId}: {ex.Message}");
+            throw;
+        }
+    }
+
 }

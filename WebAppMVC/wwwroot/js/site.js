@@ -116,7 +116,203 @@ function updateCourseByFilter() {
         })
 }
 
+//document.addEventListener('DOMContentLoaded', function () {
+//    document.addEventListener('click', function (e) {
+//        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
+//            e.preventDefault();
+
+//            var link = e.target.closest("a.button-top");
+//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            console.log("Course ID:", courseId);
+
+//            fetch('/Courses/SaveCourse', {
+//                method: 'POST',
+//                headers: {
+//                    'Content-Type': 'application/json'
+//                },
+//                body: JSON.stringify({ CourseId: courseId })
+//            })
+//                .then(response => response.json())
+//                .then(data => {
+//                    if (data.success) {
+//                        link.classList.toggle('saved');
+//                    } else {
+//                        console.log("Error saving course.");
+//                    }
+//                })
+//                .catch(error => {
+//                    console.log("Error saving course:", error);
+//                });
+//        }
+//    });
+//});
+
+//document.addEventListener('DOMContentLoaded', function () {
+//    document.addEventListener('click', function (e) {
+//        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
+//            e.preventDefault();
+
+//            var link = e.target.closest("a.button-top");
+//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            console.log("Course ID:", courseId);
+
+//            if (link.classList.contains('saved')) {
+//                // Delete the saved course
+//                fetch(`/Courses/DeleteSavedCourse`, {
+//                    method: 'POST',
+//                    headers: {
+//                        'Content-Type': 'application/json'
+//                    },
+//                    body: JSON.stringify({ CourseId: courseId })
+//                })
+//                    .then(response => response.json())
+//                    .then(data => {
+//                        if (data.success) {
+//                            link.classList.remove('saved');
+//                        } else {
+//                            console.log("Error deleting course.");
+//                        }
+//                    })
+//                    .catch(error => {
+//                        console.log("Error deleting course:", error);
+//                    });
+//            } else {
+//                // Save the course
+//                fetch('/Courses/SaveCourse', {
+//                    method: 'POST',
+//                    headers: {
+//                        'Content-Type': 'application/json'
+//                    },
+//                    body: JSON.stringify({ CourseId: courseId })
+//                })
+//                    .then(response => response.json())
+//                    .then(data => {
+//                        if (data.success) {
+//                            link.classList.add('saved');
+//                        } else {
+//                            console.log("Error saving course.");
+//                        }
+//                    })
+//                    .catch(error => {
+//                        console.log("Error saving course:", error);
+//                    });
+//            }
+//        }
+//    });
+//});
+
+//const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+//const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+//function removeCourseFromSavedUI(courseId) {
+//    const savedCourseElements = document.querySelectorAll(`.box-savedcourses .grid-item[data-courseid="${courseId}"]`);
+
+//    savedCourseElements.forEach(element => {
+//        element.remove();
+//    });
+//}
+
+//document.addEventListener('DOMContentLoaded', function () {
+//    document.addEventListener('click', function (e) {
+//        if (e.target && e.target.matches("a.button-top, a.button-top i")) {
+//            e.preventDefault();
+
+//            var link = e.target.closest("a.button-top");
+//            var courseId = parseInt(link.getAttribute('data-courseid'), 10);
+//            console.log("Course ID:", courseId);
+
+//            if (link.classList.contains('saved')) {
+//                // Delete the saved course
+//                fetch(`/Courses/DeleteSavedCourse`, {
+//                    method: 'POST',
+//                    headers: {
+//                        'Content-Type': 'application/json'
+//                    },
+//                    body: JSON.stringify({ CourseId: courseId })
+//                })
+//                    .then(response => response.json())
+//                    .then(data => {
+//                        if (data.success) {
+//                            link.classList.remove('saved');
+//                            removeCourseFromSavedUI(courseId); // Remove from UI
+//                        } else {
+//                            console.log("Error deleting course.");
+//                        }
+//                    })
+//                    .catch(error => {
+//                        console.log("Error deleting course:", error);
+//                    });
+//            } else {
+//                // Save the course
+//                fetch('/Courses/SaveCourse', {
+//                    method: 'POST',
+//                    headers: {
+//                        'Content-Type': 'application/json'
+//                    },
+//                    body: JSON.stringify({ CourseId: courseId })
+//                })
+//                    .then(response => response.json())
+//                    .then(data => {
+//                        if (data.success) {
+//                            link.classList.add('saved');
+//                        } else {
+//                            console.log("Error saving course.");
+//                        }
+//                    })
+//                    .catch(error => {
+//                        console.log("Error saving course:", error);
+//                    });
+//            }
+//        }
+//    });
+//});
+
+function removeCourseFromSavedUI(courseId) {
+    const savedCourseElements = document.querySelectorAll(`.box-savedcourses .grid-item[data-courseid="${courseId}"]`);
+
+    savedCourseElements.forEach(element => {
+        const tooltip = bootstrap.Tooltip.getInstance(element.querySelector('[data-bs-toggle="tooltip"]'));
+        if (tooltip) {
+            tooltip.dispose();
+        }
+
+        element.remove();
+    });
+
+    reinitializeTooltips();
+}
+
+function reinitializeTooltips() {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltipTriggerList.forEach(tooltipTriggerEl => {
+        if (!bootstrap.Tooltip.getInstance(tooltipTriggerEl)) {
+            new bootstrap.Tooltip(tooltipTriggerEl);
+        }
+    });
+}
+
+function saveCourseToLocalStorage(courseId) {
+    let savedCourses = JSON.parse(localStorage.getItem('savedCourses')) || [];
+
+    if (!savedCourses.includes(courseId)) {
+        savedCourses.push(courseId);
+        localStorage.setItem('savedCourses', JSON.stringify(savedCourses));
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+    reinitializeTooltips();
+
+    const savedCourses = JSON.parse(localStorage.getItem('savedCourses')) || [];
+
+    savedCourses.forEach(courseId => {
+        const savedCourseElement = document.querySelector(`.grid-item[data-courseid="${courseId}"] .button-top`);
+
+        if (savedCourseElement) {
+            savedCourseElement.classList.add('saved');
+        }
+    });
+
     document.addEventListener('click', function (e) {
         if (e.target && e.target.matches("a.button-top, a.button-top i")) {
             e.preventDefault();
@@ -125,24 +321,66 @@ document.addEventListener('DOMContentLoaded', function () {
             var courseId = parseInt(link.getAttribute('data-courseid'), 10);
             console.log("Course ID:", courseId);
 
-            fetch('/Courses/SaveCourse', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ CourseId: courseId })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        link.classList.toggle('saved');
-                    } else {
-                        console.log("Error saving course.");
-                    }
+            if (link.classList.contains('saved')) {
+                fetch(`/Courses/DeleteSavedCourse`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ CourseId: courseId })
                 })
-                .catch(error => {
-                    console.log("Error saving course:", error);
-                });
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            link.classList.remove('saved');
+                            removeCourseFromSavedUI(courseId);
+
+                            let savedCourses = JSON.parse(localStorage.getItem('savedCourses')) || [];
+                            const index = savedCourses.indexOf(courseId);
+                            if (index > -1) {
+                                savedCourses.splice(index, 1);
+                                localStorage.setItem('savedCourses', JSON.stringify(savedCourses));
+                            }
+                        } else {
+                            console.log("Error deleting course.");
+                        }
+                    })
+                    .catch(error => {
+                        console.log("Error deleting course:", error);
+                    });
+            } else {
+                fetch('/Courses/SaveCourse', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ CourseId: courseId })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            saveCourseToLocalStorage(courseId);
+                            link.classList.add('saved');
+                            reinitializeTooltips();
+                        } else {
+                            console.log("Error saving course.");
+                        }
+                    })
+                    .catch(error => {
+                        console.log("Error saving course:", error);
+                    });
+            }
         }
     });
+});
+
+document.getElementById('deleteAllBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+
+    var form = document.createElement('form');
+    form.method = 'post';
+    form.action = '/Account/Saved';
+
+    document.body.appendChild(form);
+    form.submit();
 });

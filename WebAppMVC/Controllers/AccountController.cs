@@ -1,4 +1,5 @@
-﻿using Infrastructure.Entities;
+﻿using Infrastructure.Dtos;
+using Infrastructure.Entities;
 using Infrastructure.Models;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -234,6 +235,58 @@ public class AccountController(SignInManager<UserEntity> signInManager, UserMana
         }
 
         return View(viewModel);
+    }
+
+    #endregion
+
+    #region DeleteCourseID
+
+    [HttpPost]
+    [Route("/Courses/DeleteSavedCourse")]
+    public async Task<IActionResult> DeleteSavedCourse([FromBody] DeleteCourseDto deleteCourseDto)
+    {
+        try
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (userId != null && deleteCourseDto.CourseId != 0)
+            {
+                await _savedCourseService.DeleteSavedCourseForUserAsync(deleteCourseDto.CourseId, userId);
+                return Json(new { success = true });
+            }
+        }
+        catch (Exception)
+        {
+            return Json(new { success = false });
+        }
+
+        return Json(new { success = false });
+    }
+
+    #endregion
+
+    #region DeleteCourse
+
+    [HttpPost]
+    [Route("/account/saved")]
+    public async Task<IActionResult> DeleteAllSavedCourses()
+    {
+        try
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (userId != null)
+            {
+                await _savedCourseService.DeleteAllSavedCoursesForUserAsync(userId);
+                return RedirectToAction("SavedCourses", "Account");
+            }
+        }
+        catch (Exception)
+        {
+            return RedirectToAction("SavedCourses", "Account");
+        }
+
+        return RedirectToAction("SavedCourses", "Account");
     }
 
     #endregion

@@ -35,20 +35,20 @@
         <div class="box-savedcourses">
             <div class="saved-header">
                 <h1>Saved items</h1>
-                <a class="btn-gray" href="#"><i class="fa-regular fa-trash-can"></i></i><span>Delete all</span></a>
+                <a class="btn-gray" id="deleteAllBtn"><i class="fa-regular fa-trash-can"></i></i><span>Delete all</span></a>
             </div>
             <div class="courses-square">
                 @if (Model.SavedCourses != null)
                 {
                     foreach (var course in Model.SavedCourses)
                     {
-                        <div class="grid-item">
+                        <div class="grid-item" data-courseid="@course.Id">
                             <div class="overlay-content">
                                 @if (course.IsBestSeller)
                                 {
                                     <div class="text-top">Best Seller</div>
                                 }
-                                <a class="button-top" data-courseid="@course.Id"><i class="fa-regular fa-bookmark"></i></a>
+                                <a class="button-top" data-courseid="@course.Id" data-bs-toggle="tooltip" data-bs-title="Remove Course"><i class="fa-regular fa-bookmark"></i></a>
                             </div>
                             <img src="~/@course.ImageUrl" alt="Image of @course.Title">
                             <a asp-controller="Courses" asp-action="CourseDetails" asp-route-id="@course.Id">

@@ -2996,23 +2996,28 @@ footer .container .social-media {
   gap: 10px;
   margin-top: 15px;
 }
-.description-course .container .description-header .singlecourse-box .price-box .discount-price {
+.description-course .container .description-header .singlecourse-box .price-box .price {
+  font-weight: 700;
   line-height: 160%;
   font-weight: 400;
   color: var(--color-gray-700);
   font-family: "Manrope", sans-serif;
   font-size: 24px !important;
-  font-weight: 700;
+  color: var(--color-black);
 }
-.dark .description-course .container .description-header .singlecourse-box .price-box .discount-price {
+.dark .description-course .container .description-header .singlecourse-box .price-box .price {
   color: var(--color-white);
 }
-.description-course .container .description-header .singlecourse-box .price-box .actual-price {
+.description-course .container .description-header .singlecourse-box .price-box .price.discount {
+  color: red;
+}
+.description-course .container .description-header .singlecourse-box .price-box .price.discount del {
   color: var(--color-gray-600);
-  text-decoration: line-through;
+  font-weight: 400;
 }
 .description-course .container .description-header .singlecourse-box .btn-theme-s {
   width: 60%;
+  cursor: pointer;
 }
 
 .program-details .container .number {
@@ -3236,15 +3241,23 @@ footer .container .social-media {
 }
 .saved-courses .container .box-savedcourses .saved-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* This will push the elements to the sides */
   align-items: baseline;
   margin-bottom: 30px;
+}
+.saved-courses .container .box-savedcourses .saved-header h1 {
+  /* Optional: Add some margin-right to create a gap between h1 and btn */
+  margin-right: 20px;
 }
 .saved-courses .container .box-savedcourses .saved-header .btn-gray {
   height: 60%;
   background-color: transparent;
   border: 1px solid red;
   color: red;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* This will vertically center the content */
+  gap: 10px; /* Add some gap between icon and text */
 }
 .saved-courses .container .box-savedcourses .saved-header .btn-gray:hover {
   text-decoration: none;
@@ -3266,20 +3279,20 @@ footer .container .social-media {
 @media (min-width: 992px) {
   .saved-courses .container .box-savedcourses .courses-square {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto auto auto;
     gap: 30px;
   }
 }
 .saved-courses .container .box-savedcourses .courses-square .grid-item {
   position: relative;
   border: 1px solid #DAD9D3;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease-in-out;
   margin-bottom: 20px;
-  width: 100%;
-  max-width: 300px;
+  max-width: 416px;
+  height: 473px;
 }
 .saved-courses .container .box-savedcourses .courses-square .grid-item:hover {
   box-shadow: 0 6px 12px rgb(0, 0, 0);
@@ -3294,22 +3307,21 @@ footer .container .social-media {
   height: auto;
   display: block;
 }
-.saved-courses .container .box-savedcourses .courses-square .grid-item .overlay-content {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  padding: 20px;
-}
-.saved-courses .container .box-savedcourses .courses-square .grid-item .overlay-content .text-top {
+.saved-courses .container .box-savedcourses .courses-square .grid-item .text-top {
   font-size: 13px;
   color: #ffffff;
   background-color: rgba(11, 172, 37, 0.7);
   padding: 5px;
   border-radius: 3px;
+  position: absolute;
+  top: 15px;
+  left: 15px;
 }
-.saved-courses .container .box-savedcourses .courses-square .grid-item .overlay-content .button-top {
+.saved-courses .container .box-savedcourses .courses-square .grid-item .button-top {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -3317,10 +3329,23 @@ footer .container .social-media {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background-color 0.3s, color 0.3s;
 }
-.saved-courses .container .box-savedcourses .courses-square .grid-item .overlay-content .button-top i {
+.saved-courses .container .box-savedcourses .courses-square .grid-item .button-top i {
   color: black;
   font-size: 16px;
+}
+.saved-courses .container .box-savedcourses .courses-square .grid-item .button-top:hover {
+  background-color: var(--color-danger);
+}
+.saved-courses .container .box-savedcourses .courses-square .grid-item .button-top:hover i {
+  color: white;
+}
+.saved-courses .container .box-savedcourses .courses-square .grid-item .button-top.saved {
+  background-color: var(--color-theme);
+}
+.saved-courses .container .box-savedcourses .courses-square .grid-item .button-top.saved i {
+  color: white;
 }
 .saved-courses .container .box-savedcourses .courses-square .grid-item .text-info {
   text-align: left;
@@ -3331,7 +3356,6 @@ footer .container .social-media {
 }
 .saved-courses .container .box-savedcourses .courses-square .grid-item .text-info .creator {
   color: var(--color-gray-600);
-  font-size: 15px;
 }
 .saved-courses .container .box-savedcourses .courses-square .grid-item .text-info .price {
   font-weight: 700;

@@ -69,19 +69,25 @@
                     gap: 10px;
                     margin-top: 15px;
 
-                    .discount-price {
-                        @include text-lead;
+                    .price {
                         font-weight: 700;
-                    }
+                        @include text-lead;
+                        color: var(--color-black);
 
-                    .actual-price {
-                        color: var(--color-gray-600);
-                        text-decoration: line-through;
+                        &.discount {
+                            color: red; // Set the color to red for the discounted price
+
+                            del {
+                                color: var(--color-gray-600);
+                                font-weight: 400;
+                            }
+                        }
                     }
                 }
 
                 .btn-theme-s {
                     width: 60%;
+                    cursor: pointer;
                 }
             }
         }

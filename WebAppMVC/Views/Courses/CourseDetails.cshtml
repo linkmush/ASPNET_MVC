@@ -6,7 +6,6 @@
 
 <section class="singlecourseshowcase">
     <img src="~/@Model.ImageUrl" alt="Image of @Model.Title">
-    @* <img src="~/Images/pcpicture.svg" alt="Image of @Model.Title"> *@
     <div class="container">
         <div class="header-singlecourse">
             <div class="action-buttons">
@@ -87,8 +86,14 @@
                 <span class="course-include"><i class="fa-regular fa-handshake"></i><p>Full lifetime access</p></span>
                 <span class="course-include"><i class="fa-solid fa-trophy"></i></i><p>Certificate of completion</p></span>
                 <div class="price-box">
-                    <p class="discount-price">$28.99</p>
-                    <p class="actual-price">$49.00</p>
+                    @if (!string.IsNullOrEmpty(Model.DiscountPrice) && Model.DiscountPrice != "0")
+                    {
+                        <p class="price discount">$@Model.DiscountPrice <del>$@Model.Price</del></p>
+                    }
+                    else
+                    {
+                        <p class="price">$@Model.Price</p>
+                    }
                 </div>
                 <a class="btn-theme-s" href="#">Join course</a>
             </div>
