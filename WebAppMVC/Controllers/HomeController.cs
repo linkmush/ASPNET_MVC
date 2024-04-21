@@ -7,7 +7,6 @@ using WebAppMVC.ViewModels.Views;
 
 namespace WebAppMVC.Controllers;
 
-//[Authorize]   skyddar sidan, skyddar alla actions. Annars sätter man den över den action man vill skydda. kräver att du måste inloggad för att se dessa actions/sidor.
 public class HomeController(HttpClient http, IConfiguration configuration) : Controller
 {
     private readonly HttpClient _http = http;
@@ -15,7 +14,7 @@ public class HomeController(HttpClient http, IConfiguration configuration) : Con
 
     public IActionResult Index()
     {
-        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))  // kan hämta ut den i vilken controller du vill som behöver använda sig av den här tooken nyckeln.
+        if (HttpContext.Request.Cookies.TryGetValue("AccessToken", out var token))
         {
 
         }
@@ -65,7 +64,6 @@ public class HomeController(HttpClient http, IConfiguration configuration) : Con
         return View("Index", homeViewModel);
     }
 
-    //[AllowAnonymous]   // tillåter användare att kolla sidan även om du kör Authorize längst uppe.
     [Route("/error")]
     public IActionResult Error404(int statusCode)
     {

@@ -112,6 +112,10 @@
                         box-sizing: border-box;
                         overflow: hidden;
 
+                        @media (max-width: 540px) {
+                            width: 190px;
+                        }
+
                         input {
                             height: 100%;
                             width: calc(100% - 30px);
@@ -119,9 +123,6 @@
                             border: none;
                             outline: none;
                             box-sizing: border-box;
-                            /*                            &::-webkit-input-placeholder {
-                                color: #DAD9D3; // Adjust placeholder color as needed
-                            }*/
                         }
 
                         i {
@@ -245,7 +246,7 @@
                         padding-bottom: 15px;
 
                         &.discount {
-                            color: red; // Set the color to red for the discounted price
+                            color: red;
 
                             del {
                                 color: var(--color-gray-600);
@@ -340,6 +341,10 @@
                         @include h5;
                         color: var(--color-gray-700);
                     }
+
+                    .dark & {
+                        color: var(--color-black);
+                    }
                 }
 
                 h1 {
@@ -351,6 +356,10 @@
 
                     @include xl {
                         @include h1;
+                    }
+
+                    .dark & {
+                        color: var(--color-black);
                     }
                 }
 

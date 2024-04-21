@@ -27,8 +27,8 @@ builder.Services.ConfigureApplicationCookie(x =>
 
     x.Cookie.HttpOnly = true;
     x.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-    x.ExpireTimeSpan = TimeSpan.FromMinutes(60);   // avgör hur länge användaren kan vara inaktiv innan den blir utloggad.
-    x.SlidingExpiration = true;    // nollställer expiretimespan om man är aktiv igen innan expire tiden.
+    x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+    x.SlidingExpiration = true;
 });
 
 builder.Services.AddAuthentication()
@@ -59,7 +59,7 @@ builder.Services.AddScoped<SavedCourseService>();
 
 var app = builder.Build();
 app.UseHsts();
-app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}");      /*--- denna gör så att den går till error sidan om den inte hittar någon sida.*/
+app.UseStatusCodePagesWithReExecute("/error", "?statusCode={0}"); 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

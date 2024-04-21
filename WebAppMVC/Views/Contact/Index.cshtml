@@ -22,7 +22,7 @@
                     <div class="text">
                         <h4>Email us</h4>
                         <p>Please feel free to drop us a line. We will respond as soon as possible.</p>
-                        <a asp-controller="Contact" asp-action="Contact">Leave a message <i class="fa-regular fa-arrow-right"></i></a>
+                        <a asp-controller="Contact" asp-action="Index">Leave a message <i class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="box">
@@ -32,7 +32,7 @@
                     <div class="text">
                         <h4>Careers</h4>
                         <p>Sit ac ipsum leo lorem magna nunc mattis maecenas non vestibulum.</p>
-                        <a asp-controller="Contact" asp-action="Contact">Send an application <i class="fa-regular fa-arrow-right"></i></a>
+                        <a asp-controller="Contact" asp-action="Index">Send an application <i class="fa-regular fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -43,12 +43,12 @@
                 <div class="col-12">
                     <label class="form-label" asp-for="FullName">Full name</label>
                     <input class="form-control" asp-for="FullName">
-                    <span class="errorspan" asp-validation-for="FullName"></span>
+                    <span class="errorspan"></span>
                 </div>
                 <div class="col-12">
                     <label class="form-label" asp-for="Email"></label>
                     <input class="form-control" asp-for="Email" />
-                    <span class="errorspan" asp-validation-for="Email"></span>
+                    <span class="errorspan"></span>
                 </div>
                 <div class="col-12">
                     <label asp-for="Service" class="form-label">Service <span>(optional)</span></label>
@@ -63,45 +63,12 @@
                 <div class="col-12">
                     <label asp-for="Message" class="form-label">Message</label>
                     <textarea asp-for="Message" class="form-control" cols="30" rows="8"></textarea>
-                    <span class="errorspan" asp-validation-for="Message"></span>
+                    <span class="errorspan"></span>
                 </div>
                 <div class="col-auto">
                     <button type="submit" class="btn-theme">Send Contact Request</button>
                 </div>
             </form>
-
-@*             <span class="information">
-                @if (ViewData["Status"]?.ToString() == "Success")
-                {
-                    <span class="alert alert-success">
-                        You have sent a contact request
-                    </span>
-                }
-                else if (ViewData["Status"]?.ToString() == "AlreadyExists")
-                {
-                    <span class="alert alert-warning">
-                        You have already sent a request
-                    </span>
-                }
-                else if (ViewData["Status"]?.ToString() == "Invalid")
-                {
-                    <span class="alert alert-danger">
-                        You must enter an valid email address
-                    </span>
-                }
-                else if (ViewData["Status"]?.ToString() == "ConnectionFailed")
-                {
-                    <span class="alert alert-danger">
-                        Unabled to connect to server. Please try again later!
-                    </span>
-                }
-                else if (ViewData["Status"]?.ToString() == "Unauthorized")
-                {
-                    <span class="alert alert-danger">
-                        Something went wrong. Please contact web admin.
-                    </span>
-                }
-            </span> *@
         </div>
         <img src="~/Images/map.svg" alt="">
     </div>

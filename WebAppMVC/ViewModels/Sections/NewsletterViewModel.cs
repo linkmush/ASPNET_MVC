@@ -17,7 +17,7 @@ public class NewsletterViewModel
     [Display(Name = "Event Updates", Order = 3)]
     public bool EventUpdates { get; set; }
 
-    [Display(Name = "Startups Weekly", Order = 4)]     /*Jag måste ha samma properties i min viewmodel som i min DTO på webapi för att få det att funka. Men det är okej att ha flera properties i min viewmodel som inte finns med i min DTO på webapiet.*/
+    [Display(Name = "Startups Weekly", Order = 4)]
     public bool StartupsWeekly { get; set; }
 
     [Display(Name = "Podcasts", Order = 5)]

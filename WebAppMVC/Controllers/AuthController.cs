@@ -19,7 +19,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     private readonly IConfiguration _configuration = configuration;
 
     #region Sign Up
-    [Route("/signup")]        // route är det som avgör sökvägen i webbläsaren.
+    [Route("/signup")]     
     [HttpGet]
     public IActionResult SignUp()
     {
@@ -33,7 +33,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
         return View(viewModel);
     }
 
-    [Route("/signup")]        // route är det som avgör sökvägen i webbläsaren.
+    [Route("/signup")]    
     [HttpPost]
     public async Task<IActionResult> SignUp(SignUpViewModel viewModel)
     {
@@ -47,7 +47,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
                 return View(viewModel);
             }
 
-            var userEntity = new UserEntity    // kan flytta ut denna till en egen factory och hämta in den istället för att mappa upp här.
+            var userEntity = new UserEntity  
             {
                 FirstName = viewModel.Form.FirstName,
                 LastName = viewModel.Form.LastName,
@@ -55,14 +55,14 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
                 UserName = viewModel.Form.Email,
             };
 
-            var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);              // detta är om det funkar. 
+            var result = await _userManager.CreateAsync(userEntity, viewModel.Form.Password);           
             if (result.Succeeded)
             {
                 return RedirectToAction("SignIn", "Auth");
             }
         }
 
-        return View(viewModel);                         // om det inte går går vi tillbaks till viewmodel(dvs signup sidan i detta fall)
+        return View(viewModel);   
     }
     #endregion
 
@@ -90,7 +90,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
 
         if (ModelState.IsValid)
         {
-            if ((await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false)).Succeeded)  // för att token fetchen ska funka måste jag ha samma attribut i min viewmodel som i min model som är på webapi action. på min viewmodel får attributet inte ligga inbäddat i en annan model. Det måste vara rakt i min viewmodel.
+            if ((await _signInManager.PasswordSignInAsync(viewModel.Email, viewModel.Password, viewModel.RememberMe, false)).Succeeded) 
             {
                 var content = new StringContent(JsonConvert.SerializeObject(viewModel), Encoding.UTF8, "application/json");
                 var response = await _http.PostAsync($"https://localhost:7091/api/auth/token?key={_configuration["ApiKey"]}", content);
@@ -111,8 +111,6 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
             }
         }
 
-
-        //viewModel.ErrorMessage = "Incorrect email or password";
         ModelState.AddModelError("IncorrectValues", "Incorrect email or password");
         ViewData["ErrorMessage"] = "Incorrect email or password";
         return View(viewModel);
@@ -134,7 +132,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     [HttpGet]
     public IActionResult Facebook()
     {
-        var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Facebook", Url.Action("FacebookCallback"));   /*man gör samma sak för google bara att man skriver google istället för facebook.*/
+        var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Facebook", Url.Action("FacebookCallback")); 
         return new ChallengeResult("Facebook", authProps);
     }
 
@@ -195,7 +193,7 @@ public class AuthController(UserManager<UserEntity> userManager, SignInManager<U
     [HttpGet]
     public IActionResult Google()
     {
-        var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Google", Url.Action("GoogleCallback"));   /*man gör samma sak för google bara att man skriver google istället för facebook.*/
+        var authProps = _signInManager.ConfigureExternalAuthenticationProperties("Google", Url.Action("GoogleCallback"));
         return new ChallengeResult("Google", authProps);
     }
 

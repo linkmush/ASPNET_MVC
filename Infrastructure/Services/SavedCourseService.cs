@@ -23,17 +23,14 @@ public class SavedCourseService(DataContext context, UserManager<UserEntity> use
     {
         try
         {
-            // Hämta användaren
             var user = await _userManager.FindByIdAsync(userId);
 
             if (user != null)
             {
-                // Ta reda på om användaren redan har sparat kursen
                 var savedCourse = await _context.SavedCourses.FirstOrDefaultAsync(x => x.UserId == userId && x.CourseId == courseId);
 
                 if (savedCourse == null)
                 {
-                    // Om inte, skapa en ny sparad kurs och lägg till i databasen
                     savedCourse = new SavedCourseEntity
                     {
                         UserId = userId,

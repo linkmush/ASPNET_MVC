@@ -4,9 +4,18 @@
     gap: 150px;
     margin-bottom: 70px;
 
+    @media(max-width: 1000px) {
+        display: flex;
+        flex-direction: column;
+    }
+
     aside {
         border-right: 1px solid var(--color-gray-300);
         padding-right: 20px;
+
+        @media(max-width: 1000px) {
+            border-right: none;
+        }
 
         .profile-info {
             margin: 20px;
@@ -101,6 +110,11 @@
                     grid-template-columns: 1fr 1fr;
                     grid-template-areas: "current current" "new confirm" "buttons buttons";
 
+                    @media(max-width: 582px) {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
                     #form-current {
                         grid-area: current;
                         width: 48%
@@ -158,6 +172,10 @@
 
                 label.delete-account-label {
                     color: blue;
+
+                    .dark & {
+                        color: var(--color-white);
+                    }
                 }
             }
         }

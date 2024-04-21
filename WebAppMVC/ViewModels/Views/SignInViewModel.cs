@@ -6,7 +6,6 @@ namespace WebAppMVC.ViewModels.Views;
 public class SignInViewModel
 {
     public string Title { get; set; } = "Sign in";
-    //public SignInModel Form { get; set; } = new SignInModel();
     public string? ErrorMessage { get; set; }
 
     [Display(Name = "Email address", Prompt = "Enter your email address", Order = 3)]

@@ -15,7 +15,7 @@ public class CategoryService
     {
         _httpClient = httpClient;
         _configuration = configuration;
-        _httpClient.DefaultRequestHeaders.Remove("Authorization"); // denna tar bort bearer token när jag skickar ett request till web apiet. I min Signin så hämtar jag en bearer token när jag loggar in därför skickas det med automatiskt. Om jag ska ta bort denna så måste jag sätta Authorize på allt som jag ska hämta ut i web apiet. Alternativt koda om sign in så bearer token inte finns med i SignIn.
+        _httpClient.DefaultRequestHeaders.Remove("Authorization");
     }
 
     public async Task<IEnumerable<Category>> GetCategoriesAsync()

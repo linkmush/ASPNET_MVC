@@ -4,9 +4,18 @@
     gap: 150px;
     margin-bottom: 70px;
 
+    @media(max-width: 1130px) {
+        display: flex;
+        flex-direction: column;
+    }
+
     aside {
         border-right: 1px solid var(--color-gray-300);
         padding-right: 20px;
+
+        @media(max-width: 1130px) {
+            border-right: none;
+        }
 
         .profile-info {
             margin: 20px;
@@ -109,6 +118,11 @@
                     grid-template-columns: 1fr 1fr;
                     grid-template-areas: "firstname lastname" "email phone" "bio bio" "buttons buttons";
 
+                    @media(max-width: 538px) {
+                        display: flex;
+                        flex-direction: column;
+                    }
+
                     #form-firstname {
                         grid-area: firstname;
                     }
@@ -159,6 +173,11 @@
                     gap: 1rem 2rem;
                     grid-template-columns: 1fr 1fr;
                     grid-template-areas: "addressline_1 addressline_1" "addressline_2 addressline_2" "postalcode city" "buttons buttons";
+
+                    @media(max-width: 538px) {
+                        display: flex;
+                        flex-direction: column;
+                    }
 
                     #form-addressline-1 {
                         grid-area: addressline_1;

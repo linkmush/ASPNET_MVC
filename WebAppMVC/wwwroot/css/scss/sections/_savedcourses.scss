@@ -12,6 +12,10 @@
             border-right: 1px solid var(--color-gray-300);
             padding-right: 20px;
 
+            @media(max-width: 992px) {
+                border-right: none;
+            }
+
             .profile-info {
                 margin: 20px;
                 text-align: center;
@@ -20,6 +24,7 @@
                 .image-profile {
                     position: relative;
                     display: inline-block;
+                    margin-left: 50px;
 
                     img {
                         width: 120px;
@@ -62,10 +67,12 @@
                 h5 {
                     margin-top: 15px;
                     margin-bottom: 0;
+                    margin-left: 50px;
                 }
 
                 p {
                     @include text-m;
+                    margin-left: 50px;
                 }
             }
 
@@ -100,13 +107,16 @@
 
             .saved-header {
                 display: flex;
-                justify-content: space-between; /* This will push the elements to the sides */
-                align-items: baseline;
+                justify-content: space-between;
                 margin-bottom: 30px;
+                align-items: center;
 
                 h1 {
-                    /* Optional: Add some margin-right to create a gap between h1 and btn */
                     margin-right: 20px;
+
+                    @media(max-width: 486px) {
+                        display: none;
+                    }
                 }
 
                 .btn-gray {
@@ -116,8 +126,8 @@
                     color: red;
                     cursor: pointer;
                     display: flex;
-                    align-items: center; /* This will vertically center the content */
-                    gap: 10px; /* Add some gap between icon and text */
+                    align-items: center;
+                    gap: 10px;
 
                     &:hover {
                         text-decoration: none;
@@ -136,12 +146,6 @@
                     display: grid;
                     grid-template-columns: auto auto;
                     gap: 25px;
-                }
-
-                @include lg {
-                    display: grid;
-                    grid-template-columns: auto auto auto;
-                    gap: 30px;
                 }
 
                 .grid-item {
